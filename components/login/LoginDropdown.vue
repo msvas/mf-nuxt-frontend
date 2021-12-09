@@ -34,10 +34,10 @@
               required
             />
 
-            <!-- <span
+            <span
               class="text-danger text-sm"
               v-show="errors.has('email')"
-            >{{ errors.first('email') }}</span> -->
+            >{{ errors.first('email') }}</span>
             <div class="form-control-position">
               <i class="feather icon-mail"></i>
             </div>
@@ -55,10 +55,10 @@
               placeholder="Senha"
               required
             />
-            <!-- <span
+            <span
               class="text-danger text-sm"
               v-show="errors.has('password')"
-            >{{ errors.first('password') }}</span> -->
+            >{{ errors.first('password') }}</span>
             <div class="form-control-position">
               <i class="feather icon-lock"></i>
             </div>
@@ -155,63 +155,83 @@ export default {
           ClientProductQuoteCartService.clearQuoteCart()
         if (result) {
           if(this.redirectObject) {
-            this.$auth
-              .login({
-                data: this.user,
-                fetchUser: true,
-                staySignedIn: true,
-                remember: this.rememberMe,
-                redirect: this.redirectObject,
-              })
-              .then((response) => {
-                 setTimeout(() => {
-                  this.isLoading = false
-                  this.clearFilterParams()
-                  this.setUser(response.data.data)
-                  }, 300);
+            this.$auth.loginWith('local', {
+              data: this.user,
+            })
+            // .then((response) => {
+            //    setTimeout(() => {
+            //     this.isLoading = false
+            //     this.clearFilterParams()
+            //     this.setUser(response.data.data)
+            //     }, 300);
+            //
+            // })
+            // .catch((error) => {
+            //    setTimeout(() => {
+            //     this.isLoading = false;
+            //     const { errors } = error.response.data;
+            //     this.error = errors
+            //       ? errors
+            //       : ["Não foi possível se conectar ao Meu Fornecedor."];
+            //
+            //     this.activeAlert = true;
+            //     }, 300);
+            //
+            // });
 
-              })
-              .catch((error) => {
-                 setTimeout(() => {
-                  this.isLoading = false;
-                  const { errors } = error.response.data;
-                  this.error = errors
-                    ? errors
-                    : ["Não foi possível se conectar ao Meu Fornecedor."];
-
-                  this.activeAlert = true;
-                  }, 300);
-
-              });
+            // this.$auth
+            //   .login({
+            //     data: this.user,
+            //     fetchUser: true,
+            //     staySignedIn: true,
+            //     remember: this.rememberMe,
+            //     redirect: this.redirectObject,
+            //   })
+            //   .then((response) => {
+            //      setTimeout(() => {
+            //       this.isLoading = false
+            //       this.clearFilterParams()
+            //       this.setUser(response.data.data)
+            //       }, 300);
+            //
+            //   })
+            //   .catch((error) => {
+            //      setTimeout(() => {
+            //       this.isLoading = false;
+            //       const { errors } = error.response.data;
+            //       this.error = errors
+            //         ? errors
+            //         : ["Não foi possível se conectar ao Meu Fornecedor."];
+            //
+            //       this.activeAlert = true;
+            //       }, 300);
+            //
+            //   });
           } else {
-            this.$auth
-              .login({
-                data: this.user,
-                fetchUser: true,
-                staySignedIn: true,
-                remember: this.rememberMe,
-              })
-              .then((response) => {
-                 setTimeout(() => {
-                  this.isLoading = false
-                  this.clearFilterParams()
-                  this.setUser(response.data.data)
-                  this.$router.go()
-                  }, 300);
+            this.$auth.loginWith('local', {
+              data: this.user,
+            })
+            .then((response) => {
+               // setTimeout(() => {
+               //  this.isLoading = false
+               //  this.clearFilterParams()
+               //  this.setUser(response.data.data)
+               //  this.$router.go()
+               //  }, 300);
 
-              })
-              .catch((error) => {
-                 setTimeout(() => {
-                  this.isLoading = false;
-                  const { errors } = error.response.data;
-                  this.error = errors
-                    ? errors
-                    : ["Não foi possível se conectar ao Meu Fornecedor."];
+            })
+            .catch((error) => {
+               setTimeout(() => {
+                this.isLoading = false;
+                const { errors } = error.response.data;
+                this.error = errors
+                  ? errors
+                  : ["Não foi possível se conectar ao Meu Fornecedor."];
 
-                  this.activeAlert = true;
-                  }, 300);
+                this.activeAlert = true;
+                }, 300);
 
-              });
+            });
           }
         }
 

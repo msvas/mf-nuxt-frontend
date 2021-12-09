@@ -50,9 +50,9 @@ export default {
   },
   computed: {
     productsInList() {
-      // if (this.$store.state.users.products.totalProductList)
-      //   return this.$store.state.users.products.totalProductList
-      // else
+      if (this.$store.state.users.products.totalProductList)
+        return this.$store.state.users.products.totalProductList
+      else
         return 0
     },
   },

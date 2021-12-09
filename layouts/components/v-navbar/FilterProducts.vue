@@ -1,6 +1,5 @@
 <template>
-  <!-- <div v-if="!$auth.check() && $route.name != 'public-store' && $route.name != 'public-store-search'" class="nav-item mt-1"> -->
-  <div v-if="$route.name != 'public-store' && $route.name != 'public-store-search'" class="nav-item mt-1">
+  <div v-if="!$auth.loggedIn && $route.name != 'public-store' && $route.name != 'public-store-search'" class="nav-item mt-1">
     <a
       v-if="this.activedUf != 'null'"
       @click.prevent="active = true"

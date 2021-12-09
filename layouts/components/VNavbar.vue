@@ -69,8 +69,7 @@
           <div class="brand-logo-mf-color"></div>
         </a>
       </li>
-      <!-- <li v-if="!this.$auth.check() && !isMobile && this.$route.name != 'about'" style=" margin-left: 20px; list-style: none;"> -->
-      <li v-if="!$device.isMobile && this.$route.name != 'about'" style=" margin-left: 20px; list-style: none;">
+      <li v-if="!this.$auth.loggedIn && !$device.isMobile && this.$route.name != 'about'" style=" margin-left: 20px; list-style: none;">
         <a style="color: black;     padding-right: 25px;" href="javascript:void(0);" @click="openPartner = true"> Cadastre grátis sua distribuidora</a>
         <router-link style="color: black;    padding-right: 25px;" :to="{name: 'contact'}">Entre em contato</router-link>
         <router-link style="color: black;     padding-right: 25px;" :to="{name: 'how.it.works'}">Como funciona</router-link>
@@ -127,8 +126,8 @@
       <div class="" v-if="$route.name != 'users.reviewOrder' && $route.name != 'users.reviewOrderProducts'" :style="$device.isMobile ? 'margin-top: -5px;' : ''">
         <v-store-button />
       </div>
-      <!-- <span v-if="!$auth.check()" style="margin-left: 15px;" > -->
-      <span style="margin-left: 15px;" >
+      <span v-if="!$auth.loggedIn" style="margin-left: 15px;" >
+      <!-- <span style="margin-left: 15px;" > -->
         <span style=""></span>
         <b-spinner variant="success" v-if="registerLoading" small  />
         <login-dropdown v-if="!$device.isMobile && this.$route.name != 'about'" style=" color:blue;

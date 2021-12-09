@@ -180,8 +180,8 @@ export default {
     };
   },
   mounted() {
-    // this.user = JSON.parse(JSON.stringify(this.$auth.user()));
-    // Object.assign(this.user, { password: "", currentPassword: "" });
+    this.user = JSON.parse(JSON.stringify(this.$auth.user));
+    Object.assign(this.user, { password: "", currentPassword: "" });
   },
   computed: {
     infoMessage() {
@@ -211,9 +211,9 @@ export default {
           : "",
         await this.$http.put("/user_auth", { user: this.user });
         this.active = false;
-        this.$auth.user().contactName = this.user.contactName;
-        this.$auth.user().whatsapp = this.user.whatsapp
-        this.$auth.user().phone = this.user.phone
+        this.$auth.user.contactName = this.user.contactName;
+        this.$auth.user.whatsapp = this.user.whatsapp
+        this.$auth.user.phone = this.user.phone
         this.notifyInfo(this.infoMessage, "feather icon-check-circle");
       } catch (error) {
         if (error.response.status === 422)

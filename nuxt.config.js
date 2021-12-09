@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const RESOURCE_URL = '/user_auth'
 
 module.exports = {
   mode: 'universal',
@@ -43,6 +44,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~plugins/axios.js' },
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/veevalidate.js' },
   ],
@@ -56,6 +58,7 @@ module.exports = {
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
     '@nuxtjs/device',
+    '@nuxtjs/auth-next',
   ],
   /*
   ** Axios module configuration
@@ -63,6 +66,38 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: process.env.VUE_APP_REST_API_URL,
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        token: {
+          property: 'token',
+          global: true,
+          required: true,
+          type: 'Bearer',
+        },
+        user: {
+          property: 'data',
+          autoFetch: true,
+        },
+        endpoints: {
+          login: {
+            url: `${RESOURCE_URL}/sign_in`,
+            method: 'post',
+            propertyName: 'token'
+          },
+          user: {
+            url: `${RESOURCE_URL}/validate_token`,
+            method: 'get',
+          },
+          logout: {
+            url: `${RESOURCE_URL}/sign_out`,
+            method: 'delete',
+          }
+        }
+      }
+    }
   },
 
   /*

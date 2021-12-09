@@ -1,35 +1,34 @@
 <template>
   <li >
     <div >
-      <!-- <template v-if="!$auth.check()">
+      <template v-if="!this.$auth.loggedIn">
         <router-link :to="{name: 'login'}" class="dropdown-item">
           <b>
             <i class="feather icon-log-in"></i>Entrar / Cadastro
           </b>
         </router-link>
       </template>
-      <template v-else> -->
-      <template>
-        <!-- <a
+      <template v-else>
+        <a
           class="dropdown-item disabled text-white"
           href="#"
           tabindex="-1"
           aria-disabled="true"
           style="background-color: #5ce9c6 !important; color: black !important;"
-        >{{ user.name }}</a> -->
-        <!-- <a
+        >{{ user.name }}</a>
+        <a
           class="dropdown-item disabled"
           href="#"
           tabindex="-1"
           aria-disabled="true"
           style="color: black;"
-        >{{ user.contactName }}</a> -->
-        <!-- <template v-if="user.isSupplier">
+        >{{ user.contactName }}</a>
+        <template v-if="user.isSupplier">
           <div class="dropdown-divider"></div>
           <router-link :to="{ name: 'service-conditions' }" class="dropdown-item text-warning" style="color: black;">
             <i class="fa fa-exchange"></i> Modo fornecedor
           </router-link>
-        </template> -->
+        </template>
         <div class="dropdown-divider" style="background: white;"></div>
 
         <business-data v-if="!isSuspended" style=""/>
@@ -56,8 +55,7 @@ export default {
     return {
       accountKey: 0,
       show: false,
-      //user: this.$auth.user(),
-      user: null,
+      user: this.$auth.user,
     };
   },
   computed: {

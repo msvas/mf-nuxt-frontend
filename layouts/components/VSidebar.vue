@@ -218,7 +218,7 @@ export default {
     // }
   },
   mounted() {
-    console.log(this.reduce)
+
   },
   methods: {
     ...mapActions("families", ["getUsedFamilies"]),

@@ -1,11 +1,10 @@
-import Vue from 'vue'
 import qs from 'qs'
 
 const RESOURCE_URL = 'api/v1/users/clients/catalog'
 
 export default {
   getAllCatalog(product) {
-    return Vue.axios.get(`${RESOURCE_URL}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -17,7 +16,7 @@ export default {
   },
 
   getCatalogByProductType(productTypeId, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/by_product_type/${productTypeId}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/by_product_type/${productTypeId}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -29,7 +28,7 @@ export default {
   },
 
   getCatalogByProductTypePaginated(productTypeId, filters, items, product, page) {
-    return Vue.axios.get(`${RESOURCE_URL}/by_product_type/${productTypeId}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/by_product_type/${productTypeId}`, {
       params: { product, filters, page, items },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -41,7 +40,7 @@ export default {
   },
 
   getCatalogByFamily(family, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/by_family/${family}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/by_family/${family}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -53,7 +52,7 @@ export default {
   },
 
   getCatalogByCollection(family, collection, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/by_collection/${family}/${collection}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/by_collection/${family}/${collection}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -65,7 +64,7 @@ export default {
   },
 
   getCatalogByCategory(family, category, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/by_category/${family}/${category}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/by_category/${family}/${category}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -77,7 +76,7 @@ export default {
   },
 
   getAllProductsByCategory(family, category, product, page, items) {
-    return Vue.axios.get(`${RESOURCE_URL}/all_products_by_category/${family}/${category}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/all_products_by_category/${family}/${category}`, {
       params: { page: page, items: items, product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -89,7 +88,7 @@ export default {
   },
 
   getSampleCatalogByProductType(productTypeId, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/samples_by_product_type/${productTypeId}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/samples_by_product_type/${productTypeId}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {
@@ -101,7 +100,7 @@ export default {
   },
 
   canAddProduct(productId, product) {
-    return Vue.axios.get(`${RESOURCE_URL}/can_add/${productId}`, {
+    return $nuxt.$axios.get(`${RESOURCE_URL}/can_add/${productId}`, {
       params: { product },
       paramsSerializer: params => {
         return qs.stringify(params, {

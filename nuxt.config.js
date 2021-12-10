@@ -32,12 +32,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/style/style.css',
     '~/assets/style/components.css',
     '~/assets/style/colors.min.css',
     '~/assets/style/bootstrap.min.css',
     '~/assets/style/bootstrap-extended.css',
     '~/assets/style/vertical-menu.min.css',
+    '~/assets/style/iconfont.css',
+    '~/assets/style/forms/wizard.min.css',
+    '~/assets/style/style.css',
   ],
 
   /*
@@ -47,6 +49,7 @@ module.exports = {
     { src: '~plugins/axios.js' },
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/veevalidate.js' },
+    { src: '~plugins/vue-form-wizard.js' },
   ],
 
   /*

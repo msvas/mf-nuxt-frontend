@@ -1,10 +1,8 @@
-import Vue from 'vue'
-
 const RESOURCE_URL = 'api/v1/contacts'
 
 export default {
   sendMail(data) {
-    return Vue.axios.post(`${RESOURCE_URL}`,
+    return $nuxt.$axios.post(`${RESOURCE_URL}`,
       { contact: {
           contact_name: data.contactName,
           name: data.name,
@@ -13,9 +11,9 @@ export default {
           message: data.message }
       })
   },
-  
+
   userAsSupplierData(data) {
-    return Vue.axios.post(`${RESOURCE_URL}/as_supplier`,
+    return $nuxt.$axios.post(`${RESOURCE_URL}/as_supplier`,
       { contact: {
           contact_name: data.contactName,
           name: data.name,
@@ -27,14 +25,14 @@ export default {
       })
   },
   userContactedSupplierNotification(string) {
-    return Vue.axios.post(`${RESOURCE_URL}/user_contacted_supplier`,
+    return $nuxt.$axios.post(`${RESOURCE_URL}/user_contacted_supplier`,
       { contact: {
           name: string }
       })
   },
 
   partnerData(data) {
-    return Vue.axios.post(`${RESOURCE_URL}/partner`,
+    return $nuxt.$axios.post(`${RESOURCE_URL}/partner`,
       { contact: {
           contact_name: data.contactName,
           name: data.name,

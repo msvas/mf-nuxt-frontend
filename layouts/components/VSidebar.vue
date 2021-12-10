@@ -321,7 +321,7 @@ export default {
   border-radius: 0 10px 10px 0;
 }
 .vs-sidebar.vs-sidebar-parent {
-  position: fixed;
+  position: fixed !important;
   height: 100% !important;
   top: 0;
 }

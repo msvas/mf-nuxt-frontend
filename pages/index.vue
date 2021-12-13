@@ -21,14 +21,7 @@
           placeholder="Buscar produtos"
           v-model="keyword"
           autocomplete="on"
-          style=" padding-left: 80px;
-                  padding-right: 300px;
-                  position: absolute;
-                  height: 120px;
-                  font-size: 1.2rem;
-                  margin-top: -6px;
-                  border: none;
-                  border-radius: 5px;"
+          style="padding-left: 80px; padding-right: 300px; position: absolute; height: 120px; font-size: 1.2rem; margin-top: -6px; border: none; border-radius: 5px;"
         />
         <i
           class="feather icon-corner-down-left"
@@ -53,11 +46,7 @@
           <div
             v-if="!this.mobileBrowser"
             class="row"
-            style="
-            background: rgb(245, 246, 247);
-            justify-content: space-between;
-            margin: 0; max-height: 148px;
-          "
+            style="background: rgb(245, 246, 247); justify-content: space-between; margin: 0; max-height: 148px;"
           >
             <div class="row" style="padding: 15px 20px">
               <span
@@ -65,13 +54,13 @@
                   :key="index"
                   style="flex: 0 0 auto; width: auto; color: black"
                 >
-                  <vs-chip v-if="index != selectedFamily" class="chip-mf">
-                    <a style="color:inherit !important;" href="javascript:void(0)"
+                  <vs-chip class="chip-mf">
+                    <!-- <a style="color:inherit !important;" href="javascript:void(0)"
                       v-if="selectedFamily == 'Alimentos e bebidas' " @click="openNavigationsModal('family-collections', index)">
                       {{ index }}
                       <i class="feather icon-chevron-down pl-1"></i>
-                    </a>
-                    <a style="color:inherit !important;" href="javascript:void(0)" v-else @click="openNavigationsModal('collection' , index)">
+                    </a> -->
+                    <a style="color:inherit !important;" href="javascript:void(0)" @click="openNavigationsModal('collection' , index)">
                       {{ index }}
                       <i class="feather icon-chevron-down pl-1"></i>
                     </a>
@@ -95,19 +84,13 @@
                     type="text"
                     v-model="keyword"
                     placeholder="Buscar..."
-                    style=" font-size: 1rem;
-                            border: 2px solid rgb(12, 182, 149);
-                            border-radius: 5px;
-                            width: auto;
-                            padding: 5px;"
+                    style="font-size: 1rem; border: 2px solid rgb(12, 182, 149); border-radius: 5px; width: auto; padding: 5px;"
                   />
                   <i class="feather icon-x" style="margin-left: -15%"/>
-                  <i  class="feather icon-search" @click="runSearch()" style="background-color: rgb(12, 182, 149);
-                                                        font-size: 18px;
-                                                        padding: 8px;
-                                                        border-bottom-right-radius: 5px;
-                                                        border-top-right-radius: 5px;
-                                                        vertical-align: text-bottom;"
+                  <i
+                    class="feather icon-search"
+                    @click="runSearch()"
+                    style="background-color: rgb(12, 182, 149); font-size: 18px; padding: 8px; border-bottom-right-radius: 5px; border-top-right-radius: 5px; vertical-align: text-bottom;"
                   />
                 </form>
               </div>
@@ -116,12 +99,7 @@
           <div v-else>
             <div
               class="d-flex row"
-              style=" background-color: rgb(245, 246, 247);
-                      border-bottom: 1px solid rgb(213, 213, 213);
-                      justify-content: center;
-                      align-items: center;
-                      height: 50px;
-                      "
+              style="background-color: rgb(245, 246, 247); border-bottom: 1px solid rgb(213, 213, 213); justify-content: center; align-items: center; height: 50px;"
             >
             <vs-chip class="chip-mf">
               <a @click="openNavigationsModal('family', 'Alimentos e bebidas')">Todos os produtos</a>
@@ -152,10 +130,7 @@
                         background-color: #ebebeb;"
               >
                 <div class="p-0 pt-1 pb-1 ml-2">
-                  <h4 class style=" font-size: 26px;
-                                    font-weight: 300;
-                                    margin: 0 0 0 8px;
-                                    color: #666;"
+                  <h4 class style="font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >Ofertas do dia</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
@@ -183,22 +158,17 @@
                 >{{ product.productTypeName }}</a>
                 <div class="card font-small-3" style="margin-right: 7px; margin-left: 3px">
                   <div class="card-body pl-1 pr-1 pt-0 pb-0">
-                    <!-- <ProductInSaleCard
+                    <ProductInSaleCard
                       :product="product"
                       :expeditions="product.supplierProductExpeditions"
-                    /> -->
+                    />
                   </div>
                 </div>
               </span>
               <div
                 v-if="this.filteredRandomSaleProducts.length > maxPerScreen"
                 class="card"
-                style=" min-width: 120px;
-                        max-width: 120px;
-                        height: 200px;
-                        align-self: center;
-                        justify-content: center;
-                        text-align-last: center;"
+                style="min-width: 120px; max-width: 120px; height: 200px; align-self: center; justify-content: center; text-align-last: center;"
               >
                 <div class="row" style="padding: 3px;">
                   <div class="col-12 text-center">Tem muito mais produtos em oferta.</div>
@@ -217,15 +187,7 @@
 
           <div
             class="p-1"
-            style="
-            background: #ebebeb;
-            display: flex;
-            flex-flow: column;
-            justify-content: space-between;
-            border: none;
-            border-radius: 0.5rem;
-            transition: all 0.3s ease-in-out;
-          "
+            style="background: #ebebeb; display: flex; flex-flow: column; justify-content: space-between; border: none; border-radius: 0.5rem; transition: all 0.3s ease-in-out;"
           >
             <div
               v-for="(family, index) in catalog"
@@ -234,15 +196,10 @@
             >
               <div
                 class="row mt-1 mb-0 m-0"
-                style=" position: sticky;
-                        left: 0;
-                        background-color: #ebebeb;"
+                style="position: sticky; left: 0; background-color: #ebebeb;"
               >
                 <div class="p-0 pt-1 pb-1">
-                  <h4 class style=" font-size: 26px;
-                                    font-weight: 300;
-                                    margin: 0 0 0 8px;
-                                    color: #666;"
+                  <h4 class style="font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >{{ index }}</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
@@ -277,20 +234,14 @@
                   </div>
                   <div class="card font-small-3 mb-1" style="margin-right: 10px;">
                     <div class="card-body pl-1 pr-1 pt-0 pb-0">
-                      <!-- <ProductCard :product="product" /> -->
+                      <ProductCard :product="product" />
                     </div>
                   </div>
                 </span>
                 <div
                   class="card font-small-3"
                   v-if="productsFromFamily(index).length >= 6"
-                  style=" min-width: 100px;
-                          max-width: 100px;
-                          height: 150px;
-                          margin-top: 25px;
-                          margin-right: 7px;
-                          margin-left: 3px;
-                          align-self: center;"
+                  style="min-width: 100px; max-width: 100px; height: 150px; margin-top: 25px; margin-right: 7px; margin-left: 3px; align-self: center;"
                 >
                   <div class="card-body p-1">
                     <div class="row">
@@ -300,8 +251,7 @@
                           v-if="index == 'Alimentos e bebidas'"
                           :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                           class="btn btn-primary w-100"
-                          style=" padding-left: 3px;
-                                  padding-right: 3px;"
+                          style="padding-left: 3px; padding-right: 3px;"
                         >
                           <span
                             class="font-medium-1 align-middle"
@@ -312,8 +262,7 @@
                           v-else
                           :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                           class="btn btn-primary w-100"
-                          style=" padding-left: 3px;
-                                  padding-right: 3px;"
+                          style="padding-left: 3px; padding-right: 3px;"
                         >
                           <span
                             class="font-medium-1 align-middle"
@@ -330,20 +279,12 @@
           <div>
             <div
                 class="row ml-2 mt-1 mb-0 m-0"
-                style=" position: sticky;
-                        left: 0;
-                        background-color: #ebebeb;"
+                style="position: sticky; left: 0; background-color: #ebebeb;"
               >
                 <div class="p-0 pt-1 pb-1">
-                  <h4 v-if="this.mobileBrowser" class style=" font-size: 26px;
-                                    font-weight: 300;
-                                    margin: 0 0 0 8px;
-                                    color: #666;"
+                  <h4 v-if="this.mobileBrowser" class style=" font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >Fornecedores</h4>
-                  <h4 v-else class style=" font-size: 26px;
-                                    font-weight: 300;
-                                    margin: 0 0 0 8px;
-                                    color: #666;"
+                  <h4 v-else class style=" font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >Navegue por fornecedor</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
@@ -353,10 +294,7 @@
                 </div>
               </div>
             <div
-              style=" display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: center;"
+              style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;"
             >
               <div v-for="supplier in filteredSuppliers.slice(0, 9)" v-bind:key="supplier.id">
                 <supplier-card :supplier="supplier" />
@@ -365,13 +303,7 @@
                 <div style="color: black">
                   <div
                     class="card m-2"
-                    style=" padding: 20px;
-                          width: 300px;
-                          height: 115px;
-                          justify-content: center;
-                          margin: 0 !important;
-                          display: flex;
-                          flex-direction: row;"
+                    style="padding: 20px; width: 300px; height: 115px; justify-content: center; margin: 0 !important; display: flex; flex-direction: row;"
                   >
                     <span>Tem muito mais fornecedores para comprar.</span>
                     <button
@@ -393,13 +325,7 @@
         </section>
         <section
           class="p-2"
-          style=" background: white;
-                  margin-top:80px;
-                  margin-bottom: 2.2rem;
-                  border: none;
-                  border-radius: 0.5rem;
-                  box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
-                  transition: all 0.3s ease-in-out;"
+          style="background: white; margin-top:80px; margin-bottom: 2.2rem; border: none; border-radius: 0.5rem; box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%); transition: all 0.3s ease-in-out;"
         >
           <div style="display: flex; flex-direction: column">
             <div style="display: flex; flex-direction: column">
@@ -490,12 +416,12 @@ span.capitalize {
 </style>
 <script>
 import HomeBanner from "@/components/home/HomeBanner";
-// import ProductCard from "@/resources/products/components/ProductCard";
+import ProductCard from "@/components/products/ProductCard";
 import SuppliersService from "@/services/suppliers";
 import ProductsService from "@/services/products";
 import SupplierCard from "@/components/suppliers/SupplierCard";
 import PartnerModal from "@/components/home/PartnerModal";
-// import ProductInSaleCard from "@/resources/products/components/ProductInSaleCard";
+import ProductInSaleCard from "@/components/products/ProductInSaleCard";
 import { mapGetters, mapActions, mapState } from "vuex";
 // import NavigationModal from "@/resources/users/components/NavigationModal"
 
@@ -815,10 +741,10 @@ export default {
   },
   components: {
     HomeBanner,
-    // ProductCard,
+    ProductCard,
     SupplierCard,
     PartnerModal,
-    // ProductInSaleCard,
+    ProductInSaleCard,
     // NavigationModal,
   },
 };

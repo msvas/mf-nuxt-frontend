@@ -19,7 +19,9 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'https://meufornecedor.com.br/favicon-180x180.png' },
+      { rel: 'stylesheet', type: 'text/css', href: 'https://meufornecedor.com.br/loader.css' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600' },
     ]
   },
 

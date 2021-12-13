@@ -1,5 +1,3 @@
-import Vue from 'vue'
-
 const RESOURCE_URL = 'api/v1/users/clients'
 
 export default {

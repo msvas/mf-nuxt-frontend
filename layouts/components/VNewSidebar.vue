@@ -48,7 +48,7 @@
         </div>
 
         <div>
-          <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ||
+          <nuxt-link :to="{ path: '/' }" :class="this.$route.path == '/' ||
                                                       this.$route.name == 'cotar-familia' ||
                                                       this.$route.name == 'cotar-categoria' ||
                                                       this.$route.name == 'cotar-produto' ? 'options-container-selected' : 'options-container'"
@@ -87,9 +87,9 @@
                 >Produtos</span
               >
             </div>
-          </router-link>
+          </nuxt-link>
 
-          <router-link :to="{ name: 'suppliers' }" :class="this.$route.name == 'suppliers' ||
+          <nuxt-link :to="{ path: '/fornecedores' }" :class="this.$route.path == '/fornecedores' ||
                                                           this.$route.name == 'suppliers-family' ||
                                                           this.$route.name == 'suppliers-category' ||
                                                           this.$route.name == 'suppliers-product' ? 'options-container-selected' : 'options-container'"
@@ -98,7 +98,7 @@
               <div>
                 <img
                   src="@/assets/images/shop-selected.png"
-                  :class="this.$route.name == 'suppliers' ||
+                  :class="this.$route.path == '/fornecedores' ||
                           this.$route.name == 'suppliers-family' ||
                           this.$route.name == 'suppliers-category' ||
                           this.$route.name == 'suppliers-product' ? 'd-inherit' : 'd-none'"
@@ -107,7 +107,7 @@
                 />
                 <img
                   src="@/assets/images/shop.png"
-                  :class="this.$route.name == 'suppliers' ||
+                  :class="this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product' ? 'd-none' : 'd-inherit'"
@@ -120,7 +120,7 @@
               <span
                 :class="reduce ? 'text-reduced' : 'text-expanded'"
                 :style="
-                    this.$route.name == 'suppliers' ||
+                    this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product'
@@ -130,22 +130,22 @@
                 >Lojas</span
               >
             </div>
-          </router-link>
+          </nuxt-link>
 
-          <router-link :to="{ name: 'orders' }" :class="this.$route.name == 'orders' ? 'options-container-selected' : 'options-container'">
+          <nuxt-link :to="{ path: '/pedidos' }" :class="this.$route.path == '/pedidos' ? 'options-container-selected' : 'options-container'">
             <div :class="reduce ? 'a-reduced' : 'a-expanded'"
             >
             <div>
               <img
                 src="@/assets/images/invoice-selected.png"
-                :class="this.$route.name == 'orders' ? 'd-inherit' : 'd-none'"
+                :class="this.$route.path == '/pedidos' ? 'd-inherit' : 'd-none'"
                 height="22px"
                 width="22px"
                 alt="menu"
               />
               <img
                 src="@/assets/images/invoice.png"
-                :class="this.$route.name == 'orders' ? 'd-none' : 'd-inherit'"
+                :class="this.$route.path == '/pedidos' ? 'd-none' : 'd-inherit'"
                 height="25px"
                 width="22px"
                 alt="menu"
@@ -155,13 +155,13 @@
             </div>
             <span
               :class="reduce ? 'text-reduced' : 'text-expanded'"
-              :style="this.$route.name == 'orders' ? 'color: #008567;': 'color: black;'">Pedidos
+              :style="this.$route.path == '/pedidos' ? 'color: #008567;': 'color: black;'">Pedidos
             </span>
             </div>
-          </router-link>
+          </nuxt-link>
         </div>
 
-        <div  :class="reduce ? 'vs-spacer-reduced' : 'vs-spacer-custom'">
+        <div :class="reduce ? 'vs-spacer-reduced' : 'vs-spacer-custom'">
           <vs-divider style="background: white;" :class="reduce ? 'd-none' : 'd-block'" />
           <profile-dropdown :class="reduce ? 'd-none' : 'd-block'" />
           <filter-products style="filter: invert(1);" :class="reduce ? 'd-none' : 'd-block'" />

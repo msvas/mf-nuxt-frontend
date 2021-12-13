@@ -35,7 +35,7 @@
               <span class="card-title" style="font-size: 1.2rem; margin-bottom: 0">
               {{ supplier.user.name }}
             </span>
-            <span style="font-size: 0.8rem">Min. R$ {{ supplier.minimumOrderValue.slice(0, -2) }}</span>
+            <span v-if="supplier.minimumOrderValue" style="font-size: 0.8rem">Min. R$ {{ supplier.minimumOrderValue.slice(0, -2) }}</span>
             </div>
             <div style="display: flex; flex-direction: row; justify-content:space-between; align-items: center;">
               <router-link style="text-decoration: underline;" :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl }}">

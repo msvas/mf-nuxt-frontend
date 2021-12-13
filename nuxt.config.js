@@ -52,6 +52,7 @@ module.exports = {
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/veevalidate.js' },
     { src: '~plugins/vue-form-wizard.js' },
+    { src: '~plugins/vue-loading-overlay.js' },
   ],
 
   /*
@@ -102,6 +103,43 @@ module.exports = {
           }
         }
       }
+    }
+  },
+
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push(...[
+        {
+          path: "/fornecedores/:familyName",
+          name: "suppliers-family",
+          component: "@/pages/fornecedores.vue",
+          meta: {
+            hideFooter: true,
+            familyView: true,
+            showQuotationButton: true,
+          }
+        },
+        {
+          path: "/fornecedores/:familyName/:categoryName",
+          name: "suppliers-category",
+          component: "@/pages/fornecedores.vue",
+          meta: {
+            hideFooter: true,
+            categoryView: true,
+            showQuotationButton: true,
+          },
+        },
+        {
+          path: "/fornecedores/:familyName/:categoryName/:productTypeName",
+          name: "suppliers-product",
+          component: "@/pages/fornecedores.vue",
+          meta: {
+            hideFooter: true,
+            productTypeView: true,
+            showQuotationButton: true,
+          },
+        }
+      ])
     }
   },
 

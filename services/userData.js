@@ -1,10 +1,8 @@
-import Vue from 'vue'
-
 const RESOURCE_URL = 'api/v1/users'
 
 export default {
   changeData(userData) {
-    return Vue.axios.post(`${RESOURCE_URL}/data`, { email: userData.email,
+    return $nuxt.$axios.post(`${RESOURCE_URL}/data`, { email: userData.email,
                                                     name: userData.name,
                                                     legal_name: userData.legalName,
                                                     zipcode: userData.zipcode,

@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import qs from 'qs'
 
 const RESOURCE_URL = 'api/v1/users/products'

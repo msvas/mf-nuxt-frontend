@@ -381,13 +381,13 @@
         </div>
       </div>
     </vs-popup>
-    <!-- <NavigationModal
+    <NavigationModal
       :catalog="catalog"
       :openPopup="navigationsModal"
       :tab="tab"
       :selectedViewType="selectedViewType"
       @update-nav-modal="updateNavigationModal"
-    /> -->
+    />
   </div>
 </template>
 <style>
@@ -423,7 +423,7 @@ import SupplierCard from "@/components/suppliers/SupplierCard";
 import PartnerModal from "@/components/home/PartnerModal";
 import ProductInSaleCard from "@/components/products/ProductInSaleCard";
 import { mapGetters, mapActions, mapState } from "vuex";
-// import NavigationModal from "@/resources/users/components/NavigationModal"
+import NavigationModal from "@/components/users/NavigationModal"
 
 export default {
   data() {
@@ -745,7 +745,7 @@ export default {
     SupplierCard,
     PartnerModal,
     ProductInSaleCard,
-    // NavigationModal,
+    NavigationModal,
   },
 };
 </script>

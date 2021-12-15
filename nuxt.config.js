@@ -52,6 +52,7 @@ module.exports = {
     { src: '~plugins/vuesax.js' },
     { src: '~plugins/veevalidate.js' },
     { src: '~plugins/vue-form-wizard.js' },
+    { src: '~plugins/vue-currency-input.js' },
     { src: '~plugins/vue-loading-overlay.js' },
     { src: '~plugins/vue-context.js', mode: "client" },
   ],

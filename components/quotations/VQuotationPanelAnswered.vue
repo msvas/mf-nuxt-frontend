@@ -7,7 +7,7 @@
                   <i class="feather icon-check text-warning font-medium-5"></i>
               </div>
           </div>
-          <div class="ml-2" v-if="this.$auth.user().supplierQuotationType == 'Manual'">
+          <div class="ml-2" v-if="this.$auth && this.$auth.user.supplierQuotationType == 'Manual'">
             <h4 class="card-title color-mf-laranja">Cotação respondida!</h4>
             <p class="my-25">O cliente já foi informado, por e-mail, sobre sua resposta.</p>
           </div>
@@ -73,7 +73,7 @@
         </div>
       </div>
   </div>
-    <div class="card shadow-sm m-1" v-if="!this.$auth.user().isAutomatic">
+    <div class="card shadow-sm m-1" v-if="this.$auth && !this.$auth.user.isAutomatic">
       <div class="card-header">
           <div class="w-100">
               <div class="avatar bg-rgba-light p-50 m-0 mr-2 mb-50 float-left" style="cursor: default;">
@@ -83,9 +83,9 @@
               </div>
               <h4 class="card-title">Precisa responder a cotação de novo?</h4>
               <p class="font-small-3 mb-0 font-weight-bold">
-                <router-link :to="{ name: 'reply-quotation', params: { quotationId: quotation.id } }" title="Responder novamente">
+                <nuxt-link :to="{ path: `/fornecedor/responder-cotacao/${quotation.id}`, params: { quotationId: quotation.id } }" title="Responder novamente">
                   Responder novamente
-                </router-link>
+                </nuxt-link>
               </p>
           </div>
       </div>
@@ -109,12 +109,12 @@ export default {
     }
   },
   mounted() {
-    
+
   },
   computed: {
     //...mapGetters("users/products", ["productIsOnList", "productIsOnCart", "productCartIsEmpty"]),
     ...mapState("users/products", ["productQuoteCart"]),
-    ...mapState("clients", ["client"]), 
+    ...mapState("clients", ["client"]),
   },
   methods: {
     ...mapActions("quotes", [
@@ -123,10 +123,6 @@ export default {
   },
   props: {
     quotation: {
-      type: Object,
-      required: true
-    },
-    client: {
       type: Object,
       required: true
     },

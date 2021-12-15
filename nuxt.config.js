@@ -67,6 +67,7 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/device',
     '@nuxtjs/auth-next',
+    'vue-currency-input/nuxt',
   ],
   /*
   ** Axios module configuration

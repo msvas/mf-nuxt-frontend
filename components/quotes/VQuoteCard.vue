@@ -155,7 +155,7 @@ export default {
         if (this.quote.hasExpired) this.openExpired = true;
         else
           this.$router.push({
-            name: "users.quotePanel",
+            path: `painel-de-cotacoes/${this.quote.id}`,
             params: { quoteId: this.quote.id },
           });
       }, 300);

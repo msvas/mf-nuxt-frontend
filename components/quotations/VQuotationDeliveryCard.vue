@@ -59,7 +59,7 @@ export default {
     ]),
     emitEdit() {
       this.$emit('clicked-edit')
-      this.$router.push({ name: 'delivery-conditions' })
+      this.$router.push({ path: '/fornecedor/prazo-de-entrega' })
     },
   },
   props: {

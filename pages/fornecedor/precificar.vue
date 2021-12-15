@@ -243,7 +243,8 @@ export default {
             }
           } else if(this.loading) {
             setTimeout(() => {
-              this.$refs['productsWindow'].dispatchEvent(new Event('scroll'))
+              if(this.$refs['productsWindow'])
+                this.$refs['productsWindow'].dispatchEvent(new Event('scroll'))
             }, 800)
           }
           this.lastScrollTop = this.$refs['productsWindow'].scrollTop

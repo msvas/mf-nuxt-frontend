@@ -324,7 +324,7 @@ export default {
 
   mounted() {
     if(this.$auth.user.supplierStatus == 'Precificação')
-      this.$router.push({ name: "pricing" })
+      this.$router.push({ path: "/fornecedor/precificar" })
     this.isMobile()
     this.currentScreen = 'menu'
     this.getQuotationsBySupplier().then(() => {
@@ -469,8 +469,8 @@ export default {
     answerQuotation() {
       this.acceptLoading = true
       setTimeout(() => {
-          this.acceptLoading = false
-          this.$router.push({ name: 'reply-quotation', params: { quotationId: this.selectedQuotation.id } })
+        this.acceptLoading = false
+        this.$router.push({ path: `/fornecedor/responder-cotacao/${this.selectedQuotation.id}`, params: { quotationId: this.selectedQuotation.id } })
       }, 300);
     },
     selectTab(tab) {

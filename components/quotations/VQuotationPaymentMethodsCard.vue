@@ -109,7 +109,7 @@ export default {
     },
     emitEditMinimum() {
       this.$emit('clicked-edit')
-      this.$router.push({ name: 'minimum-order-value' })
+      this.$router.push({ path: '/fornecedor/valor-minimo-de-pedido' })
     }
   },
   props: {

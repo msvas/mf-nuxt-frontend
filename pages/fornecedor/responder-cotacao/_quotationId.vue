@@ -33,7 +33,7 @@
 
           <div class=" d-none row no-gutters bg-white border-light rounded shadow-sm align-items-center mt-1 justify-content-center">
             <div class="col-md-2 col-8 p-1 ">
-              <vs-tooltip text="É preciso preencher todos os preços e definir condições de pgt" :active="isDisabled" position="top">
+              <span v-tooltip.top.hover="{ content: 'É preciso preencher todos os preços e definir condições de pgt', visible: isDisabled }">
                 <button
 
                   @click="saveInfo()"
@@ -41,6 +41,7 @@
                   class="btn btn-primary px-1 text-bold-600 waves-effect waves-light"
                   :disabled="isDisabled"
                   style="width: 200px"
+                  id="saveButton"
                 >
                 <b-spinner v-if="saveLoading" small/>
                 <span v-else>
@@ -49,8 +50,15 @@
                 </span>
 
                 </button>
-                <span>&nbsp;</span>
-              </vs-tooltip>
+              </span>
+              <!-- <b-tooltip
+                v-if="isDisabled"
+                :show.sync="isDisabled"
+                :target="'saveButton'"
+                placement="top"
+              >
+                É preciso preencher todos os preços e definir condições de pgt
+              </b-tooltip> -->
             </div>
           </div>
 

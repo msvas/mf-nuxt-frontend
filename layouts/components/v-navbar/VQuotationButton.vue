@@ -109,15 +109,15 @@ export default {
   },
   computed: {
     productsInQuoteCart() {
-      // if (this.$store.state.users.products.productQuoteCart)
-      //   return this.$store.state.users.products.productQuoteCart.length
-      // else
+      if (this.$store.state.users.products.productQuoteCart)
+        return this.$store.state.users.products.productQuoteCart.length
+      else
         return 0
     },
     productsInList() {
-      // if (this.$store.state.users.products.totalProductList)
-      //   return this.$store.state.users.products.totalProductList
-      // else
+      if (this.$store.state.users.products.totalProductList)
+        return this.$store.state.users.products.totalProductList
+      else
         return 0
     },
     isMobile() {
@@ -131,11 +131,13 @@ export default {
   },
   watch: {
     productsInQuoteCart() {
-      this.$refs.quantityBadge.classList.add('animate__animated', 'animate__heartBeat');
+      if(this.$refs.quantityBadge) {
+        this.$refs.quantityBadge.classList.add('animate__animated', 'animate__heartBeat');
 
-      this.$refs.quantityBadge.addEventListener('animationend', () => {
-        this.$refs.quantityBadge.classList.remove('animate__animated', 'animate__heartBeat')
-      });
+        this.$refs.quantityBadge.addEventListener('animationend', () => {
+          this.$refs.quantityBadge.classList.remove('animate__animated', 'animate__heartBeat')
+        });
+      }
     }
   },
   methods:{

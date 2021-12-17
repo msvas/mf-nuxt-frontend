@@ -34,19 +34,29 @@
           <span class="d-sm-inline d-none">Página</span> {{ currentPage  }}/{{ totalPages  }}
       </div>
       <div class="col-md-2 col-8 p-1 text-right">
-        <span @click="validatePrices()">
-          <vs-tooltip text="É preciso preencher todos os preços e definir condições de pgt" :active="isDisabled" position="top">
-            <button
-              @click="saveInfo()"
-              type="button"
-              class="btn btn-primary px-1 text-bold-600 waves-effect waves-light"
-              :disabled="isDisabled"
-            >
-              <b-spinner v-if="buttonLoading" small/>
-              <span v-else v-html="buttonText"></span>
-            </button>
-            <span>&nbsp;</span>
-          </vs-tooltip>
+        <span
+          @click="validatePrices()"
+          v-tooltip.top.hover="{ content: 'É preciso preencher todos os preços e definir condições de pgt', visible: isDisabled }"
+        >
+          <button
+            @click="saveInfo()"
+            type="button"
+            id="sendButton"
+            class="btn btn-primary px-1 text-bold-600 waves-effect waves-light"
+            :disabled="isDisabled"
+          >
+            <b-spinner v-if="buttonLoading" small/>
+            <span v-else v-html="buttonText"></span>
+          </button>
+          <!-- <b-tooltip
+            v-if="isDisabled"
+            v-b-tooltip.hover
+            :show.sync="showTooltip"
+            :target="'sendButton'"
+            placement="top"
+          >
+
+          </b-tooltip> -->
         </span>
       </div>
     </div>
@@ -68,7 +78,7 @@ export default {
       pricesFilled: false,
       discountsFilled: false,
       loaded: false,
-      buttonLoading: false
+      buttonLoading: false,
     };
   },
   mounted() {

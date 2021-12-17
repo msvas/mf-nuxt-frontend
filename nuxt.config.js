@@ -50,10 +50,13 @@ module.exports = {
   plugins: [
     { src: '~plugins/axios.js' },
     { src: '~plugins/vuesax.js' },
+    { src: '~plugins/animate.js' },
+    { src: '~plugins/vue-directive-tooltip.js' },
     { src: '~plugins/veevalidate.js' },
     { src: '~plugins/vue-form-wizard.js' },
     { src: '~plugins/vue-currency-input.js' },
     { src: '~plugins/vue-loading-overlay.js' },
+    { src: '~plugins/vue-browser-detect-plugin.js', mode: "client" },
     { src: '~plugins/vue-context.js', mode: "client" },
   ],
 
@@ -141,7 +144,109 @@ module.exports = {
             productTypeView: true,
             showQuotationButton: true,
           },
-        }
+        },
+        {
+          path: "/produtos/:familyName",
+          name: "cotar-familia",
+          component: "@/pages/produtos/CatalogAllStore.vue",
+          meta: {
+            hideFooter: true,
+            familyView: true,
+            showQuotationButton: true
+          },
+        },
+        {
+          path: "/produtos/:familyName/:categoryName",
+          name: "cotar-categoria",
+          component: "@/pages/produtos/CatalogAllStore.vue",
+          meta: {
+            hideFooter: true,
+            categoryView: true,
+            showQuotationButton: true
+          },
+        },
+        {
+          path: "/produtos/:familyName/:categoryName/:productTypeName",
+          name: "cotar-produto",
+          component: "@/pages/produtos/CatalogAllStore.vue",
+          meta: {
+            hideFooter: true,
+            productTypeView: true,
+            showQuotationButton: true
+          },
+        },
+        {
+          path: '/loja/:supplierSlug',
+          name: 'public-store',
+          component: '@/pages/SupplierPublicPage.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+          }
+        },
+        // {
+        //   path: '/loja/:supplierSlug/revisar-compra/:orderId',
+        //   name: 'users.reviewOrder',
+        //   component: '@/resources/users/views/ReviewOrder.vue',
+        //   meta: {
+        //     blockSearch: true,
+        //     publicPage: true,
+        //     supplierStore: true,
+        //     leaveQuotationButton: true,
+        //     backUrl: '',
+        //     forceLogo: true,
+        //   },
+        // },
+        // {
+        //   path: '/loja/:supplierSlug/revisar-compra/produtos/:orderId',
+        //   name: 'users.reviewOrderProducts',
+        //   component: () =>
+        //     import('@/resources/users/views/ReviewOrderProducts.vue'),
+        //   meta: {
+        //     blockSearch: true,
+        //     publicPage: true,
+        //     supplierStore: true
+        //   },
+        // },
+        {
+          path: '/loja/:supplierSlug/:familyName',
+          name: 'public-store-family',
+          component: '@/pages/SupplierPublicPage.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+            familyView: true,
+          },
+        },
+        {
+          path: '/loja/:supplierSlug/:familyName/:categoryName',
+          name: 'public-store-category',
+          component: '@/pages/SupplierPublicPage.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+            categoryView: true,
+          },
+        },
+        {
+          path: '/loja/:supplierSlug/:familyName/:categoryName/:productTypeName',
+          name: 'public-store-product',
+          component: '@/pages/SupplierPublicPage.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+            productTypeView: true,
+          },
+        },
+        {
+          path: '/loja/:supplierSlug/:familyName/:categoryName/:productTypeName/:identifier',
+          name: 'public-store-product-page',
+          component: '@/pages/ProductPage.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+          },
+        },
       ])
     }
   },

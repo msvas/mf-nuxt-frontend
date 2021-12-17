@@ -35,7 +35,7 @@
         </a>
       </li>
 
-      <li class="nav-item d-sm-block" >
+      <li class="nav-item d-sm-block" v-if="supplier">
         <vs-dropdown vs-trigger-click v-if="supplierStore && !showPhotoNavBar">
 
           <a class="a-icon" href.prevent>
@@ -217,15 +217,15 @@ export default {
   },
   computed: {
     productsInQuoteCart() {
-      // if (this.$store.state.users.products.productQuoteCart)
-      //   return this.$store.state.users.products.productQuoteCart.length
-      // else
+      if (this.$store.state.users.products.productQuoteCart)
+        return this.$store.state.users.products.productQuoteCart.length
+      else
         return 0
     },
     storeTotal() {
-      // if (this.$store.state.users.products.storeTotal)
-      //   return this.$store.state.users.products.storeTotal
-      // else
+      if (this.$store.state.users.products.storeTotal)
+        return this.$store.state.users.products.storeTotal
+      else
         return 0
     },
     watchSupplier() {
@@ -238,9 +238,9 @@ export default {
         return false
     },
     productsInList() {
-      // if (this.$store.state.users.products.totalProductList)
-      //   return this.$store.state.users.products.totalProductList
-      // else
+      if (this.$store.state.users.products.totalProductList)
+        return this.$store.state.users.products.totalProductList
+      else
         return 0
     },
     ...mapGetters("navigationFilters", ["abbreviation", "informedUF","informedCity", "params", "informedZipcode"]),

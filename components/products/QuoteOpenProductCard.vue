@@ -130,25 +130,22 @@
           <div class="row" v-if="!price.unavailable" style="margin-left: 0;">
             <div class="col-12 p-0 pt-1">
               <div class="input-group input-group-sm float-left" style="width: auto; margin-left: 8px;">
-                <vs-tooltip ref="minTooltip" :text="tooltipText(price.supplierProductExpedition)" :active="isDisabled(price.supplierProductExpedition, price.id)" position="top">
-                  <div class="controls">
-                    <NumberInputSpinner
-                      :min="0"
-                      :max="999999"
-                      :disabled="isExpired"
-                      :inputClass="quantityClass(price.id)"
-                      :buttonClass="'spin-button btn-primary button-blue'"
-                      :integerOnly="isInteger(price)"
-                      :printText="expText(price, product)"
-                      maxlength="4"
-                      data-vv-name="quantity"
-                      data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
-                      v-model="priceInput[price.id]"
-                      @input="emitPrice(price, priceInput[price.id], expeditionPrice(calculatePrice(price, product), price.supplierProductExpedition.productExpeditionQuantity, price.supplierProductExpedition.productExpeditionPricing), price.supplierProductExpedition.minimumOrder)"
-                    />
-                  </div>
-                  <span>&nbsp;</span>
-                </vs-tooltip>
+                <div class="controls" v-tooltip.top.hover="{ content: tooltipText(price.supplierProductExpedition), visible: isDisabled(price.supplierProductExpedition, price.id) }">
+                  <NumberInputSpinner
+                    :min="0"
+                    :max="999999"
+                    :disabled="isExpired"
+                    :inputClass="quantityClass(price.id)"
+                    :buttonClass="'spin-button btn-primary button-blue'"
+                    :integerOnly="isInteger(price)"
+                    :printText="expText(price, product)"
+                    maxlength="4"
+                    data-vv-name="quantity"
+                    data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
+                    v-model="priceInput[price.id]"
+                    @input="emitPrice(price, priceInput[price.id], expeditionPrice(calculatePrice(price, product), price.supplierProductExpedition.productExpeditionQuantity, price.supplierProductExpedition.productExpeditionPricing), price.supplierProductExpedition.minimumOrder)"
+                  />
+                </div>
               </div>
             </div>
             <div class="col-12 pl-0 pr-0 pb-0" style="padding-top: 8px;">
@@ -308,26 +305,24 @@
           <div class="row" style="margin-left: 0;">
             <div class="col-7 p-0 pt-1 pb-1">
               <div v-if="!price.unavailable" class="input-group input-group-sm float-left" style="width: auto; margin-left: 8px;">
-                <vs-tooltip ref="minTooltip" :text="tooltipText(price.supplierProductExpedition)" :active="isDisabled(price.supplierProductExpedition, price.id)" position="bottom">
-                  <div class="controls">
-                    <NumberInputSpinner
-                      :min="0"
-                      :max="999999"
-                      :disabled="isExpired"
-                      :inputClass="quantityClass(price.id)"
-                      :buttonClass="'spin-button btn-primary button-blue'"
-                      :integerOnly="isInteger(price)"
-                      :printText="expText(price, product)"
-                      :readOnly="true"
-                      maxlength="4"
-                      data-vv-name="quantity"
-                      data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
-                      v-model="priceInput[price.id]"
-                      @input="emitPrice(price, priceInput[price.id], expeditionPrice(calculatePrice(price, product), price.supplierProductExpedition.productExpeditionQuantity, price.supplierProductExpedition.productExpeditionPricing), price.supplierProductExpedition.minimumOrder)"
-                    />
-                  </div>
-                  <span>&nbsp;</span>
-                </vs-tooltip>
+                <div class="controls" v-tooltip.bottom.hover="{ content: tooltipText(price.supplierProductExpedition), visible: isDisabled(price.supplierProductExpedition, price.id) }">
+                  <NumberInputSpinner
+                    :min="0"
+                    :max="999999"
+                    :disabled="isExpired"
+                    :inputClass="quantityClass(price.id)"
+                    :buttonClass="'spin-button btn-primary button-blue'"
+                    :integerOnly="isInteger(price)"
+                    :printText="expText(price, product)"
+                    :readOnly="true"
+                    maxlength="4"
+                    data-vv-name="quantity"
+                    data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
+                    v-model="priceInput[price.id]"
+                    @input="emitPrice(price, priceInput[price.id], expeditionPrice(calculatePrice(price, product), price.supplierProductExpedition.productExpeditionQuantity, price.supplierProductExpedition.productExpeditionPricing), price.supplierProductExpedition.minimumOrder)"
+                  />
+                </div>
+
               </div>
             </div>
             <div class="col-5 p-0 pt-1 pb-1" style="padding-top: 8px;">

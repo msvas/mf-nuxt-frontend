@@ -163,22 +163,21 @@
           </div>
         </div>
         <div class="row mt-1" :class="isMobile ? ' mr-0' : ''" v-show="!quotation.hasExpired">
-          <vs-tooltip :text="tooltipText" :active="isDisabled" position="top" style="width: 95%;">
+          <span v-tooltip.top.hover="{ content: tooltipText, visible: isDisabled }">
             <button
-                id="next"
-                style="width: 88%; margin-left: 15px; margin-bottom: 10px"
-                :disabled='isDisabled'
-                type="button"
-                :class="!isDisabled ? 'animate__animated animate__flash' : ''"
-                class="btn btn-primary text-bold-600 px-1 waves-effect waves-light mr-50 "
-                :style="isMobile ? 'font-size: 0.9em !important;' : ''"
-                @click="submitValues()"
-              >
-                <b-spinner v-if="buttonLoading" small/>
-                <span v-else>Avançar</span>
-              </button>
-              <span>&nbsp;</span>
-            </vs-tooltip>
+              id="next"
+              style="width: 88%; margin-left: 15px; margin-bottom: 10px"
+              :disabled='isDisabled'
+              type="button"
+              :class="!isDisabled ? 'animate__animated animate__flash' : ''"
+              class="btn btn-primary text-bold-600 px-1 waves-effect waves-light mr-50 "
+              :style="isMobile ? 'font-size: 0.9em !important;' : ''"
+              @click="submitValues()"
+            >
+              <b-spinner v-if="buttonLoading" small/>
+              <span v-else>Avançar</span>
+            </button>
+          </span>
         </div>
       </div>
     </div>
@@ -311,7 +310,7 @@
         </div>
         <div class="col-3 p-0">
           <div v-show="!quotation.hasExpired">
-            <vs-tooltip :text="tooltipText" :active="isDisabled" position="top">
+            <span :v-tooltip.top.hover="{ content: tooltipText, visible: isDisabled }">
               <button
                   id="next"
                   style="margin-left: 10px;"
@@ -325,8 +324,7 @@
                   <b-spinner v-if="buttonLoading" small/>
                   <span v-else>Avançar</span>
               </button>
-              <span>&nbsp;</span>
-            </vs-tooltip>
+            </span>
           </div>
         </div>
       </div>
@@ -734,7 +732,7 @@ export default {
         this.$vs.loading()
         this.saveExpeditionQuantities({ totals: this.totals, quotationId: this.quotation.id }).then(() => {
           this.$vs.loading.close()
-          this.$router.push({ name: 'users.reviewQuotation', params: { quotationId: this.quotation.id }})
+          this.$router.push({ path: `/revisar-pedido/${this.quotation.id}`, params: { quotationId: this.quotation.id }})
       })
       }, 300);
 

@@ -177,6 +177,15 @@ module.exports = {
           },
         },
         {
+          path: '/loja/busca/:supplierSlug/:keyword',
+          name: 'public-store-search',
+          component: '@/pages/StoreSearch.vue',
+          meta: {
+            publicPage: true,
+            supplierStore: true,
+          },
+        },
+        {
           path: '/loja/:supplierSlug',
           name: 'public-store',
           component: '@/pages/SupplierPublicPage.vue',
@@ -195,29 +204,29 @@ module.exports = {
             hideFooter: true,
           },
         },
-        // {
-        //   path: '/loja/:supplierSlug/revisar-compra/:orderId',
-        //   name: 'users.reviewOrder',
-        //   component: '@/pages/ReviewOrder.vue',
-        //   meta: {
-        //     blockSearch: true,
-        //     publicPage: true,
-        //     supplierStore: true,
-        //     leaveQuotationButton: true,
-        //     backUrl: '',
-        //     forceLogo: true,
-        //   },
-        // },
-        // {
-        //   path: '/loja/:supplierSlug/revisar-compra/produtos/:orderId',
-        //   name: 'users.reviewOrderProducts',
-        //   component: '@/pages/ReviewOrderProducts.vue',
-        //   meta: {
-        //     blockSearch: true,
-        //     publicPage: true,
-        //     supplierStore: true
-        //   },
-        // },
+        {
+          path: '/loja/:supplierSlug/revisar-compra/:orderId',
+          name: 'users.reviewOrder',
+          component: '@/pages/ReviewOrder.vue',
+          meta: {
+            blockSearch: true,
+            publicPage: true,
+            supplierStore: true,
+            leaveQuotationButton: true,
+            backUrl: '',
+            forceLogo: true,
+          },
+        },
+        {
+          path: '/loja/:supplierSlug/revisar-compra/produtos/:orderId',
+          name: 'users.reviewOrderProducts',
+          component: '@/pages/ReviewOrderProducts.vue',
+          meta: {
+            blockSearch: true,
+            publicPage: true,
+            supplierStore: true
+          },
+        },
         {
           path: '/loja/:supplierSlug/:familyName',
           name: 'public-store-family',

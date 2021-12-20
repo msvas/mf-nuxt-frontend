@@ -321,7 +321,6 @@ export default {
       allIncoming: [],
     };
   },
-  middleware: 'auth',
   mounted() {
     if(this.$auth.user.supplierStatus == 'Precificação')
       this.$router.push({ path: "/fornecedor/precificar" })

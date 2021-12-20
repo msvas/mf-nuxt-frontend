@@ -482,27 +482,24 @@
               </div>
               <div class="col-12 p-0" vs-type="flex" vs-justify="center" vs-align="center">
                 <div class="input-group input-group-sm float-none" style="width: auto; margin-left: 8px;">
-                  <vs-tooltip ref="minTooltip" :text="tooltipText(expedition)" :active="isDisabled(expedition, expedition.id)" position="top">
-                    <div class="controls">
-                      <NumberInputSpinner
-                        :min="0"
-                        :max="999999"
-                        :inputClass="quantityClass(expedition.id)"
-                        :buttonClass="'spin-button btn-primary button-blue'"
-                        :integerOnly="isInteger(expedition)"
-                        :forceBreakLine="true"
-                        maxlength="4"
-                        data-vv-name="quantity"
-                        data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
-                        v-model="priceInput[expedition.id]"
-                        ref="inputNumber"
-                        :key="inputKey"
-                        @input="emitPrice(expedition, priceInput[expedition.id], expeditionPrice(calculatePrice(expedition, product), expedition.productExpeditionQuantity, expedition.productExpeditionPricing), expedition.minimumOrder)"
-                        @on-enter="onEnter"
-                      />
-                    </div>
-                    <span>&nbsp;</span>
-                  </vs-tooltip>
+                  <div class="controls" v-tooltip.top.hover="{ content: tooltipText(expedition), visible: isDisabled(expedition, expedition.id) }">
+                    <NumberInputSpinner
+                      :min="0"
+                      :max="999999"
+                      :inputClass="quantityClass(expedition.id)"
+                      :buttonClass="'spin-button btn-primary button-blue'"
+                      :integerOnly="isInteger(expedition)"
+                      :forceBreakLine="true"
+                      maxlength="4"
+                      data-vv-name="quantity"
+                      data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
+                      v-model="priceInput[expedition.id]"
+                      ref="inputNumber"
+                      :key="inputKey"
+                      @input="emitPrice(expedition, priceInput[expedition.id], expeditionPrice(calculatePrice(expedition, product), expedition.productExpeditionQuantity, expedition.productExpeditionPricing), expedition.minimumOrder)"
+                      @on-enter="onEnter"
+                    />
+                  </div>
                   <span
                     v-if="calculatedPrice(expedition.id, formatQuantity(priceInput[expedition.id]), expeditionPrice(calculatePrice(expedition, product), expedition.productExpeditionQuantity, expedition.productExpeditionPricing)) > 0"
                     class="d-flex"

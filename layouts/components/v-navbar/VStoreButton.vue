@@ -103,27 +103,27 @@ export default {
   //   }
   // },
   mounted() {
-    // if(!Number.isNaN(this.storeCartSupplierId())) {
-    //   this.getSupplierByIdNoStore(this.storeCartSupplierId()).then((response) => {
-    //     this.supplier = response
-    //   })
-    // }
+    if(!Number.isNaN(this.storeCartSupplierId())) {
+      this.getSupplierByIdNoStore(this.storeCartSupplierId()).then((response) => {
+        this.supplier = response
+      })
+    }
   },
   components: {
     //VQuoteButton
   },
   computed: {
-    // ...mapGetters("users/products", ["storeCartSupplierId"]),
+    ...mapGetters("users/products", ["storeCartSupplierId"]),
     productsInStoreCart() {
-      // if (this.$store.state.users.products.storeProducts)
-      //   return this.$store.state.users.products.storeProducts.length
-      // else
+      if (this.$store.state.users.products.storeProducts)
+        return this.$store.state.users.products.storeProducts.length
+      else
         return 0
     },
     storeTotal() {
-      // if (this.$store.state.users.products.storeTotal)
-      //   return this.$store.state.users.products.storeTotal
-      // else
+      if (this.$store.state.users.products.storeTotal)
+        return this.$store.state.users.products.storeTotal
+      else
         return 0
     },
     isDisabled() {
@@ -136,8 +136,8 @@ export default {
         return false
       }
     },
-    // ...mapState("users/products", ["storeProducts", "storeCanBuy"]),
-    // ...mapState("suppliers", ["supplier"]),
+    ...mapState("users/products", ["storeProducts", "storeCanBuy"]),
+    ...mapState("suppliers", ["supplier"]),
   },
   watch: {
     storeTotal() {
@@ -149,19 +149,14 @@ export default {
     }
   },
   methods:{
-    // ...mapActions("suppliers", ["getSupplierByIdNoStore"]),
-    // ...mapActions("orders", [
-    //   "createOrder"
-    // ]),
-    newQuote() {
-      //this.createQuote(this.productQuoteCart.map(product => product.id)).then(() => {
-        this.$router.push('users.reviewQuote')
-      //})
-    },
+    ...mapActions("suppliers", ["getSupplierByIdNoStore"]),
+    ...mapActions("orders", [
+      "createOrder"
+    ]),
     goToReviewOrder() {
       this.isLoading = true
       setTimeout(() => {
-        // if(!this.supplier) {
+        if(!this.supplier) {
           this.getSupplierByIdNoStore(this.storeCartSupplierId()).then((response1) => {
             this.supplier = response1
             this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response2) => {
@@ -169,12 +164,12 @@ export default {
               this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response2.id } })
             })
           })
-        // } else {
-        //   this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response) => {
-        //     this.isLoading = false
-        //     this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response.id } })
-        //   })
-        // }
+        } else {
+          this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response) => {
+            this.isLoading = false
+            this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response.id } })
+          })
+        }
       }, 300);
     }
   },

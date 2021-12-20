@@ -395,7 +395,16 @@ export default {
     [LOAD_STORE_PRODUCTS]: (state) => {
       if(state.storeProducts) {
         if(state.storeProducts.length == 0) {
-          state.storeProducts = JSON.parse(localStorage.getItem("auto_cart"))
+          try {
+            state.storeProducts = JSON.parse(localStorage.getItem("auto_cart"))
+            if(!state.storeProducts) {
+              localStorage.setItem("auto_cart", JSON.stringify([]))
+              state.storeProducts = JSON.parse(localStorage.getItem("auto_cart"))
+            }
+          } catch {
+            localStorage.setItem("auto_cart", JSON.stringify([]))
+            state.storeProducts = JSON.parse(localStorage.getItem("auto_cart"))
+          }
         }
       } else {
         state.storeProducts = []

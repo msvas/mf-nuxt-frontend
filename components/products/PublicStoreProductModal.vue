@@ -290,29 +290,28 @@
             </div>
             <div class="col-12 p-0" vs-type="flex" vs-justify="center" vs-align="center">
               <div class="input-group input-group-sm float-none" style="width: auto; margin-left: 8px;">
-                <vs-tooltip ref="minTooltip" :text="tooltipText(expedition.supplierProductExpedition)" :active="isDisabled(expedition.supplierProductExpedition, expedition.supplierProductExpedition.id)" position="top">
-                  <div class="controls">
-                    <NumberInputSpinner
-                      :min="0"
-                      :max="999999"
-                      :inputClass="quantityClass(expedition.supplierProductExpedition.id)"
-                      :buttonClass="'spin-button btn-primary button-blue'"
-                      :integerOnly="isInteger(expedition.supplierProductExpedition)"
-                      :forceBreakLine="true"
-                      maxlength="4"
-                      data-vv-name="quantity"
-                      data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
-                      v-model="priceInput[expedition.supplierProductExpedition.id]"
-                      ref="inputNumber"
-                      :key="inputKey"
-                      @input="emitPrice(expedition.supplierProductExpedition,
-                                        priceInput[expedition.supplierProductExpedition.id],
-                                        expeditionPrice(calculatePrice(expedition.supplierProductExpedition, product), expedition.supplierProductExpedition.productExpeditionQuantity, expedition.supplierProductExpedition.productExpeditionPricing),
-                                        expedition.supplierProductExpedition.minimumOrder)"
-                    />
-                  </div>
-                  <span>&nbsp;</span>
-                </vs-tooltip>
+
+                <div class="controls" v-tooltip.top.hover="{ content: tooltipText(expedition.supplierProductExpedition), visible: isDisabled(expedition.supplierProductExpedition, expedition.supplierProductExpedition.id) }">
+                  <NumberInputSpinner
+                    :min="0"
+                    :max="999999"
+                    :inputClass="quantityClass(expedition.supplierProductExpedition.id)"
+                    :buttonClass="'spin-button btn-primary button-blue'"
+                    :integerOnly="isInteger(expedition.supplierProductExpedition)"
+                    :forceBreakLine="true"
+                    maxlength="4"
+                    data-vv-name="quantity"
+                    data-validation-containsnumber-regex="([^0-9]*[0-9]+)+"
+                    v-model="priceInput[expedition.supplierProductExpedition.id]"
+                    ref="inputNumber"
+                    :key="inputKey"
+                    @input="emitPrice(expedition.supplierProductExpedition,
+                                      priceInput[expedition.supplierProductExpedition.id],
+                                      expeditionPrice(calculatePrice(expedition.supplierProductExpedition, product), expedition.supplierProductExpedition.productExpeditionQuantity, expedition.supplierProductExpedition.productExpeditionPricing),
+                                      expedition.supplierProductExpedition.minimumOrder)"
+                  />
+                </div>
+
                 <span
                   v-if="calculatedPrice(expedition.supplierProductExpedition.id, formatQuantity(priceInput[expedition.supplierProductExpedition.id]), expeditionPrice(calculatePrice(expedition, product), expedition.productExpeditionQuantity, expedition.productExpeditionPricing)) > 0"
                   class="d-flex"

@@ -24,9 +24,9 @@
         style="padding: 10px;"
       >
         <div v-for="purchaseRequest in allOrders.slice().reverse().slice(0, currentPage * 6)" v-bind:key="purchaseRequest.id">
-          <router-link
+          <nuxt-link
             v-if="purchaseRequest.orderType && purchaseRequest.orderType == 'Direta'"
-            :to="{ name: 'users.checkOrder', params: { quotationId: purchaseRequest.id }, query: { direct: 'true' } }" style="color: black !important;"
+            :to="{ path: `/ver-pedido/${purchaseRequest.id}`, params: { quotationId: purchaseRequest.id }, query: { direct: 'true' } }" style="color: black !important;"
           >
             <div
               class="card p-1"
@@ -43,10 +43,10 @@
                 >{{changeStatus(purchaseRequest.status)}}</span>
               </div>
             </div>
-          </router-link>
-          <router-link
+          </nuxt-link>
+          <nuxt-link
             v-else
-            :to="{ name: 'users.checkOrder', params: { quotationId: purchaseRequest.id } }" style="color: black !important;"
+            :to="{ path: `/ver-pedido/${purchaseRequest.id}`, params: { quotationId: purchaseRequest.id } }" style="color: black !important;"
           >
             <div
               class="card p-1"
@@ -63,7 +63,7 @@
                 >{{changeStatus(purchaseRequest.status)}}</span>
               </div>
             </div>
-          </router-link>
+          </nuxt-link>
         </div>
         <div style="justify-content: center; display: flex;" v-if="allOrders.length && (allOrders.length / 6 > currentPage)">
           <vs-button type="border" style="width: 250px;" @click="loadMoreOrders()">Mostrar mais</vs-button>

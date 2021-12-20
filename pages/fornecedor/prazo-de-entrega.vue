@@ -85,6 +85,7 @@ export default {
       buttonLoading: false
     };
   },
+  middleware: 'auth',
   async mounted() {
     let response = await SupplierConfigurationService.getDeliveryConditions();
 

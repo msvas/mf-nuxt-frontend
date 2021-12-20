@@ -66,6 +66,7 @@ export default {
       buttonLoading: false
     };
   },
+  middleware: 'auth',
   mounted() {
     this.getSupplierStates();
     this.addStylesToListGroup();

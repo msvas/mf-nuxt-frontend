@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import { mapState, mapActions } from "vuex";
 import CatalogStore from "@/components/suppliers/CatalogStore";
 import ManualStore from "@/components/suppliers/ManualStore";

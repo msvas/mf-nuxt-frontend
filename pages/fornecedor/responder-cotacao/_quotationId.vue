@@ -101,6 +101,7 @@ export default {
       loadedTotals: false
     };
   },
+  middleware: 'auth',
   mounted() {
     //this.$vs.loading()
     this.quotationId = this.$route.params.quotationId

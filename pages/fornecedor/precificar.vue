@@ -124,6 +124,7 @@ export default {
       next()
     }
   },
+  middleware: 'auth',
   created() {
 
   },

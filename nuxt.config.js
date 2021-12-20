@@ -50,6 +50,7 @@ module.exports = {
   plugins: [
     { src: '~plugins/axios.js' },
     { src: '~plugins/vuesax.js' },
+    // { src: '~plugins/router.js' },
     { src: '~plugins/animate.js' },
     { src: '~plugins/vue-directive-tooltip.js' },
     { src: '~plugins/veevalidate.js' },
@@ -184,10 +185,20 @@ module.exports = {
             supplierStore: true,
           }
         },
+        {
+          path: "/revisar-cotacao",
+          name: "users.reviewQuote",
+          component: "@/pages/ReviewQuote.vue",
+          meta: {
+            blockSearch: true,
+            hideNavbar: true,
+            hideFooter: true,
+          },
+        },
         // {
         //   path: '/loja/:supplierSlug/revisar-compra/:orderId',
         //   name: 'users.reviewOrder',
-        //   component: '@/resources/users/views/ReviewOrder.vue',
+        //   component: '@/pages/ReviewOrder.vue',
         //   meta: {
         //     blockSearch: true,
         //     publicPage: true,
@@ -200,8 +211,7 @@ module.exports = {
         // {
         //   path: '/loja/:supplierSlug/revisar-compra/produtos/:orderId',
         //   name: 'users.reviewOrderProducts',
-        //   component: () =>
-        //     import('@/resources/users/views/ReviewOrderProducts.vue'),
+        //   component: '@/pages/ReviewOrderProducts.vue',
         //   meta: {
         //     blockSearch: true,
         //     publicPage: true,

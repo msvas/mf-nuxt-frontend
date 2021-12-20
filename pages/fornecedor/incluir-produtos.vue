@@ -59,6 +59,7 @@ export default {
       updater: 0
     };
   },
+  middleware: 'auth',
   updated() {
     window.location.reload()
   },

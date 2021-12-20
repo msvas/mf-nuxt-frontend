@@ -76,6 +76,7 @@ export default {
         }
     }
   },
+  middleware: 'auth',
   mounted() {
     this.getConfiguration();
   },

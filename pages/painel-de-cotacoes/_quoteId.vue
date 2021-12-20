@@ -395,6 +395,7 @@ export default {
       hideRead: []
     };
   },
+  middleware: 'auth',
 
   mounted() {
     this.quoteId = this.$route.params.quoteId

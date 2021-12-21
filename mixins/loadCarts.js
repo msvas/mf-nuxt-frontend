@@ -1,10 +1,10 @@
 const loadCarts = {
-  mounted() {
-    console.log('uu')
-    this.store.dispatch("users/products/loadStoreProducts").then(() => {
-      this.store.dispatch("users/products/loadStoreTotal")
+  beforeMount() {
+    this.$store.dispatch("users/products/loadStoreProducts").then(() => {
+      this.$store.dispatch("users/products/loadStoreTotal")
     })
-    this.store.dispatch("users/products/getQuoteCart")
+    this.$store.dispatch("users/products/getQuoteCart")
+    this.$store.dispatch("users/products/getResumedQuoteCart")
   }
 }
 

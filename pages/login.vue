@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <loading-overlay
+    <loading-overlay
       :active.sync="isLoading"
       :is-full-page="fullPage"
       :loader="loader"
@@ -9,7 +9,7 @@
       :opacity="opacity"
       :width="width"
       :height="height"
-    /> -->
+    />
     <div class="card rounded-0 mb-0 px-2">
       <div class="card-header pb-1" v-if="!completedSignUp && !completedRecovery">
         <div class="card-title">
@@ -262,16 +262,11 @@ export default {
       return this.$route.query.directOrder
     }
   },
-  created() {
+  mounted() {
     if(this.completedSignUp || this.completedRecovery) {
       this.user.email = this.userEmail
     }
   },
-  // mounted() {
-  //   if(this.completedSignUp) {
-  //     this.user.email = this.userEmail
-  //   }
-  // },
   methods: {
     ...mapActions("users/products", [
       "clearQuoteCart",
@@ -305,16 +300,15 @@ export default {
             else if(this.completedSignUp && this.hasOrder)
               redirectUrl = `/loja/${this.$route.query.supplierSlug}/revisar-compra/${this.hasOrder}?autoOpen=true`
 
-              this.$auth.loginWith('local', {
-                data: this.user,
-              })
-              .then((response) => {
-                this.isLoading = false
-                this.clearFilterParams()
-                this.setUser(response.data.data)
-                this.$router.push(redirectUrl)
-              })
-              .catch((error) => {
+              this.$auth.loginWith('local', { data: this.user }).then((response) => {
+                this.$auth.fetchUser().then(() => {
+                  this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+                  this.setUser(this.$auth.user)
+                  this.isLoading = false
+                  this.clearFilterParams()
+                  this.$router.push(redirectUrl)
+                })
+              }).catch((error) => {
                 this.isLoading = false;
                 const { errors } = error.response.data;
                 this.error = errors

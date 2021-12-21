@@ -449,12 +449,6 @@ export default {
       selectedViewType: ''
     };
   },
-  // async asyncData({ app, params, store }) {
-  //   console.log(app.$axios)
-  //   // store.dispatch('suppliers/getAuto', store.getters['navigationFilters/params']).then((response) => {
-  //   //   console.log(response)
-  //   // })
-  // },
   beforeMount() {
     this.getAllCatalog().then(() => {
       for (let family in this.catalog) {

@@ -347,7 +347,7 @@
               :supplier="supplier"
               :quotation="selectedQuotation"
               :infoQuotation="quotation"
-              :isMobile="mobileBrowser"
+              :isMobile="$device.isMobile"
               @back-button="backButton" />
           </span>
           <span v-if="selectedQuotation && (selectedQuotation.status == 'Pedido de compra a confirmar' || selectedQuotation.status == 'Pedido de compra confirmado' || selectedQuotation.status == 'Pedido de compra recusado')">
@@ -407,12 +407,12 @@ export default {
     })
   },
 
-  destroyed() {
-    document.getElementById("app").classList.remove("vh-100");
-    document
-      .getElementsByClassName("content-wrapper")[0]
-      .classList.add("router-view");
-  },
+  // destroyed() {
+  //   document.getElementById("app").classList.remove("vh-100");
+  //   document
+  //     .getElementsByClassName("content-wrapper")[0]
+  //     .classList.add("router-view");
+  // },
 
   computed: {
     ...mapState("users", ["user"]),
@@ -474,9 +474,9 @@ export default {
       }
     },
     showScreen(name){
-      if(this.mobileBrowser && this.currentScreen == name) {
+      if(this.$device.isMobile && this.currentScreen == name) {
         return true
-      } else if(!this.mobileBrowser) {
+      } else if(!this.$device.isMobile) {
         return true
       } else {
         return false

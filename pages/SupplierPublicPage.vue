@@ -14,6 +14,7 @@ import Vue from 'vue';
 import { mapState, mapActions } from "vuex";
 import CatalogStore from "@/components/suppliers/CatalogStore";
 import ManualStore from "@/components/suppliers/ManualStore";
+import loadCarts from '@/mixins/loadCarts'
 
 export default {
   metaInfo() {
@@ -92,5 +93,7 @@ export default {
     CatalogStore,
     ManualStore,
   },
+  mixins: [loadCarts]
+
 }
 </script>

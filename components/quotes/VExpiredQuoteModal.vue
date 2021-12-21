@@ -12,7 +12,7 @@
       <vs-button class="ml-2" @click="open = false" color="primary" type="border">Cancelar</vs-button>
       <vs-button class="mr-2" @click="goToQuote()" color="primary" type="filled" style="width: 50px">
        <b-spinner v-if="buttonLoading" small />
-       <span v-else>Abrir</span> 
+       <span v-else>Abrir</span>
       </vs-button>
     </div>
   </vs-popup>
@@ -47,9 +47,9 @@ export default {
       setTimeout(() => {
         this.buttonLoading = false
         this.open = false
-        this.$router.push({ name: 'users.quotePanel', params: { quoteId: this.quoteId } })
+        this.$router.push({ path: `/painel-de-cotacoes/${this.quoteId}`, params: { quoteId: this.quoteId } })
       }, 300);
-      
+
     }
   },
   props: {

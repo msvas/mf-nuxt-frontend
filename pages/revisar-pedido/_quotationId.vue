@@ -228,15 +228,15 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     this.isLoading = true
     this.clearPagination()
     this.quotationId = this.$route.params.quotationId
     this.getQuotationWithPayments({ id: this.quotationId }).then(() => {
       this.loadedQuotation = this.quotation
       this.getSupplierById(this.quotation.supplierId)
-      document.getElementById('back-button')
-              .setAttribute('href', `/painel-de-cotacoes/${this.quotation.quoteId}?quotationId=${this.quotationId}`)
+      // document.getElementById('back-button')
+      //         .setAttribute('href', `/painel-de-cotacoes/${this.quotation.quoteId}?quotationId=${this.quotationId}`)
       if(this.quotation.paymentMethodId)
         this.selectedPayment = this.quotation.paymentMethodId
       this.loadedQuotationFlag = true
@@ -304,7 +304,7 @@ export default {
         this.buttonLoading = false
         if(this.selectedPayment)
         this.savePaymentMethod({ quotationId: this.quotationId, method: this.selectedPayment, emit: false })
-        this.$router.push({ name: 'users.reviewQuotationProducts', params: { quotationId: this.quotationId }})
+        this.$router.push({ path: `/revisar-pedido/produtos/${this.quotationId}`, params: { quotationId: this.quotationId }})
       }, 300);
     },
     savePayment() {
@@ -314,7 +314,7 @@ export default {
         this.isLoading = true
         this.savePaymentMethod({ quotationId: this.quotationId, method: this.selectedPayment, emit: true }).then(() => {
           this.isLoading = false
-          this.$router.push({ name: 'orders' })
+          this.$router.push({ path: '/pedidos' })
         })
       }, 300);
 
@@ -331,7 +331,7 @@ export default {
       this.cancelLoading = true
       setTimeout(() => {
         this.cancelLoading = false
-          this.$router.push({ name: 'users.quotePanel',
+          this.$router.push({ path: `/painel-de-cotacoes/${this.quotation.quoteId}`,
                             params: { quoteId: this.quotation.quoteId },
                             query: { quotationId: this.quotationId } })
       }, 300);

@@ -22,12 +22,12 @@
           <div class="col-md-9 pb-5 pb-md-0" :style="this.mobileBrowser ? '' : 'padding-right: 20px;' ">
             <div class="card shadow-sm mt-0" :style="mobileBrowser ? '' : 'position: sticky; top: 0px; z-index: 800;'">
               <div class="card-body p-1">
-                <router-link :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl } }">
+                <nuxt-link :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl } }">
                   <span class="font-weight-bold d-block d-md-inline">
                     <i class="feather icon-chevron-left mr-25"></i>
                     Voltar à loja
                   </span>
-                </router-link>
+                </nuxt-link>
                 <div style="padding-top: 10px;">
                   <h5 class="d-block d-md-inline mb-0">
                     Confira se está tudo certo
@@ -240,6 +240,7 @@ import VFooter from "@/layouts/components/VFooter";
 import priceFormatter from "@/mixins/priceFormatter";
 import HowItWorks from "@/pages/como-funciona.vue"
 import ContactService from "@/services/contact"
+import loadCarts from '@/mixins/loadCarts'
 
 export default {
   data() {
@@ -273,12 +274,12 @@ export default {
         if(this.productQuoteCart && this.productQuoteCart.length) {
           this.newQuote()
         } else
-          this.$router.push({ name: 'home' })
+          this.$router.push({ path: '/' })
       }
       this.getProductsFromIds(this.productsInCartIds)
-        setTimeout(() => {
-         this.isLoading = false
-        }, 1000);
+      setTimeout(() => {
+       this.isLoading = false
+      }, 1000);
     })
   },
 
@@ -492,6 +493,6 @@ export default {
     HowItWorks,
     // VProductCard,
   },
-  mixins: [priceFormatter],
+  mixins: [priceFormatter, loadCarts],
 };
 </script>

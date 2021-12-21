@@ -155,72 +155,14 @@ export default {
           ClientProductQuoteCartService.clearQuoteCart()
         if (result) {
           if(this.redirectObject) {
-            this.$auth.loginWith('local', {
-              data: this.user,
-            })
-            // .then((response) => {
-            //    setTimeout(() => {
-            //     this.isLoading = false
-            //     this.clearFilterParams()
-            //     this.setUser(response.data.data)
-            //     }, 300);
-            //
-            // })
-            // .catch((error) => {
-            //    setTimeout(() => {
-            //     this.isLoading = false;
-            //     const { errors } = error.response.data;
-            //     this.error = errors
-            //       ? errors
-            //       : ["Não foi possível se conectar ao Meu Fornecedor."];
-            //
-            //     this.activeAlert = true;
-            //     }, 300);
-            //
-            // });
-
-            // this.$auth
-            //   .login({
-            //     data: this.user,
-            //     fetchUser: true,
-            //     staySignedIn: true,
-            //     remember: this.rememberMe,
-            //     redirect: this.redirectObject,
-            //   })
-            //   .then((response) => {
-            //      setTimeout(() => {
-            //       this.isLoading = false
-            //       this.clearFilterParams()
-            //       this.setUser(response.data.data)
-            //       }, 300);
-            //
-            //   })
-            //   .catch((error) => {
-            //      setTimeout(() => {
-            //       this.isLoading = false;
-            //       const { errors } = error.response.data;
-            //       this.error = errors
-            //         ? errors
-            //         : ["Não foi possível se conectar ao Meu Fornecedor."];
-            //
-            //       this.activeAlert = true;
-            //       }, 300);
-            //
-            //   });
-          } else {
-            this.$auth.loginWith('local', {
-              data: this.user,
-            })
-            .then((response) => {
-               // setTimeout(() => {
-               //  this.isLoading = false
-               //  this.clearFilterParams()
-               //  this.setUser(response.data.data)
-               //  this.$router.go()
-               //  }, 300);
-
-            })
-            .catch((error) => {
+            this.$auth.loginWith('local', { data: this.user }).then((response) => {
+              this.$auth.fetchUser().then(() => {
+                this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+                this.setUser(this.$auth.user)
+                this.isLoading = false
+                this.clearFilterParams()
+              })
+            }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;
                 const { errors } = error.response.data;
@@ -231,6 +173,22 @@ export default {
                 this.activeAlert = true;
                 }, 300);
 
+            });
+          } else {
+            this.$auth.loginWith('local', { data: this.user }).then((response) => {
+              this.$auth.fetchUser().then(() => {
+                this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+              })
+            }).catch((error) => {
+               setTimeout(() => {
+                this.isLoading = false;
+                const { errors } = error.response.data;
+                this.error = errors
+                  ? errors
+                  : ["Não foi possível se conectar ao Meu Fornecedor."];
+
+                this.activeAlert = true;
+                }, 300);
             });
           }
         }

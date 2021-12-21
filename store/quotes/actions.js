@@ -31,6 +31,10 @@ export default {
     commit(types.ACCUMULATE_OPEN_QUOTES, response.data)
   },
 
+  clearOpenQuotes: async ({ commit }) => {
+    commit(types.SET_OPEN_QUOTES, [])
+  },
+
   getQuoteCount: async ({ commit }) => {
     let response = await QuoteService.getQuoteCount()
     return response.data

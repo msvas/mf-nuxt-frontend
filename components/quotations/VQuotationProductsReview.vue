@@ -37,12 +37,12 @@
             <span v-for="productType in typesFromCategory(category.id)" :key="productType.id">
               <h5 class="my-1" v-if="!blockEdit">
                 {{ productType.productType }}
-                <router-link
-                  :to="{ name: 'users.quotePanel', params: { quoteId: quotation.quoteId }, query: { quotationId: quotation.id, categoryId: category.id, productType: productType.productType } }"
+                <nuxt-link
+                  :to="{ path: `/painel-de-cotacoes/${quotation.quoteId}`, params: { quoteId: quotation.quoteId }, query: { quotationId: quotation.id, categoryId: category.id, productType: productType.productType } }"
                   class="font-small-3 ml-1"
                 >
                   Editar
-                </router-link>
+                </nuxt-link>
               </h5>
 
               <div class="row">

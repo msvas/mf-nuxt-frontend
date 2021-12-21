@@ -66,7 +66,8 @@ export default {
   },
 
   mounted() {
-    this.defineTotal();
+    this.clearOpenQuotes()
+    this.defineTotal()
     this.userSelectedPage(1)
     this.setCurrentPage(1)
     this.getOpenQuotes().then(() => {
@@ -94,7 +95,7 @@ export default {
   },
 
   methods: {
-    ...mapActions("quotes", ["getOpenQuotes", "getQuoteCount"]),
+    ...mapActions("quotes", ["getOpenQuotes", "getQuoteCount", "clearOpenQuotes"]),
     ...mapActions("pagination", ["userSelectedPage", "setCurrentPage"]),
     printQuotes() {
       return this.openQuotes.filter(obj => obj.matchedSuppliers == 1)

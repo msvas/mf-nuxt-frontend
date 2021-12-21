@@ -170,14 +170,14 @@ export default {
         this.buttonLoading = false
         if(quotationObj.orderType && quotationObj.orderType == 'Direta') {
           if(this.isOrderPanel)
-            this.$router.push({name: 'users.checkOrder', params: { quotationId: quotationObj.id }, query: { source: 'order-panel', direct: true }})
+            this.$router.push({ path: `/ver-pedido/${quotationObj.id}`, params: { quotationId: quotationObj.id }, query: { source: 'order-panel', direct: true }})
           else
-            this.$router.push({name: 'users.checkOrder', params: { quotationId: quotationObj.id }, query: { direct: true }})
+            this.$router.push({ path: `/ver-pedido/${quotationObj.id}`, params: { quotationId: quotationObj.id }, query: { direct: true }})
         } else {
           if(this.isOrderPanel)
-            this.$router.push({name: 'users.checkOrder', params: { quotationId: quotationObj.id }, query: { source: 'order-panel' }})
+            this.$router.push({ path: `/ver-pedido/${quotationObj.id}`, params: { quotationId: quotationObj.id }, query: { source: 'order-panel' }})
           else
-            this.$router.push({name: 'users.checkOrder', params: { quotationId: quotationObj.id }})
+            this.$router.push({ path: `/ver-pedido/${quotationObj.id}`, params: { quotationId: quotationObj.id }})
         }
 
       }, 300);

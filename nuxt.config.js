@@ -79,6 +79,7 @@ module.exports = {
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
     baseURL: process.env.VUE_APP_REST_API_URL,
+    debug: process.env.NODE_ENV && process.env.NODE_ENV === 'development',
   },
 
   auth: {
@@ -92,7 +93,7 @@ module.exports = {
         },
         user: {
           property: 'data',
-          autoFetch: true,
+          autoFetch: false,
         },
         endpoints: {
           login: {
@@ -110,7 +111,7 @@ module.exports = {
           }
         }
       }
-    }
+    },
   },
 
   router: {

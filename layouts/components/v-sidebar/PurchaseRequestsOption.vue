@@ -1,8 +1,8 @@
 <template>
   <li class="nav-item" @mouseover="hover = true" @mouseleave="hover = false" :class="{ hover }">
-    <router-link :to="{ name: 'users.orderPanel' }">
+    <nuxt-link :to="{ path: '/pedidos-de-compra' }">
       <span class="menu-title">Pedidos de compra</span>
-    </router-link>
+    </nuxt-link>
   </li>
 </template>
 

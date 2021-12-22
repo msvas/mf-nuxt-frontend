@@ -4,9 +4,9 @@
       <div class="card bg-authentication rounded mb-0 border-top-green">
         <div class="row m-0">
           <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-            <router-link :to="{name: 'home'}">
+            <nuxt-link :to="{ path: '/' }">
               <img src="@/assets/images/mf-login.png" alt />
-            </router-link>
+            </nuxt-link>
             <p
               class="color-mf-verde font-weight-bold px-5 py-1"
             >Cote produtos para seu restaurante com vários fornecedores ao mesmo tempo.</p>

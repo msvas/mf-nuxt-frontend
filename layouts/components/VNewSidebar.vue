@@ -56,7 +56,7 @@
            <div :class="reduce ? 'a-reduced' : 'a-expanded'">
               <div>
                 <img
-                  :class="this.$route.name == 'home' ||
+                  :class="this.$route.path == '/' ||
                           this.$route.name == 'cotar-familia' ||
                           this.$route.name == 'cotar-categoria' ||
                           this.$route.name == 'cotar-produto' ? 'd-inherit' : 'd-none'"
@@ -66,7 +66,7 @@
                   alt="menu"
                 />
                 <img
-                  :class="this.$route.name == 'home' ||
+                  :class="this.$route.path == '/' ||
                           this.$route.name == 'cotar-familia' ||
                           this.$route.name == 'cotar-categoria' ||
                           this.$route.name == 'cotar-produto' ?  'd-none' : 'd-inherit'"
@@ -78,7 +78,7 @@
               </div>
               <span
                 :class="reduce ? 'text-reduced' : 'text-expanded'"
-                :style="this.$route.name == 'home' ||
+                :style="this.$route.path == '/' ||
                         this.$route.name == 'cotar-familia' ||
                         this.$route.name == 'cotar-categoria' ||
                         this.$route.name == 'cotar-produto'

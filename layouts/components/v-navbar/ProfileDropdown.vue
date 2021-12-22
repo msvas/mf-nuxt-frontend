@@ -2,11 +2,11 @@
   <li >
     <div >
       <template v-if="!this.$auth.loggedIn">
-        <router-link :to="{name: 'login'}" class="dropdown-item">
+        <nuxt-link :to="{ path: '/login' }" class="dropdown-item">
           <b>
             <i class="feather icon-log-in"></i>Entrar / Cadastro
           </b>
-        </router-link>
+        </nuxt-link>
       </template>
       <template v-else>
         <a
@@ -25,9 +25,9 @@
         >{{ user.contactName }}</a>
         <template v-if="user.isSupplier">
           <div class="dropdown-divider"></div>
-          <router-link :to="{ name: 'service-conditions' }" class="dropdown-item text-warning" style="color: black;">
+          <nuxt-link :to="{ path: '/fornecedor/condicoes-de-atendimento' }" class="dropdown-item text-warning" style="color: black;">
             <i class="fa fa-exchange"></i> Modo fornecedor
-          </router-link>
+          </nuxt-link>
         </template>
         <div class="dropdown-divider" style="background: white;"></div>
 
@@ -91,10 +91,10 @@ export default {
           localStorage.removeItem('client')
           localStorage.removeItem('allowed')
           this.notifyInfo(this.infoMessage, "feather icon-log-out")
-          if(this.$router.name == 'home'){
+          if(this.$router.path == '/'){
             this.$router.go()
           }else{
-            this.$router.push({name: 'home'})
+            this.$router.push({ path: '/' })
           }
 
         })

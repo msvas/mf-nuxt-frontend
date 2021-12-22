@@ -38,15 +38,15 @@
         </div>
 
         <div>
-          <router-link :to="{ name: 'home' }" :class="this.$route.name == 'home' ||
-                                                      this.$route.name == 'cotar-familia' ||
-                                                      this.$route.name == 'cotar-categoria' ||
-                                                      this.$route.name == 'cotar-produto' ? 'options-container-selected' : 'options-container'"
+          <nuxt-link :to="{ path: '/' }" :class="this.$route.path == '/' ||
+                                                 this.$route.name == 'cotar-familia' ||
+                                                 this.$route.name == 'cotar-categoria' ||
+                                                 this.$route.name == 'cotar-produto' ? 'options-container-selected' : 'options-container'"
           >
            <div :class="reduce ? 'a-reduced' : 'a-expanded'">
               <div>
                 <img
-                  :class="this.$route.name == 'home' ||
+                  :class="this.$route.path == '/' ||
                           this.$route.name == 'cotar-familia' ||
                           this.$route.name == 'cotar-categoria' ||
                           this.$route.name == 'cotar-produto' ? 'd-inherit' : 'd-none'"
@@ -56,7 +56,7 @@
                   alt="menu"
                 />
                 <img
-                  :class="this.$route.name == 'home' ||
+                  :class="this.$route.path == '/' ||
                           this.$route.name == 'cotar-familia' ||
                           this.$route.name == 'cotar-categoria' ||
                           this.$route.name == 'cotar-produto' ?  'd-none' : 'd-inherit'"
@@ -68,7 +68,7 @@
               </div>
               <span
                 :class="reduce ? 'text-reduced' : 'text-expanded'"
-                :style="this.$route.name == 'home' ||
+                :style="this.$route.path == '/' ||
                         this.$route.name == 'cotar-familia' ||
                         this.$route.name == 'cotar-categoria' ||
                         this.$route.name == 'cotar-produto'
@@ -77,18 +77,18 @@
                 >Produtos</span
               >
             </div>
-          </router-link>
+          </nuxt-link>
 
-          <router-link :to="{ name: 'suppliers' }" :class="this.$route.name == 'suppliers' ||
-                                                          this.$route.name == 'suppliers-family' ||
-                                                          this.$route.name == 'suppliers-category' ||
-                                                          this.$route.name == 'suppliers-product' ? 'options-container-selected' : 'options-container'"
+          <nuxt-link :to="{ path: '/fornecedores' }" :class="this.$route.path == '/fornecedores' ||
+                                                               this.$route.name == 'suppliers-family' ||
+                                                               this.$route.name == 'suppliers-category' ||
+                                                               this.$route.name == 'suppliers-product' ? 'options-container-selected' : 'options-container'"
           >
             <div :class="reduce ? 'a-reduced' : 'a-expanded'" >
               <div>
                 <img
                   src="@/assets/images/shop-selected.png"
-                  :class="this.$route.name == 'suppliers' ||
+                  :class="this.$route.path == '/fornecedores' ||
                           this.$route.name == 'suppliers-family' ||
                           this.$route.name == 'suppliers-category' ||
                           this.$route.name == 'suppliers-product' ? 'd-inherit' : 'd-none'"
@@ -120,9 +120,9 @@
                 >Lojas</span
               >
             </div>
-          </router-link>
+          </nuxt-link>
 
-          <router-link :to="{ name: 'orders' }" :class="this.$route.name == 'orders' ? 'options-container-selected' : 'options-container'">
+          <nuxt-link :to="{ path: '/pedidos' }" :class="this.$route.path == '/pedidos' ? 'options-container-selected' : 'options-container'">
             <div :class="reduce ? 'a-reduced' : 'a-expanded'"
             >
             <div>
@@ -153,7 +153,7 @@
               >Pedidos</span
             >
             </div>
-          </router-link>
+          </nuxt-link>
         </div>
 
         <div  :class="reduce ? 'vs-spacer-reduced' : 'vs-spacer-custom'">

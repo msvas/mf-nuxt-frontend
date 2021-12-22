@@ -7,9 +7,9 @@
         </a>
       </li>
       <!-- <li v-if="showLeaveQuotationButton && supplierStore" class="nav-item position-relative ml-1">
-        <router-link :to="{ name: 'public-store', params: { supplierSlug: $route.params.supplierSlug } }" id="back-button" class="btn btn-relief-dark waves-effect waves-light font-small-3 mr-1 px-2">
+        <nuxt-link :to="{ name: 'public-store', params: { supplierSlug: $route.params.supplierSlug } }" id="back-button" class="btn btn-relief-dark waves-effect waves-light font-small-3 mr-1 px-2">
           <span>{{ '&lt;' }} Voltar</span>
-        </router-link>
+        </nuxt-link>
       </li> -->
       <li v-if="showOnlyLeaveButton" class="nav-item position-relative">
         <button
@@ -70,9 +70,9 @@
         </a>
       </li>
       <li v-if="!this.$auth.loggedIn && !$device.isMobile && this.$route.name != 'about'" style=" margin-left: 20px; list-style: none;">
-        <a style="color: black;     padding-right: 25px;" href="javascript:void(0);" @click="openPartner = true"> Cadastre grátis sua distribuidora</a>
-        <router-link style="color: black;    padding-right: 25px;" :to="{name: 'contact'}">Entre em contato</router-link>
-        <router-link style="color: black;     padding-right: 25px;" :to="{name: 'how.it.works'}">Como funciona</router-link>
+        <a style="color: black; padding-right: 25px;" href="javascript:void(0);" @click="openPartner = true"> Cadastre grátis sua distribuidora</a>
+        <nuxt-link style="color: black; padding-right: 25px;" :to="{ path: '/contato' }">Entre em contato</nuxt-link>
+        <nuxt-link style="color: black; padding-right: 25px;" :to="{ path: '/como-funciona' }">Como funciona</nuxt-link>
       </li>
     </ul>
 
@@ -320,16 +320,6 @@ export default {
       this.openPartner = value
     },
 
-    runSearch() {
-      if(this.keyword != ""){
-        this.$router.push({ name: 'users.search', params: { keyword: this.keyword }})
-        localStorage.setItem('lastSearch', this.keyword);
-        //window.location.reload()
-      }
-    },
-    runSupplierSearch() {
-      this.$router.push({ name: 'public-store-search', params: { keyword: this.keyword }})
-    },
     cancelReview() {
       this.buttonLoading = true
       setTimeout(() => {
@@ -356,7 +346,7 @@ export default {
       this.registerLoading = true
       setTimeout(() => {
         this.registerLoading = false
-        this.$router.push({name: 'sign-up' })
+        this.$router.push({ path: '/cadastro' })
       }, 300);
     },
     clickHomeButton() {

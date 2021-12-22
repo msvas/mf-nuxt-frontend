@@ -31,6 +31,7 @@
     "vue-context": "^6.0.0",
     "vue-currency-input": "^1.22.3",
     "vue-directive-tooltip": "^1.6.3",
+    "vue-dragscroll": "^3.0.1",
     "vue-form-wizard": "^0.8.4",
     "vue-loading-overlay": "^3.4.0",
     "vue-the-mask": "^0.11.1",

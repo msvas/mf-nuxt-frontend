@@ -44,7 +44,7 @@
         />
 
         <!-- <v-card-service-condition
-          v-if="$auth.user().supplierQuotationType != 'Automático'"
+          v-if="$auth.user.supplierQuotationType != 'Automático'"
           :configurationName="'Formas de pagamento'"
           :configuration="paymentMethodsCompleted"
           :iconName="'icon-dollar-sign'"
@@ -62,11 +62,11 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   name: "ServiceConditions",
   updated() {
-    if(this.$auth.user().supplierStatus == 'Precificação')
+    if(this.$auth.user.supplierStatus == 'Precificação')
       this.$router.push({ name: "pricing" })
-    else if ((this.$auth.user().supplierQuotationType != 'Automático' && this.allCompleted) ||
-             (this.$auth.user().supplierQuotationType == 'Automático' && this.allCompletedAutomatic)) {
-      switch(this.$auth.user().supplierStatus) {
+    else if ((this.$auth.user.supplierQuotationType != 'Automático' && this.allCompleted) ||
+             (this.$auth.user.supplierQuotationType == 'Automático' && this.allCompletedAutomatic)) {
+      switch(this.$auth.user.supplierStatus) {
         case "Não liberado":
           this.$router.push({ name: "products-empty" })
           break

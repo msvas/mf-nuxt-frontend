@@ -457,7 +457,7 @@ export default {
         return false
     },
     checkOpenAdd(ev) {
-      if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false'))
+      if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false'))
         this.openAdd = true
       else {
         this.openAdd = false

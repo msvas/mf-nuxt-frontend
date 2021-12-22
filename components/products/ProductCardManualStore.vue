@@ -321,7 +321,7 @@ export default {
       if(this.$browserDetect.isIOS) {
         this.$emit('open-safari-warning')
       } else {
-        if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false'))
+        if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false'))
           this.addOrRemoveToCart(this.product)
         else {
           this.opened = true

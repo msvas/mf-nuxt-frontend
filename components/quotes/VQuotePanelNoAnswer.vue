@@ -69,7 +69,7 @@ export default {
     }
   },
   mounted() {
-    this.userEmail = this.$auth.user().email
+    this.userEmail = this.$auth.user.email
   },
   computed: {
     //...mapGetters("users/products", ["productIsOnList", "productIsOnCart", "productCartIsEmpty"]),

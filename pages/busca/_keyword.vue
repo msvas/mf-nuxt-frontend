@@ -820,12 +820,13 @@ export default {
 
   },
   mounted() {
-    this.tab = this.$route.query.tab
+    this.tab = parseInt(this.$route.query.tab)
     this.getAllCatalog()
-    this.clearProducts();
-    this.userSelectedPage(1);
-    this.setCurrentPage(1);
-    if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false')) {
+    this.clearProducts()
+    this.userSelectedPage(1)
+    this.setCurrentPage(1)
+
+    if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false')) {
       this.loadPage()
     } else {
       this.openLocation = true

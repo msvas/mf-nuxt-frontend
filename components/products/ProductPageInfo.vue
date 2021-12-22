@@ -1009,7 +1009,7 @@ export default {
     },
     addToCart(priceObj) {
       let obj = this.tempCart.find(exp => exp.id == priceObj.id)
-      if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false')) {
+      if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false')) {
         this.checkTotals(obj)
       } else {
         this.lastTotals = obj

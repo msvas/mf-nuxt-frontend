@@ -1084,7 +1084,7 @@ export default {
     },
     checkOpenAdd(ev) {
       if(this.storeTotal == 0 || (this.storeCartSupplierId() == this.supplier.id)) {
-        if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false'))
+        if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false'))
           this.openAdd = true
         else {
           this.openAdd = false

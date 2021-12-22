@@ -1,7 +1,7 @@
 <template>
   <span v-if="productsInList > 0">
     <!-- <li
-      v-if="$auth.check()"
+      v-if="$auth.loggedIn"
       class="nav-item text-black  pt-1 pb-1"
       style="background: yellow; border-top: 1px solid black; border-bottom: 1px solid black"
       @mouseover="hover = true"
@@ -45,7 +45,7 @@ export default {
     };
   },
   mounted() {
-    // if(this.$auth.check())
+    // if(this.$auth.loggedIn)
     //   this.getProductList()
   },
   computed: {

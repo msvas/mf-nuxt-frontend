@@ -77,12 +77,12 @@
     </ul>
 
     <ul v-if="!showLeaveQuotationButton && !showOnlyLeaveButton && !publicPage" class="nav navbar-nav " style="display: flex; flex-direction:row;">
-      <!-- <span v-if="!isSuspended && this.informedUF != 'null' || this.$auth.check()"  style="align-self:center; margin-right: 20px;">
+      <!-- <span v-if="!isSuspended && this.informedUF != 'null' || this.$auth.loggedIn"  style="align-self:center; margin-right: 20px;">
         <div>
           <v-quotation-button  v-show="showQuotationButton" style="margin-right: 7px;" />
         </div>
       </span> -->
-      <!-- <span v-if="!$auth.check()" >
+      <!-- <span v-if="!$auth.loggedIn" >
             <b-spinner variant="success" v-if="registerLoading" small  />
             <login-dropdown v-if="this.$route.name != 'about'" style=" color:blue;
                                     padding: 10px;
@@ -100,7 +100,7 @@
     </ul> -->
     <ul class="nav navbar-nav" style="display: flex; flex-direction:row; margin-left: -10px;">
 
-      <!-- <span v-if="!$auth.check()" >
+      <!-- <span v-if="!$auth.loggedIn" >
             <b-spinner variant="success" v-if="registerLoading" small  />
             <login-dropdown v-if="this.$route.name != 'about'" style=" color:blue;
                                     padding: 10px;
@@ -208,7 +208,7 @@ export default {
 
   },
   mounted() {
-    // if(this.$auth.user()) {
+    // if(this.$auth.user) {
     //   this.hasOrders().then((response) => {
     //     this.showOrdersButton = response
     //   })

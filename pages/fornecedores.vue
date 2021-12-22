@@ -499,7 +499,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 span.capitalize:first-letter {
   text-transform: uppercase;
 }

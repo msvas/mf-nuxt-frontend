@@ -900,7 +900,7 @@ export default {
       this.catalogFamilies = aux.toString()
     },
     checkRegionAccess() {
-      if(this.$auth.check()) {
+      if(this.$auth.loggedIn) {
         this.canUserAccessStore(this.supplier.id).then((response) => {
           if(response['allow'] && response['allow'] == 'yes')
             this.regionCanAccess = true
@@ -1766,11 +1766,11 @@ export default {
       if (scroll) scroll.scrollLeft += 50 * direction;
     },
     generateContactViaWhatsappText(){
-      if(this.$auth.check()){
-        if(this.$auth.user().cnpj){
-          this.contactMessage= "O usuário \n" +this.$auth.user().name+ "\nPessoa Jurídica" + "\nId " +this.$auth.user().id+ "\nCEP " +this.$auth.user().zipcode + " " + this.$auth.user().street+ ", N.º " +this.$auth.user().addressDetails+ "\nFone" +this.$auth.user().phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", via Whatsapp."
+      if(this.$auth.loggedIn){
+        if(this.$auth.user.cnpj){
+          this.contactMessage= "O usuário \n" +this.$auth.user.name+ "\nPessoa Jurídica" + "\nId " +this.$auth.user.id+ "\nCEP " +this.$auth.user.zipcode + " " + this.$auth.user.street+ ", N.º " +this.$auth.user.addressDetails+ "\nFone" +this.$auth.user.phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", via Whatsapp."
         }else{
-          this.contactMessage= "O usuário \n" +this.$auth.user().name+ "\nPessoa Física" + "\nId " +this.$auth.user().id+ "\nCEP " +this.$auth.user().zipcode + " " + this.$auth.user().street+ ", N.º " +this.$auth.user().addressDetails+ "\nFone" +this.$auth.user().phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", via Whatsapp."
+          this.contactMessage= "O usuário \n" +this.$auth.user.name+ "\nPessoa Física" + "\nId " +this.$auth.user.id+ "\nCEP " +this.$auth.user.zipcode + " " + this.$auth.user.street+ ", N.º " +this.$auth.user.addressDetails+ "\nFone" +this.$auth.user.phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", via Whatsapp."
         }
       }else if(localStorage.cep != 'null' && localStorage.serves_type != 'null'){
         this.contactMessage= "Um usuário anônimo \n" + localStorage.serves_type +  "\nCEP " +localStorage.cep + "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", via Whatsapp."
@@ -1779,11 +1779,11 @@ export default {
       }
     },
     generateContactViaPhoneNumberText(){
-      if(this.$auth.check()){
-        if(this.$auth.user().cnpj){
-          this.contactMessage = "O usuário \n" +this.$auth.user().name+ "\nPessoa Jurídica" + "\nId " +this.$auth.user().id+ "\nCEP " +this.$auth.user().zipcode + " " + this.$auth.user().street+ ", N.º " +this.$auth.user().addressDetails+ "\nFone" +this.$auth.user().phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", através do número de telefone."
+      if(this.$auth.loggedIn){
+        if(this.$auth.user.cnpj){
+          this.contactMessage = "O usuário \n" +this.$auth.user.name+ "\nPessoa Jurídica" + "\nId " +this.$auth.user.id+ "\nCEP " +this.$auth.user.zipcode + " " + this.$auth.user.street+ ", N.º " +this.$auth.user.addressDetails+ "\nFone" +this.$auth.user.phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", através do número de telefone."
         }else{
-          this.contactMessage = "O usuário \n" +this.$auth.user().name+ "\nPessoa Física" + "\nId " +this.$auth.user().id+ "\nCEP " +this.$auth.user().zipcode + " " + this.$auth.user().street+ ", N.º " +this.$auth.user().addressDetails+ "\nFone" +this.$auth.user().phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", através do número de telefone."
+          this.contactMessage = "O usuário \n" +this.$auth.user.name+ "\nPessoa Física" + "\nId " +this.$auth.user.id+ "\nCEP " +this.$auth.user.zipcode + " " + this.$auth.user.street+ ", N.º " +this.$auth.user.addressDetails+ "\nFone" +this.$auth.user.phone+ "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", através do número de telefone."
         }
       }else if(localStorage.cep != 'null' && localStorage.serves_type != 'null'){
         this.contactMessage= "Um usuário anônimo \n" + localStorage.serves_type +  "\nCEP " +localStorage.cep + "\nEntrou em contato com o fornecedor " +this.supplier.user.name+ ", através do número de telefone."

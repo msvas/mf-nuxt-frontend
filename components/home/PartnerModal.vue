@@ -10,7 +10,9 @@
 
         </div>
         <div class="modal-footer" style="justify-content: center;">
-          <button type="submit" class="btn btn-primary text-bold-600"><a style="color: white;" href="https://forms.gle/3s5PoNhKuqJEm6P77" target="blank">Preencher formulário</a></button>
+          <button type="submit" class="btn btn-primary text-bold-600">
+            <a style="color: white;" href="https://forms.gle/3s5PoNhKuqJEm6P77" target="blank">Preencher formulário</a>
+          </button>
         </div>
     </form>
   </vs-popup>
@@ -18,7 +20,7 @@
 
 <script>
 
-// import { mask } from "vue-the-mask";
+import { mask } from "vue-the-mask";
 
 export default {
   name: "PartnerModal",
@@ -53,8 +55,8 @@ export default {
   components: {
 
   },
-  // directives: {
-  //   mask,
-  // }
+  directives: {
+    mask,
+  }
 };
 </script>

@@ -287,7 +287,7 @@ export default {
     };
   },
   created() {
-    // if(this.$auth.check()) {
+    // if(this.$auth.loggedIn) {
     //   QuotesService.getOpen().then((response) => {
     //     this.openQuotes = response.data;
     //     this.checkOpenQuotes();

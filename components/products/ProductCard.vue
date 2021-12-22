@@ -595,7 +595,7 @@ export default {
     ]),
 
     checkOpenAdd(ev) {
-      if(this.$auth.check() || (this.allowEntrance && this.allowEntrance != 'false'))
+      if(this.$auth.loggedIn || (this.allowEntrance && this.allowEntrance != 'false'))
         this.addOrRemoveToCart(this.product)
       else {
         this.opened = true

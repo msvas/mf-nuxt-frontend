@@ -1,6 +1,6 @@
 <template>
   <div class="content-wrapper pb-0" style="margin-top: 80px;padding: 0 !important;">
-    <!-- <partner-modal :openPopup="openPartner" @update-modal="closePopup" /> -->
+    <partner-modal :openPopup="openPartner" @update-modal="closePopup" />
     <div class="content-body">
       <template>
         <form
@@ -282,7 +282,7 @@
                 style="position: sticky; left: 0; background-color: #ebebeb;"
               >
                 <div class="p-0 pt-1 pb-1">
-                  <h4 v-if="this.mobileBrowser" class style=" font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
+                  <h4 v-if="this.mobileBrowser" class style="font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >Fornecedores</h4>
                   <h4 v-else class style=" font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
                   >Navegue por fornecedor</h4>
@@ -294,7 +294,7 @@
                 </div>
               </div>
             <div
-              style=" display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;"
+              style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center;"
             >
               <div v-for="supplier in filteredSuppliers.slice(0, 9)" v-bind:key="supplier.id">
                 <supplier-card :supplier="supplier" />
@@ -343,9 +343,7 @@
             </div>
             <vs-divider></vs-divider>
             <div
-              style=" display: flex;
-                      flex-direction: row;
-                      justify-content: space-between;"
+              style="display: flex; flex-direction: row; justify-content: space-between;"
             >
               <div style="display: flex; flex-direction: column">
                 <span>Veja quais fornecedores já temos cadastrados</span>
@@ -390,7 +388,7 @@
     />
   </div>
 </template>
-<style>
+<style scoped>
 .card .card {
   box-shadow: 0 1px 1px 0 rgba(0,0,0,.1) !important;
 }

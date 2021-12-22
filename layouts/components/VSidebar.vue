@@ -209,7 +209,7 @@ export default {
     // this.getUsedFamilies().then((families) => {
     //   this.usedFamilies = families
     // });
-    // if(this.$auth.check()) {
+    // if(this.$auth.loggedIn) {
     //   QuotesService.getOpen().then((response) => {
     //     this.openQuotes = response.data
     //     this.checkOpenQuotes()

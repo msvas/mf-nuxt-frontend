@@ -362,30 +362,14 @@
       </div>
       <div
         class="p-1"
-        style="
-              display: flex;
-              justify-content: space-between;
-              padding-top: 10px;
-              border: none;
-              border-radius: 0.5rem;
-              box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
-              transition: all 0.3s ease-in-out;
-              background: #ebebeb;
-            "
+        style="display: flex; justify-content: space-between; padding-top: 10px; border: none; border-radius: 0.5rem; box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%); transition: all 0.3s ease-in-out; background: #ebebeb;"
       >
-        <h4 class style="font-size: 26px;
-                          font-weight: 300;
-                          margin: 0 0 0 8px;
-                          color: #666;"
+        <h4 class style="font-size: 26px; font-weight: 300; margin: 0 0 0 8px; color: #666;"
           >Escolha por oferta</h4>
       </div>
       <div
         class="pl-2"
-        :class="
-                this.mobileBrowser
-                  ? 'product-card-list-mobile'
-                  : 'product-card-list-desktop'
-              "
+        :class="this.mobileBrowser ? 'product-card-list-mobile' : 'product-card-list-desktop'"
       >
         <span
           v-for="(product, index) in this.filteredRandomSaleProducts"
@@ -411,49 +395,49 @@
   </div>
 </template>
 
-<style>
-span.capitalize:first-letter {
-  text-transform: uppercase;
-}
-span.capitalize {
-  display: inline-block;
-}
-.no-wrap {
-  flex-wrap: nowrap;
-}
-.no-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-}
-.no-scrollbar::-webkit-scrollbar {
-  /* WebKit */
-  width: 0;
-  height: 0;
-}
-.desktop {
-  margin-left: 10px !important;
-}
-.mobile {
-  margin-bottom: 20px;
-}
-.product-card-list-mobile {
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  overflow: auto;
-  flex-wrap: wrap;
-  align-content: center;
-  justify-content: flex-start;
-  align-items: center;
-}
-.product-card-list-desktop {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  overflow: hidden;
-  align-self: center;
-}
+<style scoped>
+  span.capitalize:first-letter {
+    text-transform: uppercase;
+  }
+  span.capitalize {
+    display: inline-block;
+  }
+  .no-wrap {
+    flex-wrap: nowrap;
+  }
+  .no-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+  }
+  .desktop {
+    margin-left: 10px !important;
+  }
+  .mobile {
+    margin-bottom: 20px;
+  }
+  .product-card-list-mobile {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .product-card-list-desktop {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+    align-self: center;
+  }
 </style>
 
 <script>
@@ -499,7 +483,7 @@ export default {
     //this.isMobile();
     SuppliersService.getAllSaleProducts().then((response2) => {
       this.randomSaleProducts = response2.data;
-      this.filteredRandomSaleProducts = this.randomSaleProducts.sort((a, b) =>a.productTypeName.localeCompare(b.productTypeName));
+      this.filteredRandomSaleProducts = this.randomSaleProducts.sort((a, b) => a.productTypeName.localeCompare(b.productTypeName));
         this.createOptionsSctructures(this.randomSaleProducts);
         this.isLoading = false;
         if (this.$route.query.keyword) {
@@ -520,11 +504,7 @@ export default {
       );
     },
     filterRandomSaleProductsByFamily(familyName) {
-      this.filteredRandomSaleProducts = this.randomSaleProducts.filter(
-        (obj) =>
-          obj.familyName ==
-          familyName.charAt(0).toUpperCase() + familyName.slice(1)
-      );
+      this.filteredRandomSaleProducts = this.randomSaleProducts.filter((obj) => obj.familyName == familyName.charAt(0).toUpperCase() + familyName.slice(1));
     },
     filterRandomSaleProductsByCollection(categoryCollection) {
       this.filteredRandomSaleProducts = this.randomSaleProducts.filter(
@@ -611,7 +591,7 @@ export default {
           );
       }
       this.selectedFamily = familyName;
-      this.filterSupplierByFamily(this.selectedFamily);
+      //this.filterSupplierByFamily(this.selectedFamily);
       this.filterRandomSaleProductsByFamily(this.selectedFamily);
     },
     selectedCollectionOnModal(data) {

@@ -158,7 +158,7 @@ export default {
           priceValid = true
       }
 
-      // return (paymentFilled || priceValid) && this.$auth.user().supplierQuotationType != 'Automático'
+      // return (paymentFilled || priceValid) && this.$auth.user.supplierQuotationType != 'Automático'
       return priceValid
     }
   },

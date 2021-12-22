@@ -219,14 +219,14 @@
                               <h4 class style="margin: 0; padding-left: 5px">{{ index }}</h4>
                             </div>
                             <div class="col-3 col-md-3 m-0 p-0 pt-1 pb-1">
-                              <router-link
+                              <nuxt-link
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                              >Ver tudo</router-link>
-                              <router-link
+                              >Ver tudo</nuxt-link>
+                              <nuxt-link
                                 v-else
                                 :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div
@@ -268,7 +268,7 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       v-if="index == 'Alimentos e bebidas'"
                                       :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
@@ -278,8 +278,8 @@
                                       "
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
-                                    <router-link
+                                    </nuxt-link>
+                                    <nuxt-link
                                       v-else
                                       :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
@@ -289,7 +289,7 @@
                                       "
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -449,16 +449,16 @@
                                 >{{ category.category }}</h4>
                               </div>
                               <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                                <router-link
+                                <nuxt-link
                                   v-if="selectedFamily == 'Alimentos e bebidas'"
                                   style="color: inherit;"
                                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
-                                >Ver tudo</router-link>
-                                <router-link
+                                >Ver tudo</nuxt-link>
+                                <nuxt-link
                                   v-else
                                   style="color: inherit;"
                                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
-                                >Ver tudo</router-link>
+                                >Ver tudo</nuxt-link>
                               </div>
                             </div>
                             <div
@@ -504,7 +504,7 @@
                                           class="col-12 text-center"
                                         >Veja mais produtos deste tipo.</div>
                                         <div class="col-12 mt-1">
-                                          <router-link
+                                          <nuxt-link
                                             v-if="
                                               selectedFamily ==
                                               'Alimentos e bebidas'
@@ -514,15 +514,15 @@
                                             style="padding-left: 3px; padding-right: 3px;"
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
-                                          </router-link>
-                                          <router-link
+                                          </nuxt-link>
+                                          <nuxt-link
                                             v-else
                                             :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
                                             class="btn btn-primary w-100"
                                             style="padding-left: 3px; padding-right: 3px;"
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -967,16 +967,16 @@
                               <h4 class style="margin: 0; padding-left: 5px">{{ index }}</h4>
                             </div>
                             <div class="col-3 col-md-3 m-0 p-0 pt-1 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                              >Ver tudo</router-link>
-                              <router-link
+                              >Ver tudo</nuxt-link>
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-else
                                 :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div
@@ -1012,7 +1012,7 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       v-if="index == 'Alimentos e bebidas'"
                                       :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
@@ -1022,8 +1022,8 @@
                                         class="font-medium-1 align-middle"
                                         style="white-space: nowrap;"
                                       >Ver tudo</span>
-                                    </router-link>
-                                    <router-link
+                                    </nuxt-link>
+                                    <nuxt-link
                                       v-else
                                       :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
@@ -1033,7 +1033,7 @@
                                         class="font-medium-1 align-middle"
                                         style="white-space: nowrap;"
                                       >Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -1188,16 +1188,16 @@
                                 >{{ category.category }}</h4>
                               </div>
                               <div class="p-0 pl-2 pt-2 pb-1">
-                                <router-link
+                                <nuxt-link
                                   class="float-right pr-1"
                                   v-if="selectedFamily == 'Alimentos e bebidas'"
                                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
-                                >Ver tudo</router-link>
-                                <router-link
+                                >Ver tudo</nuxt-link>
+                                <nuxt-link
                                   class="float-right pr-1"
                                   v-else
                                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
-                                >Ver tudo</router-link>
+                                >Ver tudo</nuxt-link>
                               </div>
                             </div>
                             <div class="mb-4 row pl-3" style="overflow-x: hidden;">
@@ -1241,7 +1241,7 @@
                                           class="col-12 text-center"
                                         >Veja mais produtos deste tipo.</div>
                                         <div class="col-12 mt-1">
-                                          <router-link
+                                          <nuxt-link
                                             v-if="selectedFamily == 'Alimentos e bebidas'"
                                             :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
                                             class="btn btn-primary w-100"
@@ -1251,8 +1251,8 @@
                                               class="font-medium-1 align-middle"
                                               style="white-space: nowrap;"
                                             >Ver tudo</span>
-                                          </router-link>
-                                          <router-link
+                                          </nuxt-link>
+                                          <nuxt-link
                                             v-else
                                             :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
                                             class="btn btn-primary w-100"
@@ -1262,7 +1262,7 @@
                                               class="font-medium-1 align-middle"
                                               style="white-space: nowrap;"
                                             >Ver tudo</span>
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -1309,7 +1309,7 @@
                               >{{ type.type.productType }}</h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 :to="{ name: 'cotar-produto',
                                        params: {
@@ -1318,7 +1318,7 @@
                                          productTypeName: formatString(type.type.productType)
                                        }
                                      }"
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div
@@ -2280,7 +2280,7 @@ export default {
       } else return [];
     },
     goToOffers() {
-      this.$router.push({name: 'products.in.sale'})
+      this.$router.push({ path: '/produtos-em-oferta' })
     },
 
     hasFilters(type) {
@@ -2566,9 +2566,6 @@ export default {
     scrollXCollections(e) {
       this.$refs["scrollCollections"].scrollLeft += e.deltaY;
     },
-    goToMyList() {
-      this.$router.push({ name: "my-product-list" });
-    },
     scrollToTop() {
       this.$refs.generalScroll.scrollTop = 0;
       setTimeout(() => {
@@ -2585,7 +2582,7 @@ export default {
     },
     runSearch() {
       this.$router.push({
-        name: "users.search",
+        path: `/busca/${this.keyword}`,
         params: { keyword: this.keyword },
       });
     },

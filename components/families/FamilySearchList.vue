@@ -8,34 +8,22 @@
             :key="category.category_id"
             class="list-group-item py-50 px-2 rounded-0 bg-transparent border-0"
           >
-            <router-link
+            <nuxt-link
               :to="{ name: 'public-store-search', params: { keyword: keyword }, query: { category: category.category_id }}"
               class="d-block text-blue"
               :style="isSelected(category.category_id)"
-            >{{ category.category_name }} ({{ category.count }})</router-link>
+            >{{ category.category_name }} ({{ category.count }})</nuxt-link>
           </li>
           <li v-else
             :key="category.category_id"
             class="list-group-item py-50 px-2 rounded-0 bg-transparent border-0"
           >
-            <router-link
-              :to="{ name: 'users.search', params: { keyword: keyword }, query: { category: category.category_id }}"
+            <nuxt-link
+              :to="{ path: `/busca/${keyword}`, params: { keyword: keyword }, query: { category: category.category_id }}"
               class="d-block text-blue"
               :style="isSelected(category.category_id)"
-            >{{ category.category_name }} ({{ category.count }})</router-link>
+            >{{ category.category_name }} ({{ category.count }})</nuxt-link>
           </li>
-
-          <!-- <li
-            :key="category.id"
-            v-if="category[1]"
-            class="list-group-item w-50 py-50 px-2 rounded-0 bg-transparent"
-          >
-            <router-link
-              :to="{ name: 'users.search', params: { keyword: keyword }, query: { category: category[1].id }}"
-              class="d-block text-blue"
-              :style="isSelected(category[1].id)"
-            >{{ category[1].name }} ({{ category[1].count }})</router-link>
-          </li> -->
         </template>
       </ul>
     </div>
@@ -47,43 +35,43 @@
           :key="category.id"
           class="list-group-item py-50 px-2 rounded-0 bg-transparent border-0"
         >
-          <router-link
-            :to="{ name: 'users.search', params: { keyword: keyword }, query: { category: category[0].id }}"
+          <nuxt-link
+            :to="{ path: `/busca/${keyword}`, params: { keyword: keyword }, query: { category: category[0].id }}"
             class="d-block text-blue"
             :style="isSelected(category[0].id)"
-          >{{ category[0].name }} ({{ category[0].count }})</router-link>
+          >{{ category[0].name }} ({{ category[0].count }})</nuxt-link>
         </li>
         <li
           :key="category.id"
           v-if="category[1] && !storeSearch"
           class="list-group-item w-50 py-50 px-2 rounded-0 bg-transparent"
         >
-          <router-link
-            :to="{ name: 'users.search', params: { keyword: keyword }, query: { category: category[1].id }}"
+          <nuxt-link
+            :to="{ path: `/busca/${keyword}`, params: { keyword: keyword }, query: { category: category[1].id }}"
             class="d-block text-blue"
             :style="isSelected(category[1].id)"
-          >{{ category[1].name }} ({{ category[1].count }})</router-link>
+          >{{ category[1].name }} ({{ category[1].count }})</nuxt-link>
         </li>
         <li v-if="storeSearch"
           :key="category.id"
           class="list-group-item py-50 px-2 rounded-0 bg-transparent border-0"
         >
-          <router-link
+          <nuxt-link
             :to="{ name: 'public-store-search', params: { keyword: keyword }, query: { category: category[0].id }}"
             class="d-block text-blue"
             :style="isSelected(category[0].id)"
-          >{{ category[0].name }} ({{ category[0].count }})</router-link>
+          >{{ category[0].name }} ({{ category[0].count }})</nuxt-link>
         </li>
         <li
           :key="category.id"
           v-if="category[1] && !storeSearch"
           class="list-group-item w-50 py-50 px-2 rounded-0 bg-transparent"
         >
-          <router-link
+          <nuxt-link
             :to="{ name: 'public-store-search', params: { keyword: keyword }, query: { category: category[1].id }}"
             class="d-block text-blue"
             :style="isSelected(category[1].id)"
-          >{{ category[1].name }} ({{ category[1].count }})</router-link>
+          >{{ category[1].name }} ({{ category[1].count }})</nuxt-link>
         </li>
       </template>
     </ul>

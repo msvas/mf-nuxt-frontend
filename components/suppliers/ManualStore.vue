@@ -450,7 +450,7 @@
                               </h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{
                                   name: 'public-store-family',
@@ -460,9 +460,9 @@
                                   },
                                 }"
                                 style="color: blue"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
-                              <router-link
+                              <nuxt-link
                                 v-else
                                 :to="{
                                   name: 'public-store-family',
@@ -472,7 +472,7 @@
                                   },
                                 }"
                                 style="color: blue"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
                             </div>
                           </div>
@@ -539,7 +539,7 @@
                                     Veja mais produtos deste tipo.
                                   </div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{
                                         name: 'public-store-family',
                                         params: {
@@ -556,7 +556,7 @@
                                       <span class="font-medium-1 align-middle"
                                         >Ver tudo</span
                                       >
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -759,7 +759,7 @@
                                   href="javascript:void(0)"
                                   @click="selectedCategoryAllProducts({ family: selectedFamily, category: category.category, collection: selectedCollection })"
                                 >Ver tudo</a> -->
-                                <router-link
+                                <nuxt-link
                                   :to="{
                                     name: 'public-store-category',
                                     params: {
@@ -770,7 +770,7 @@
                                       ),
                                     },
                                   }"
-                                  >Ver tudo</router-link
+                                  >Ver tudo</nuxt-link
                                 >
                               </div>
                             </div>
@@ -848,7 +848,7 @@
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
                                           </button> -->
-                                          <router-link
+                                          <nuxt-link
                                             :to="{
                                               name: 'public-store-category',
                                               params: {
@@ -870,7 +870,7 @@
                                               class="font-medium-1 align-middle"
                                               >Ver tudo</span
                                             >
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -929,7 +929,7 @@
                               </h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 :to="{
                                   name: 'public-store-product',
                                   params: {
@@ -942,7 +942,7 @@
                                     ),
                                   },
                                 }"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
                             </div>
                           </div>
@@ -1004,7 +1004,7 @@
                                     Veja mais produtos deste tipo.
                                   </div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{
                                         name: 'public-store-product',
                                         params: {
@@ -1027,7 +1027,7 @@
                                       <span class="font-medium-1 align-middle"
                                         >Ver tudo</span
                                       >
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -1685,7 +1685,7 @@
                               </h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{
@@ -1695,9 +1695,9 @@
                                     familyName: formatString(index),
                                   },
                                 }"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-else
                                 :to="{
@@ -1707,7 +1707,7 @@
                                     familyName: formatString(index),
                                   },
                                 }"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
                             </div>
                           </div>
@@ -1767,7 +1767,7 @@
                                     Veja mais produtos deste tipo.
                                   </div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{
                                         name: 'public-store-family',
                                         params: {
@@ -1784,7 +1784,7 @@
                                       <span class="font-medium-1 align-middle"
                                         >Ver tudo</span
                                       >
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -1985,7 +1985,7 @@
                                   href="javascript:void(0)"
                                   @click="selectedCategoryAllProducts({ family: selectedFamily, category: category.category, collection: selectedCollection })"
                                 >Ver tudo</a> -->
-                                <router-link
+                                <nuxt-link
                                   class="float-right pr-1"
                                   :to="{
                                     name: 'public-store-category',
@@ -1997,7 +1997,7 @@
                                       ),
                                     },
                                   }"
-                                  >Ver tudo</router-link
+                                  >Ver tudo</nuxt-link
                                 >
                               </div>
                             </div>
@@ -2074,7 +2074,7 @@
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
                                           </button> -->
-                                          <router-link
+                                          <nuxt-link
                                             :to="{
                                               name: 'public-store-category',
                                               params: {
@@ -2096,7 +2096,7 @@
                                               class="font-medium-1 align-middle"
                                               >Ver tudo</span
                                             >
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -2146,7 +2146,7 @@
                               </h4>
                             </div>
                             <div class="col-3 col-md-3 m-0 p-0 pt-1 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 :to="{
                                   name: 'public-store-product',
@@ -2160,7 +2160,7 @@
                                     ),
                                   },
                                 }"
-                                >Ver tudo</router-link
+                                >Ver tudo</nuxt-link
                               >
                             </div>
                           </div>
@@ -2218,7 +2218,7 @@
                                     Veja mais produtos deste tipo.
                                   </div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{
                                         name: 'public-store-product',
                                         params: {
@@ -2241,7 +2241,7 @@
                                       <span class="font-medium-1 align-middle"
                                         >Ver tudo</span
                                       >
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -2655,7 +2655,7 @@ export default {
     });
     setTimeout(() => {
       if (this.supplier.user.supplierStatus != "Liberado") {
-        this.$router.push({ name: "home" });
+        this.$router.push({ path: "/" });
       }
     }, 2000);
     setTimeout(() => {

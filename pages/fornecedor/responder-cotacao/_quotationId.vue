@@ -7,9 +7,9 @@
                 <span class="float-none float-sm-right text-danger font-weight-bold font-small-3 d-block pl-3 pl-0">
                   <i class="feather icon-clock mr-50"></i> Expira em {{ remainingTime(expiringTime) }}
                 </span>
-                <router-link title="Voltar" class="d-md-none" :to="{ name: 'quotation-panel' }">
+                <nuxt-link title="Voltar" class="d-md-none" :to="{ path: '/fornecedor/cotacoes' }">
                   <i class="feather icon-arrow-left mr-1 mt-n25 float-left font-large-1"></i>
-                </router-link>
+                </nuxt-link>
                 <h6 class="m-0 font-weight-bold">
                   {{ quotation.clientName }}
                   <a href="javascript:void(0);" @click="openInfoModal()" class="font-small-2 ml-50">

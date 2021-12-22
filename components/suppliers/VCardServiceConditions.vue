@@ -8,10 +8,10 @@
           </p>
           <p class="font-weight-bold font-medium-2 my-2">{{configurationName}}</p>
           <p class="mb-0 mt-1">
-            <router-link
+            <nuxt-link
               :to="{ name: routeName }"
               class="btn btn-primary waves-effect waves-light"
-            >Definir</router-link>
+            >Definir</nuxt-link>
           </p>
         </div>
       </div>

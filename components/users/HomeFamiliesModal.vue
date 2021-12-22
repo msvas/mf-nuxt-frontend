@@ -23,9 +23,9 @@
                     <vs-chip
 
                     >
-                      <router-link style="color: black;" @click="this.open = !this.open"
+                      <nuxt-link style="color: black;" @click="this.open = !this.open"
                       :to="{ name: 'cotar-categoria', params: { familyName: formatString(index1), categoryName: formatString(index3) }}"
-                      >{{ index3 }}</router-link>
+                      >{{ index3 }}</nuxt-link>
                     </vs-chip>
                   </span>
               </span>
@@ -46,9 +46,9 @@
                   <vs-chip
 
                   >
-                    <router-link style="color: black;" @click="this.open = !this.open"
+                    <nuxt-link style="color: black;" @click="this.open = !this.open"
                       :to="{ name: 'cotar-categoria', params: { familyName: formatString(index1), categoryName: formatString(index3) }}"
-                      >{{ index3 }}</router-link>
+                      >{{ index3 }}</nuxt-link>
                   </vs-chip>
                 </span>
               </span>

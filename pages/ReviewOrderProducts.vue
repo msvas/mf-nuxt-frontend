@@ -89,6 +89,10 @@ export default {
   },
 
   created() {
+
+  },
+
+  mounted() {
     this.isLoading = true
     this.orderId = this.$route.params.orderId
     this.clearPagination()
@@ -100,9 +104,6 @@ export default {
         this.isLoading = false
       })
     })
-  },
-
-  mounted() {
     this.$root.$on('back-to-review-order', () => {
       this.leaveReview()
     })

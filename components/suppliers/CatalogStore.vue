@@ -497,16 +497,16 @@
                               >{{ index }}</h4>
                             </div>
                             <div class="pl-2 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
 
-                              >Ver tudo</router-link>
-                              <router-link
+                              >Ver tudo</nuxt-link>
+                              <nuxt-link
                                 v-else
                                 :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
 
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div
@@ -550,13 +550,13 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
                                       style="padding-left: 3px; padding-right: 3px;"
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -864,10 +864,10 @@
                                   href="javascript:void(0)"
                                   @click="selectedCategoryAllProducts({ family: selectedFamily, category: category.category, collection: selectedCollection })"
                                 >Ver tudo</a> -->
-                                <router-link
+                                <nuxt-link
                                   :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
 
-                                >Ver tudo</router-link>
+                                >Ver tudo</nuxt-link>
                               </div>
                             </div>
                             <div
@@ -928,13 +928,13 @@
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
                                           </button> -->
-                                          <router-link
+                                          <nuxt-link
                                             :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
                                             class="btn btn-primary w-100"
                                             style="padding-left: 3px; padding-right: 3px;"
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -1061,14 +1061,14 @@
                               >{{ type.type.productType }}</h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 :to="{ name: 'public-store-product',
                                        params: { supplierSlug: slug,
                                                  familyName: formatString(selectedFamily),
                                                  categoryName: formatString(selectedCategory),
                                                  productTypeName: formatString(type.type.productType) } }"
 
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div
@@ -1112,7 +1112,7 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{ name: 'public-store-product',
                                              params: { supplierSlug: slug,
                                                        familyName: formatString(selectedFamily),
@@ -1122,7 +1122,7 @@
                                       style="padding-left: 3px; padding-right: 3px;"
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -1869,18 +1869,18 @@
                               >{{ index }}</h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-if="index == 'Alimentos e bebidas'"
                                 :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
 
-                              >Ver tudo</router-link>
-                              <router-link
+                              >Ver tudo</nuxt-link>
+                              <nuxt-link
                                 class="float-right pr-1"
                                 v-else
                                 :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
 
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div class="row pl-1" :style="'margin-top: 10px;'">
@@ -1921,13 +1921,13 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{ name: 'public-store-family', params: { supplierSlug: slug, familyName: formatString(index) } }"
                                       class="btn btn-primary w-100"
                                       style="padding-left: 3px; padding-right: 3px;"
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -2247,11 +2247,11 @@
                                   href="javascript:void(0)"
                                   @click="selectedCategoryAllProducts({ family: selectedFamily, category: category.category, collection: selectedCollection })"
                                 >Ver tudo</a> -->
-                                <router-link
+                                <nuxt-link
                                   class="float-right pr-1"
                                   :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
 
-                                >Ver tudo</router-link>
+                                >Ver tudo</nuxt-link>
                               </div>
                             </div>
                             <div class="row pl-3" style="overflow-x: hidden; margin-top: 10px;">
@@ -2306,13 +2306,13 @@
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
                                           </button> -->
-                                          <router-link
+                                          <nuxt-link
                                             :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(category.category) } }"
                                             class="btn btn-primary w-100"
                                             style="padding-left: 3px; padding-right: 3px;"
                                           >
                                             <span class="font-medium-1 align-middle">Ver tudo</span>
-                                          </router-link>
+                                          </nuxt-link>
                                         </div>
                                       </div>
                                     </div>
@@ -2443,7 +2443,7 @@
                               >{{ type.type.productType }}</h4>
                             </div>
                             <div class="pl-2 m-0 p-0 pt-2 pb-1">
-                              <router-link
+                              <nuxt-link
                                 class="float-right pr-1"
                                 :to="{ name: 'public-store-product',
                                        params: { supplierSlug: slug,
@@ -2451,7 +2451,7 @@
                                                  categoryName: formatString(selectedCategory),
                                                  productTypeName: formatString(type.type.productType) } }"
 
-                              >Ver tudo</router-link>
+                              >Ver tudo</nuxt-link>
                             </div>
                           </div>
                           <div class="row pl-1" :style="'margin-top: 10px; '">
@@ -2492,7 +2492,7 @@
                                 <div class="row">
                                   <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                                   <div class="col-12 mt-1">
-                                    <router-link
+                                    <nuxt-link
                                       :to="{ name: 'public-store-product',
                                              params: { supplierSlug: slug,
                                                        familyName: formatString(selectedFamily),
@@ -2502,7 +2502,7 @@
                                       style="padding-left: 3px; padding-right: 3px;"
                                     >
                                       <span class="font-medium-1 align-middle">Ver tudo</span>
-                                    </router-link>
+                                    </nuxt-link>
                                   </div>
                                 </div>
                               </div>
@@ -3109,7 +3109,7 @@ export default {
     });
     setTimeout(() => {
       if (this.supplier.user.supplierStatus != "Liberado") {
-        this.$router.push({ name: "home" });
+        this.$router.push({ path: "/" });
       }
     }, 2000);
     setTimeout(() => {

@@ -127,7 +127,7 @@
                     Alimentos e bebidas
                 </vs-chip>
               </a>
-              <router-link
+              <nuxt-link
                 v-else-if="selectedFamily != 'Alimentos e bebidas' && family == 'Alimentos e bebidas'"
                 :to="{ name: 'suppliers-family',
                        params: {
@@ -138,13 +138,13 @@
                 <vs-chip class="chip-mf" >
                    <a> Alimentos e bebidas</a>
                 </vs-chip>
-              </router-link>
+              </nuxt-link>
               <a v-else-if="selectedFamily == family" href="javascript:void(0)" @click="resetFilter()">
                <vs-chip class="public-chip p-0 pr-1 font-small-2 font-weight-bold" style="background-color: #008567; color: white;">
                  <a class="capitalize">{{ family }}</a>
                </vs-chip>
               </a>
-              <router-link
+              <nuxt-link
                 v-else
                 :to="{ name: 'suppliers-family',
                        params: {
@@ -155,7 +155,7 @@
                 <vs-chip class="chip-mf " >
                   <a class="capitalize">{{ family }}</a>
                 </vs-chip>
-              </router-link>
+              </nuxt-link>
             </span>
           </div>
           <div style="width:150px; margin-left: 200px; margin-right: 100px;">
@@ -277,7 +277,7 @@
             <vs-chip v-if="category == selectedCategory"
                     style="flex: 0 0 auto; width: auto; background-color: #0cb695;"
                     class="public-chip text-white font-small-2 font-weight-bold p-0 pr-1" >
-              <router-link
+              <nuxt-link
                 v-if="viewType == 'product-type'"
                 :to="{ path: 'suppliers-family',
                        params: {
@@ -286,8 +286,8 @@
                 style="color: inherit;"
               >
                 <span class="capitalize">{{ selectedCategory }}</span>
-              </router-link>
-              <router-link
+              </nuxt-link>
+              <nuxt-link
                 v-else
                 :to="{ name: 'suppliers-family',
                        params: {
@@ -296,13 +296,13 @@
                 style="color: inherit;"
               >
                 <span class="capitalize">{{ selectedCategory }}</span>
-              </router-link>
+              </nuxt-link>
             </vs-chip>
             <vs-chip
               v-if="category != selectedCategory"
               class="chip-mf public-chip p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 :to="{ name: 'suppliers-category',
                        params: {
                          familyName: formatString(selectedFamily),
@@ -311,7 +311,7 @@
                 style="color: inherit;"
               >
                 <span class="capitalize">{{ category }}</span>
-              </router-link>
+              </nuxt-link>
             </vs-chip>
           </span>
           <vs-chip class="chip-mf public-chip p-0 pr-1" style="visibility: hidden;">a</vs-chip>
@@ -352,7 +352,7 @@
               v-if="index != selectedCategory"
               class="chip-mf public-chip p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 :to="{ name: 'suppliers-category',
                        params: {
                          familyName: formatString(selectedFamily),
@@ -361,7 +361,7 @@
                 style="color: inherit;"
               >
                 <span class="capitalize">{{ category }}</span>
-              </router-link>
+              </nuxt-link>
             </vs-chip>
           </span>
           <a
@@ -402,7 +402,7 @@
               style="flex: 0 0 auto; width: auto; background-color: #5ce9c6;"
               class="public-chip text-white font-small-2 font-weight-bold p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 :to="{ name: 'suppliers-category',
                        params: {
                          familyName: formatString(selectedFamily),
@@ -411,13 +411,13 @@
                 style="color: black;"
               >
                 {{ type.type.productType }}
-              </router-link>
+              </nuxt-link>
             </vs-chip>
             <vs-chip
               v-else
               class="chip-mf public-chip p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 :to="{ name: 'suppliers-product',
                        params: {
                          familyName: formatString(selectedFamily),
@@ -427,7 +427,7 @@
                 style="color: inherit;"
               >
                 {{ type.type.productType }}
-              </router-link>
+              </nuxt-link>
             </vs-chip>
           </span>
           <vs-chip class="chip-mf public-chip p-0 pr-1" style="visibility: hidden;">a</vs-chip>
@@ -703,7 +703,7 @@ export default {
       this.selectedCategory = null
       this.filteredSuppliers = this.allAutoSuppliers
       this.btnSelected = false
-      this.$router.push({ name: 'suppliers' })
+      this.$router.push({ path: '/fornecedores' })
     },
     selectPage() {
       if(this.$route.query.keyword) {
@@ -923,8 +923,9 @@ export default {
     runSearch() {
      if (this.keyword != "") {
         this.$router.push({
-          name: "users.search",
-          params: { keyword: this.keyword, tab: 1 },
+          path: `/busca/${this.keyword}`,
+          params: { keyword: this.keyword },
+          query: { tab: 1 },
         });
       }
     },
@@ -987,9 +988,6 @@ export default {
       var aux = object.map(key => ({ original: key, encoded: this.formatString(key) }))
       var found = aux.find(obj => obj.encoded == encoded)
       return found
-    },
-    goToSalesPage() {
-      this.$router.push({ name: "products.in.sale" });
     },
     clearSearch() {
       this.keyword = ''

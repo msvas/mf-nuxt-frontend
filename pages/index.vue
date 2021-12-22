@@ -134,9 +134,9 @@
                   >Ofertas do dia</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
-                  <router-link
-                    :to="{ name: 'products.in.sale' }"
-                  >Ver tudo</router-link>
+                  <nuxt-link
+                    :to="{ path: '/produtos-em-oferta' }"
+                  >Ver tudo</nuxt-link>
                 </div>
               </div>
             <div
@@ -203,15 +203,15 @@
                   >{{ index }}</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
-                  <router-link
+                  <nuxt-link
                     v-if="index == 'Alimentos e bebidas'"
                     :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                  >Ver tudo</router-link>
-                  <router-link
+                  >Ver tudo</nuxt-link>
+                  <nuxt-link
                     class="float-right pr-1"
                     v-else
                     :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
-                  >Ver tudo</router-link>
+                  >Ver tudo</nuxt-link>
                 </div>
               </div>
               <div
@@ -247,7 +247,7 @@
                     <div class="row">
                       <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                       <div class="col-12 mt-1">
-                        <router-link
+                        <nuxt-link
                           v-if="index == 'Alimentos e bebidas'"
                           :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                           class="btn btn-primary w-100"
@@ -257,8 +257,8 @@
                             class="font-medium-1 align-middle"
                             style="white-space: nowrap;"
                           >Ver tudo</span>
-                        </router-link>
-                        <router-link
+                        </nuxt-link>
+                        <nuxt-link
                           v-else
                           :to="{ name: 'cotar-familia', params: { familyName: formatString(index) } }"
                           class="btn btn-primary w-100"
@@ -268,7 +268,7 @@
                             class="font-medium-1 align-middle"
                             style="white-space: nowrap;"
                           >Ver tudo</span>
-                        </router-link>
+                        </nuxt-link>
                       </div>
                     </div>
                   </div>
@@ -288,9 +288,9 @@
                   >Navegue por fornecedor</h4>
                 </div>
                 <div class="m-0 pl-2 pt-2 pb-1 align-self-center">
-                  <router-link
-                    :to="{ name: 'suppliers'}"
-                  >Ver tudo</router-link>
+                  <nuxt-link
+                    :to="{ path: '/fornecedores'}"
+                  >Ver tudo</nuxt-link>
                 </div>
               </div>
             <div
@@ -307,15 +307,15 @@
                   >
                     <span>Tem muito mais fornecedores para comprar.</span>
                     <button
-                      @click="$router.push({name: 'suppliers'})"
+                      @click="$router.push({ path: '/fornecedores' })"
                       type="button"
                       class="btn btn-primary"
                     >
-                      <router-link
+                      <nuxt-link
                         style="color: white; white-space: nowrap;"
-                        :to="{ name: 'suppliers' }"
+                        :to="{ path: '/fornecedores' }"
                         class="font-medium-1 align-middle"
-                      >Ver tudo</router-link>
+                      >Ver tudo</nuxt-link>
                     </button>
                   </div>
                 </div>
@@ -349,20 +349,20 @@
             >
               <div style="display: flex; flex-direction: column">
                 <span>Veja quais fornecedores já temos cadastrados</span>
-                <router-link
+                <nuxt-link
                   :to="{ path: '/fornecedores-ativos' }"
                   style="text-decoration-line: underline;"
-                >Ver todos os fornecedores</router-link>
+                >Ver todos os fornecedores</nuxt-link>
               </div>
               <div style="display: flex; flex-direction: column">
                 <span>
                   Veja a união dos produtos das distribuidoras em um só
                   catálogo
                 </span>
-                <router-link
+                <nuxt-link
                   :to="{ path: '/todos-os-produtos' }"
                   style="text-decoration-line: underline;"
-                >Ver todos os produtos</router-link>
+                >Ver todos os produtos</nuxt-link>
               </div>
             </div>
           </div>
@@ -469,36 +469,36 @@ export default {
     if (this.$route.query.loadingProducts == "true")
       this.showLoadingAlert = true;
 
-    // this.getAllCatalog().then(() => {
-    //   for (let family in this.catalog) {
-    //     this.loadFamilyProducts(family)
-    //   }
-    //   this.showLoadingAlert = false
-    // });
-    //
-    // SuppliersService.getAuto(this.params, 10).then((response) => {
-    //   this.allAutoSuppliers = response.data;
-    //   this.filteredSuppliers = this.allAutoSuppliers;
-    //   //this.createOptionsSctructures(this.allAutoSuppliers);
-    // });
-    // SuppliersService.getRandomSaleProducts().then((response2) => {
-    //   this.randomSaleProducts = response2.data;
-    //   this.filteredRandomSaleProducts = this.randomSaleProducts;
-    // });
+    this.getAllCatalog().then(() => {
+      for (let family in this.catalog) {
+        this.loadFamilyProducts(family)
+      }
+      this.showLoadingAlert = false
+    });
+
+    SuppliersService.getAuto(this.params, 10).then((response) => {
+      this.allAutoSuppliers = response.data;
+      this.filteredSuppliers = this.allAutoSuppliers;
+      //this.createOptionsSctructures(this.allAutoSuppliers);
+    });
+    SuppliersService.getRandomSaleProducts().then((response2) => {
+      this.randomSaleProducts = response2.data;
+      this.filteredRandomSaleProducts = this.randomSaleProducts;
+    });
 
     this.isMobile();
-    // if (this.$auth.check()) {
-    //   if (
-    //     this.$auth.user().isSupplier &&
-    //     this.$auth.user().supplierStatus == "Não liberado"
-    //   )
-    //     this.$router.push({ name: "products-empty" });
-    //   else if (
-    //     this.$auth.user().isSupplier &&
-    //     this.$auth.user().supplierStatus == "Liberado"
-    //   )
-    //     this.$router.push({ name: "quotation-panel" });
-    // }
+    if(this.$auth.loggedIn) {
+      if (
+        this.$auth.user.isSupplier &&
+        this.$auth.user.supplierStatus == "Não liberado"
+      )
+        this.$router.push({ path: "/fornecedor/incluir-produtos" });
+      else if (
+        this.$auth.user.isSupplier &&
+        this.$auth.user.supplierStatus == "Liberado"
+      )
+        this.$router.push({ path: "/fornecedor/cotacoes" });
+    }
   },
   computed: {
     ...mapState("navigationFilters", ["cep", "region", "supplierServes"]),
@@ -557,23 +557,11 @@ export default {
     runSearch() {
       if (this.keyword != "") {
         this.$router.push({
-          name: "users.search",
-          params: { keyword: this.keyword, tab: 0 },
+          path: `/busca/${this.keyword}`,
+          params: { keyword: this.keyword },
+          query: { tab: 0 }
         });
       }
-    },
-    runSupplierSearch() {
-      this.$router.push({
-        name: "suppliers",
-        query: { keyword: this.keyword2 },
-      });
-    },
-    toQuotePanel() {
-      this.quoteLoading = true;
-      setTimeout(() => {
-        this.quoteLoading = false;
-        this.$router.push({ name: "users.orderPanel" });
-      }, 300);
     },
     filterSupplierByFamily(familyName) {
       this.filteredSuppliers = this.allAutoSuppliers
@@ -640,7 +628,7 @@ export default {
       return this.normalizeString(string).replace(/\s+/g, "-").replace(".", "");
     },
     goToSalesPage() {
-      this.$router.push({ name: "products.in.sale" });
+      this.$router.push({ path: "/produtos-em-oferta" });
     },
     loadFamilyProducts(family) {
       this.getCatalogByFamily({ family: family }).then((response) => {
@@ -680,7 +668,7 @@ export default {
       }
     },
     goToOffers() {
-      this.$router.push({ name: "products.in.sale" });
+      this.$router.push({ path: "/produtos-em-oferta" });
     },
     getFamilyIcon(family) {
       switch(family) {

@@ -511,7 +511,7 @@
                 class="chip-mf-local public-chip p-0 pr-1"
                 style="border: 1px solid rgb(92, 233, 198); margin-right: 10px;"
               >
-                <router-link
+                <nuxt-link
                   :to="{ name: 'public-store-product',
                          params: {
                            supplierSlug: $route.params.supplierSlug,
@@ -521,7 +521,7 @@
                    style="color: black;"
                 >
                   {{ type.text }}
-                </router-link>
+                </nuxt-link>
               </vs-chip>
             </span>
           </div>

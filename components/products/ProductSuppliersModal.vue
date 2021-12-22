@@ -44,7 +44,7 @@
           <td
            style="border: 1px solid #b5b9bd; border-radius: 10px;"
           >
-            <router-link
+            <nuxt-link
               :to="{ name: 'public-store-product-page',
                      params: { supplierSlug: supplier.nameForUrl,
                                familyName: formatString(product.familyName),
@@ -89,7 +89,7 @@
                   Mín. {{ formatPrice(supplier.minimumOrderValue) }}
                 </div>
               </div>
-            </router-link>
+            </nuxt-link>
           </td>
         </tr>
       </thead>
@@ -118,7 +118,7 @@
            style="border: 1px solid #b5b9bd; border-radius: 10px;"
            colspan="2"
           >
-            <router-link
+            <nuxt-link
               :to="{ name: 'public-store-product',
                      params: {
                        supplierSlug: supplier2.nameForUrl,
@@ -157,7 +157,7 @@
                   Mín. {{ formatPrice(supplier2.minimumOrderValue) }}
                 </div>
               </div>
-            </router-link>
+            </nuxt-link>
           </td>
         </tr>
       </thead>
@@ -209,9 +209,6 @@ export default {
     },
   },
   methods: {
-    goToCover() {
-      this.$router.push({ name: 'cover', query: { originSupplier: this.supplierUserName, originCatalog: true } })
-    },
     buttonClass(id) {
       if(!this.productCartIsEmpty && this.productIsOnCart(id))
         return "position-absolute w-100 rounded-bottom bg-primary collapse show"

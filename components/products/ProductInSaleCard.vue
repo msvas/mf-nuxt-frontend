@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'public-store', params: { supplierSlug: product.supplierProductExpeditions[0].supplier.name_for_url }}" class="row" v-if="expeditions.length">
+  <nuxt-link :to="{ name: 'public-store', params: { supplierSlug: product.supplierProductExpeditions[0].supplier.name_for_url }}" class="row" v-if="expeditions.length">
     <div  class="col-12 pt-1">
       <a
         href="javascript:void(0);"
@@ -129,7 +129,7 @@
        </div>
      </div>
    </div>
- </router-link>
+ </nuxt-link>
 </template>
 
 <style>
@@ -189,6 +189,9 @@ export default {
     }
   },
   created() {
+
+  },
+  mounted() {
     for(var i = 0; i < this.expeditions.length; i++) {
       this.discountValid.push({ id: this.expeditions[i].id, values: [false, false] })
       var found = this.storeProducts.find(obj => this.expeditions[i].id == obj.id)
@@ -196,8 +199,6 @@ export default {
         this.priceInput[this.expeditions[i].id] = String(found.quantity).replace('.', ',')
       }
     }
-  },
-  mounted() {
     this.$nextTick(function () {
       this.$emit('all-mounted')
     })

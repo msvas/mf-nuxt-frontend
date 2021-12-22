@@ -119,7 +119,7 @@
                   </a>
                 </vs-chip>
                 <vs-chip v-if="index != selectedFamily" class="chip-mf public-chip p-0 pr-1">
-                  <router-link
+                  <nuxt-link
                     v-if="index == 'Alimentos e bebidas'"
                     :to="{
                       name: 'public-store-family',
@@ -132,8 +132,8 @@
                   >
                     <span v-html="getFamilyIcon(index)"></span>
                     {{ index }}
-                  </router-link>
-                  <router-link
+                  </nuxt-link>
+                  <nuxt-link
                     v-else
                     :to="{
                       name: 'public-store-family',
@@ -146,7 +146,7 @@
                   >
                     <span v-html="getFamilyIcon(index)"></span>
                     {{ index }}
-                  </router-link>
+                  </nuxt-link>
                 </vs-chip>
               </span>
             </div>
@@ -295,7 +295,7 @@
                   <li>Que tal usar menos palavras?</li>
                   <li>
                     Você pode
-                    <router-link
+                    <nuxt-link
                       :to="{
                           name: 'public-store',
                           params: {
@@ -303,7 +303,7 @@
                           },
                         }"
                       style="color: 0391D1; text-decoration: underline;"
-                    >ir para o início</router-link>para encontrar o que procura
+                    >ir para o início</nuxt-link>para encontrar o que procura
                   </li>
                 </ul>
               </div>
@@ -331,16 +331,16 @@
                         <div class="row">
                           <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                           <div class="col-12 mt-1">
-                            <router-link
+                            <nuxt-link
                               :to="{
-                                  name: 'users.search',
+                                  path: `/busca/${this.keyword}`,
                                   params: { keyword: this.keyword },
                                 }"
                               class="btn btn-primary w-100"
                               style="padding-left: 3px; padding-right: 3px;"
                             >
                               <span class="font-medium-1 align-middle">Ver tudo</span>
-                            </router-link>
+                            </nuxt-link>
                           </div>
                         </div>
                       </div>
@@ -407,13 +407,13 @@
               <li>Que tal usar menos palavras?</li>
               <li>
                 Você pode
-                <router-link
+                <nuxt-link
                   :to="{
                       name: 'public-store',
                       params: { supplierSlug: this.$route.params.supplierSlug },
                     }"
                   style="color: 0391D1; text-decoration: underline;"
-                >ir para o início</router-link>para encontrar o que procura
+                >ir para o início</nuxt-link>para encontrar o que procura
               </li>
             </ul>
           </div>
@@ -676,7 +676,7 @@
               style="margin-left: 5px; margin-top: 5px;"
               class="font-small-2 font-weight-bold p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 :to="{
                   name: 'public-store-family',
                   params: {
@@ -685,7 +685,7 @@
                   },
                 }"
                 style="color: inherit;"
-              >{{ selectedCollection }}</router-link>
+              >{{ selectedCollection }}</nuxt-link>
             </span>
             <div v-if="selectedCollection" style="border-right: 1px solid DarkGrey; margin: 0 5px;"></div>
             <span
@@ -713,7 +713,7 @@
                 >{{ selectedCategory }}</a>
               </vs-chip>
               <vs-chip v-if="index != selectedCategory" class="chip-mf public-chip p-0 pr-1">
-                <router-link
+                <nuxt-link
                   :to="{
                     name: 'public-store-category',
                     params: {
@@ -723,7 +723,7 @@
                     },
                   }"
                   style="color: inherit;"
-                >{{ index }}</router-link>
+                >{{ index }}</nuxt-link>
               </vs-chip>
             </span>
             <vs-chip class="chip-mf public-chip p-0 pr-1" style="visibility: hidden;">a</vs-chip>
@@ -749,7 +749,7 @@
               style="flex: 0 0 auto; width: auto;"
             >
               <vs-chip v-if="index != selectedCategory" class="chip-mf public-chip p-0 pr-1">
-                <router-link
+                <nuxt-link
                   :to="{
                     name: 'public-store-category',
                     params: {
@@ -759,7 +759,7 @@
                     },
                   }"
                   style="color: inherit;"
-                >{{ index }}</router-link>
+                >{{ index }}</nuxt-link>
               </vs-chip>
             </span>
           </div>
@@ -792,14 +792,14 @@
           >
             <div class="col-8 m-0 pr-0 pt-1 pl-1" style="padding-bottom: 8px;">
               <h5 class style="margin: 0;">
-                <!-- <router-link
+                <!-- <nuxt-link
                       v-if="selectedFamily != 'Alimentos e bebidas'"
                       style="color: black;"
                       :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(selectedCategory) } }"
                     >
                       <i class="feather icon-chevron-left"></i>
-                </router-link>-->
-                <router-link
+                </nuxt-link>-->
+                <nuxt-link
                   style="color: black;"
                   :to="{
                     name: 'public-store-category',
@@ -811,7 +811,7 @@
                   }"
                 >
                   <i class="feather icon-chevron-left"></i>
-                </router-link>
+                </nuxt-link>
                 {{ selectedProductType.productType }}
               </h5>
             </div>
@@ -929,7 +929,7 @@
                     <li>Que tal usar menos palavras?</li>
                     <li>
                       Você pode
-                      <router-link
+                      <nuxt-link
                         :to="{
                             name: 'public-store',
                             params: {
@@ -937,7 +937,7 @@
                             },
                           }"
                         style="color: 0391D1; text-decoration: underline;"
-                      >ir para o início</router-link>para encontrar o que procura
+                      >ir para o início</nuxt-link>para encontrar o que procura
                     </li>
                   </ul>
                 </div>
@@ -965,16 +965,16 @@
                           <div class="row">
                             <div class="col-12 text-center">Veja mais produtos deste tipo.</div>
                             <div class="col-12 mt-1">
-                              <router-link
+                              <nuxt-link
                                 :to="{
-                                    name: 'users.search',
+                                    path: `/busca/${this.keyword}`,
                                     params: { keyword: this.keyword },
                                   }"
                                 class="btn btn-primary w-100"
                                 style="padding-left: 3px; padding-right: 3px;"
                               >
                                 <span class="font-medium-1 align-middle">Ver tudo</span>
-                              </router-link>
+                              </nuxt-link>
                             </div>
                           </div>
                         </div>
@@ -1013,13 +1013,13 @@
                 <li>Que tal usar menos palavras?</li>
                 <li>
                   Você pode
-                  <router-link
+                  <nuxt-link
                     :to="{
                         name: 'public-store',
                         params: { supplierSlug: this.$route.params.supplierSlug },
                       }"
                     style="color: 0391D1; text-decoration: underline;"
-                  >ir para o início</router-link>para encontrar o que procura
+                  >ir para o início</nuxt-link>para encontrar o que procura
                 </li>
               </ul>
             </div>

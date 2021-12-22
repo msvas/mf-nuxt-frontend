@@ -22,12 +22,12 @@
           <div class="col-md-9 pb-5 pb-md-0" :style="this.mobileBrowser ? '' : 'padding-right: 20px;' ">
             <div class="card shadow-sm mt-0" :style="mobileBrowser ? '' : 'position: sticky; top: 0px; z-index: 800;'">
               <div class="card-body p-1">
-                <router-link :to="{ name: 'public-store', params: { supplierSlug: $route.params.supplierSlug } }">
+                <nuxt-link :to="{ name: 'public-store', params: { supplierSlug: $route.params.supplierSlug } }">
                   <span class="font-weight-bold d-block d-md-inline">
                     <i class="feather icon-chevron-left mr-25"></i>
                     Voltar à loja
                   </span>
-                </router-link>
+                </nuxt-link>
                 <div style="padding-top: 10px;">
                   <h5 class="d-block d-md-inline mb-0">
                     Confira se está tudo certo
@@ -305,7 +305,7 @@ export default {
     };
   },
 
-  created() {
+  mounted() {
     this.isMobile()
     this.isLoading = true
     this.clearPagination()
@@ -331,7 +331,7 @@ export default {
         this.setStoreTotal(0)
         this.setStoreCartSupplier(null)
         this.isLoading = false
-        this.$router.push({ name: 'orders', query: { directId: this.orderId } })
+        this.$router.push({ path: '/pedidos', query: { directId: this.orderId } })
       })
     }
   },

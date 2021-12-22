@@ -1,6 +1,6 @@
 <template>
   <div class="row" :style="$device.isMobile ? 'margin:5px;' : 'margin: 15px;' ">
-    <router-link style="color: black" :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl }}">
+    <nuxt-link style="color: black" :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl }}">
       <div
         class="card m-2"
         style="
@@ -38,15 +38,15 @@
             <span v-if="supplier.minimumOrderValue" style="font-size: 0.8rem">Min. R$ {{ supplier.minimumOrderValue.slice(0, -2) }}</span>
             </div>
             <div style="display: flex; flex-direction: row; justify-content:space-between; align-items: center;">
-              <router-link style="text-decoration: underline;" :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl }}">
+              <nuxt-link style="text-decoration: underline;" :to="{ name: 'public-store', params: { supplierSlug: supplier.nameForUrl }}">
                 Acessar loja
-              </router-link>
+              </nuxt-link>
               <vs-chip v-if="this.offersPerSupplier > 0" style="color: white; background: indianred">{{ this.offersPerSupplier }} Ofertas</vs-chip>
             </div>
           </div>
         </div>
       </div>
-    </router-link>
+    </nuxt-link>
   </div>
 </template>
 <style>

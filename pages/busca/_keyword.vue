@@ -255,10 +255,10 @@
               style="margin-left: 5px; align-self: center;      white-space: nowrap;"
               class="public-chip text-black font-small-2 font-weight-bold p-0 pr-1"
             >
-              <router-link
+              <nuxt-link
                 style="color: black;"
                 :to="{ name: 'cotar-familia', params: { familyName: formatString(selectedFamily) } }"
-              >{{ selectedCollection }}</router-link>
+              >{{ selectedCollection }}</nuxt-link>
             </a>
             <div v-if="selectedCollection" style="border-right: 1px solid DarkGrey; margin: 0 5px"></div>
             <span
@@ -286,10 +286,10 @@
                 >{{ selectedCategory }}</a>
               </vs-chip>
               <vs-chip v-if="index != selectedCategory" class="chip-mf public-chip p-0 pr-1">
-                <router-link
+                <nuxt-link
                   style="color: inherit;"
                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(index) } }"
-                >{{ index }}</router-link>
+                >{{ index }}</nuxt-link>
               </vs-chip>
             </span>
             <vs-chip class="chip-mf public-chip p-0 pr-1" style="visibility: hidden">a</vs-chip>
@@ -320,10 +320,10 @@
               style="flex: 0 0 auto; width: auto"
             >
               <vs-chip v-if="index != selectedCategory" class="chip-mf public-chip p-0 pr-1">
-                <router-link
+                <nuxt-link
                   style="color: inherit;"
                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(index) } }"
-                >{{ index }}</router-link>
+                >{{ index }}</nuxt-link>
               </vs-chip>
             </span>
           </div>
@@ -362,20 +362,20 @@
           >
             <div class="col-8 m-0 pr-0 pt-1 pl-1" style="padding-bottom: 8px">
               <h5 class style="margin: 0">
-                <router-link
+                <nuxt-link
                   v-if="selectedFamily != 'Alimentos e bebidas'"
                   style="color: black"
                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(selectedCategory) } }"
                 >
                   <i class="feather icon-chevron-left"></i>
-                </router-link>
-                <router-link
+                </nuxt-link>
+                <nuxt-link
                   v-else
                   style="color: black"
                   :to="{ name: 'cotar-categoria', params: { familyName: formatString(selectedFamily), categoryName: formatString(selectedCategory) } }"
                 >
                   <i class="feather icon-chevron-left"></i>
-                </router-link>
+                </nuxt-link>
                 {{ selectedProductType.productType }}
               </h5>
             </div>
@@ -455,7 +455,7 @@
                 <i class="ficon feather icon-home" />
               </button>
             </a>
-            <router-link
+            <nuxt-link
               :to="{
                   name: 'cotar-familia',
                   params: {
@@ -466,8 +466,8 @@
               <vs-chip class="chip-mf public-chip p-0 pr-1">
                 <span style="margin-right: 4px;" v-html="getFamilyIcon('Alimentos e bebidas')"></span>Alimentos e bebidas
               </vs-chip>
-            </router-link>
-            <router-link
+            </nuxt-link>
+            <nuxt-link
               :to="{
                   name: 'cotar-familia',
                   params: {
@@ -478,8 +478,8 @@
               <vs-chip class="chip-mf public-chip p-0 pr-1">
                 <span style="margin-right: 4px;" v-html="getFamilyIcon('Embalagens')"></span>Embalagens
               </vs-chip>
-            </router-link>
-            <router-link
+            </nuxt-link>
+            <nuxt-link
               :to="{
                   name: 'cotar-familia',
                   params: {
@@ -490,8 +490,8 @@
               <vs-chip class="chip-mf public-chip p-0 pr-1">
                 <span style="margin-right: 4px;" v-html="getFamilyIcon('Limpeza')"></span>Limpeza
               </vs-chip>
-            </router-link>
-            <router-link
+            </nuxt-link>
+            <nuxt-link
               :to="{
                   name: 'cotar-familia',
                   params: {
@@ -502,7 +502,7 @@
               <vs-chip class="chip-mf public-chip p-0 pr-1">
                 <span style="margin-right: 4px;" v-html="getFamilyIcon('Utensílios')"></span>Utensílios
               </vs-chip>
-            </router-link>
+            </nuxt-link>
           </div>
           <div class="p-1">
             <div class="m-0 pl-0 pr-1" style="flex: 0 0 300px; margin-left: auto !important">
@@ -642,10 +642,10 @@
                     <li>Que tal usar menos palavras?</li>
                     <li>
                       Você pode
-                      <router-link
-                        :to="{ name: 'home' }"
+                      <nuxt-link
+                        :to="{ path: '/' }"
                         style="color: 0391D1; text-decoration: underline;"
-                      >navegar pelo site</router-link>para encontrar o que procura
+                      >navegar pelo site</nuxt-link>para encontrar o que procura
                     </li>
                   </ul>
                 </div>
@@ -696,10 +696,10 @@
                     <li>Que tal usar menos palavras?</li>
                     <li>
                       Você pode
-                      <router-link
-                        :to="{ name: 'home' }"
+                      <nuxt-link
+                        :to="{ path: '/' }"
                         style="color: 0391D1; text-decoration: underline;"
-                      >navegar pelo site</router-link>para encontrar o que procura
+                      >navegar pelo site</nuxt-link>para encontrar o que procura
                     </li>
                   </ul>
                 </div>
@@ -820,7 +820,7 @@ export default {
 
   },
   mounted() {
-    this.tab = this.$route.params.tab
+    this.tab = this.$route.query.tab
     this.getAllCatalog()
     this.clearProducts();
     this.userSelectedPage(1);
@@ -1037,13 +1037,14 @@ export default {
       }
     },
     goToHome() {
-      this.$router.push({ name: "home" });
+      this.$router.push({ path: "/" });
     },
     runSearch() {
       if (this.keyword != "") {
         this.$router.push({
-          name: "users.search",
-          params: { keyword: this.keyword, tab: this.tab },
+          path: `/busca/${this.keyword}`,
+          params: { keyword: this.keyword },
+          query: { tab: this.tab },
         });
       }
     },

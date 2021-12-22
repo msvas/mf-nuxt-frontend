@@ -314,12 +314,12 @@
               >
                 <div class="col-8 m-0 pr-0 pt-1 pl-1" style="padding-bottom: 8px;">
                   <h5 class style="margin: 0;">
-                    <router-link
+                    <nuxt-link
                       style="color: black;"
                       :to="{ name: 'public-store-category', params: { supplierSlug: slug, familyName: formatString(selectedFamily), categoryName: formatString(selectedCategory) } }"
                     >
                       <i class="feather icon-chevron-left"></i>
-                    </router-link>
+                    </nuxt-link>
                     {{ selectedProductType.productType }}
                   </h5>
                 </div>
@@ -774,6 +774,10 @@ export default {
   },
 
   created() {
+
+  },
+
+  mounted() {
     this.isMobile()
     this.isLoading = true
     this.slug = this.$route.params.supplierSlug
@@ -806,13 +810,10 @@ export default {
         //this.startStore();
         this.getRouterParamsToOptions()
       });
-    });
-  },
-
-  mounted() {
+    })
     setTimeout(() => {
       if (this.supplier.user.supplierStatus != "Liberado") {
-        this.$router.push({ name: "home" });
+        this.$router.push({ path: "/" });
       }
       this.getRouterParamsToOptions()
       this.selectedProductType = this.createProductTypeStructure(this.product)

@@ -5,7 +5,7 @@
     <meta itemprop="productID" :content="product.id" />
     <meta itemprop="inProductGroupWithID" :content="product.productTypeId" />
     <div  class="col-12 pt-1">
-      <router-link
+      <nuxt-link
         :to="{ name: 'public-store-product-page',
                params: { supplierSlug: this.$route.params.supplierSlug,
                          familyName: formatString(product.familyName),
@@ -22,11 +22,11 @@
         <div class="badge badge-pill badge-md bg-mf-laranja" style="position: absolute; bottom: 5px; left: 10px;">
           <b>{{ quantifiers(true) == 'Und. 1 und' ? 'Und' :  quantifiers(true) }}</b>
         </div>
-      </router-link>
+      </nuxt-link>
       <product-photo-modal :product="product" :openPopup="openPhoto" @update-modal="updateModal" />
     </div>
     <div itemprop="name" class="col-12">
-      <router-link
+      <nuxt-link
         :to="{ name: 'public-store-product-page',
                params: { supplierSlug: this.$route.params.supplierSlug,
                          familyName: formatString(product.familyName),
@@ -50,10 +50,10 @@
         <div class="col-12 p-0 pb-1 font-small-3">
           <v-new-secondary-characteristics :product="product" />
         </div>
-      </router-link>
+      </nuxt-link>
     </div>
     <div class="col-12 pb-0 mb-0">
-      <router-link
+      <nuxt-link
         :to="{ name: 'public-store-product-page',
                params: { supplierSlug: this.$route.params.supplierSlug,
                          familyName: formatString(product.familyName),
@@ -168,7 +168,7 @@
            </div>
          </div>
        </div>
-     </router-link>
+     </nuxt-link>
    </div>
    <div class="col-12 p-0 pt-0 mt-0 pb-1" vs-type="flex" vs-justify="center" vs-align="center" v-if="!samplePage">
      <div

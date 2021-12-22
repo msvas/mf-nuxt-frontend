@@ -46,7 +46,7 @@
   >
     <div class="bg-transparent rounded-bottom" style="padding: 0 10px 10px 10px;">
       <div class="row" v-if="!product.automaticSuppliers.length && product.manualSuppliers.length == 1">
-        <router-link
+        <nuxt-link
           :to="{ name: 'public-store-product',
                  params: {
                    supplierSlug: product.manualSuppliers[0].nameForUrl,
@@ -77,7 +77,7 @@
               {{ product.manualSuppliers[0].name }}
             </vs-button>
           </div>
-        </router-link>
+        </nuxt-link>
       </div>
       <div class="row" v-else-if="!product.automaticSuppliers.length && product.manualSuppliers.length > 1">
         <a @click="updateSuppliersModal(true)"
@@ -93,7 +93,7 @@
         </a>
       </div>
       <div class="row" v-else-if="product.automaticSuppliers.length == 1 && pricedExpeditions(product.automaticSuppliers).length == 1 && !product.manualSuppliers.length">
-        <router-link
+        <nuxt-link
           :to="{ name: 'public-store-product-page',
                  params: { supplierSlug: product.automaticSuppliers[0].nameForUrl,
                            familyName: formatString(product.familyName),
@@ -140,10 +140,10 @@
               {{ product.automaticSuppliers[0].name }}
             </vs-button>
           </div>
-        </router-link>
+        </nuxt-link>
       </div>
       <div class="row" v-else-if="product.automaticSuppliers.length == 1 && pricedExpeditions(product.automaticSuppliers).length > 1 && !product.manualSuppliers.length">
-        <router-link
+        <nuxt-link
           :to="{ name: 'public-store-product-page',
                  params: { supplierSlug: product.automaticSuppliers[0].nameForUrl,
                            familyName: formatString(product.familyName),
@@ -187,7 +187,7 @@
               {{ product.automaticSuppliers[0].name }}
             </vs-button>
           </div>
-        </router-link>
+        </nuxt-link>
       </div>
       <div class="row" v-else-if="product.automaticSuppliers.length >= 1 && product.manualSuppliers.length >= 1">
         <a @click="updateSuppliersModal(true)"
@@ -604,12 +604,6 @@ export default {
           document.getElementById('cepInput' + this.product.id).focus()
         }, 500)
       }
-    },
-    openQuotation(quoteId) {
-      this.$router.push({
-        name: "users.quotePanel",
-        params: { quoteId: quoteId },
-      });
     },
     buttonClass(id) {
       if (!this.productCartIsEmpty && this.productIsOnCartWithSupplier({ productId: id, supplierId: this.manualStoreId }))

@@ -5,9 +5,11 @@ const SET_TAGS = 'SET_TAGS'
 
 export default {
   namespaced: true,
-  state: {
-    tagsDialogShow: false,
-    tags: []
+  state() {
+    return {
+      tagsDialogShow: false,
+      tags: []
+    }
   },
   actions: {
     showTagsDialog: ({ commit }) => {

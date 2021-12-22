@@ -4,8 +4,10 @@ const SET_QUOTATION_PRICES = 'SET_QUOTATION_PRICES'
 
 export default {
   namespaced: true,
-  state: {
-    quotationPrices: [],
+  state() {
+    return {
+      quotationPrices: [],
+    }
   },
   actions: {
     getPricesByQuotation: async ({ commit }, quotationId) => {

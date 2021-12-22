@@ -5,9 +5,11 @@ const SET_PROPERTIES = 'SET_PROPERTIES'
 
 export default {
   namespaced: true,
-  state: {
-    propertiesDialogShow: false,
-    properties: []
+  state() {
+    return {
+      propertiesDialogShow: false,
+      properties: []
+    }
   },
   actions: {
     showPropertiesDialog: ({ commit }) => {

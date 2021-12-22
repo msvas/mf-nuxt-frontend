@@ -5,8 +5,10 @@ const SET_SUPPLIER_PRODUCT_EXPEDITION = 'SET_SUPPLIER_PRODUCT_EXPEDITION'
 
 export default {
   namespaced: true,
-  state: {
-    supplierProductExpeditions: []
+  state() {
+    return {
+      supplierProductExpeditions: []
+    }
   },
   actions: {
     addSupplierProductExpedition: ({ commit }, object) => {

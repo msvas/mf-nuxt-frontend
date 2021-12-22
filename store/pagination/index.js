@@ -8,15 +8,17 @@ const CLEAR_PAGINATION_DATA = 'CLEAR_PAGINATION_DATA'
 
 export default {
   namespaced: true,
-  state: {
-    currentPage: 1,
-    totalPages: 0,
-    maxPageItems: 0,
-    totalCount: 0,
-    firstLink: '',
-    nextLink: '',
-    lastLink: '',
-    userSelectedPage: ''
+  state() {
+    return {
+      currentPage: 1,
+      totalPages: 0,
+      maxPageItems: 0,
+      totalCount: 0,
+      firstLink: '',
+      nextLink: '',
+      lastLink: '',
+      userSelectedPage: ''
+    }
   },
   actions: {
     showBrandsDialog: ({ commit }, headers) => {

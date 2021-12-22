@@ -5,9 +5,11 @@ const SET_BRANDS = 'SET_BRANDS'
 
 export default {
   namespaced: true,
-  state: {
-    brandsDialogShow: false,
-    brands: []
+  state() {
+    return {
+      brandsDialogShow: false,
+      brands: []
+    }
   },
   actions: {
     showBrandsDialog: ({ commit }) => {

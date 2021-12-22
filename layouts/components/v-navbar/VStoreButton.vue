@@ -137,7 +137,7 @@ export default {
       }
     },
     ...mapState("users/products", ["storeProducts", "storeCanBuy"]),
-    ...mapState("suppliers", ["supplier"]),
+    //...mapState("suppliers", ["supplier"]),
   },
   watch: {
     storeTotal() {

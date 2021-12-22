@@ -4,8 +4,10 @@ const SET_CONTACT_STATUS = 'SET_CONTACT_STATUS'
 
 export default {
   namespaced: true,
-  state: {
-    status: null
+  state() {
+    return {
+      status: null
+    }
   },
 
   actions: {

@@ -5,9 +5,11 @@ const SET_VOLUMES = 'SET_VOLUMES'
 
 export default {
   namespaced: true,
-  state: {
-    volumesDialogShow: false,
-    volumes: []
+  state() {
+    return {
+      volumesDialogShow: false,
+      volumes: []
+    }
   },
   actions: {
     showVolumesDialog: ({ commit }) => {

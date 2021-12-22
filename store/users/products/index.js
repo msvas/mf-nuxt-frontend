@@ -33,22 +33,24 @@ const ADD_TO_CATALOG_PRODUCTS = 'ADD_TO_CATALOG_PRODUCTS'
 
 export default {
   namespaced: true,
-  state: {
-    productTypeName: 'Todos',
-    productList: [],
-    properties: [],
-    resumedProductList: [],
-    totalProductList: 0,
-    productQuoteCart: [],
-    resumedQuoteCart: [],
-    renderingStructure: null,
-    currentPosition: 0,
-    storeTotal: 0,
-    storeProducts: [],
-    storeCanBuy: false,
-    catalog: [],
-    catalogProducts: [],
-    storeCartSupplier: null,
+  state() {
+    return {
+      productTypeName: 'Todos',
+      productList: [],
+      properties: [],
+      resumedProductList: [],
+      totalProductList: 0,
+      productQuoteCart: [],
+      resumedQuoteCart: [],
+      renderingStructure: null,
+      currentPosition: 0,
+      storeTotal: 0,
+      storeProducts: [],
+      storeCanBuy: false,
+      catalog: [],
+      catalogProducts: [],
+      storeCartSupplier: null,
+    }
   },
   getters: {
     productListIsEmpty: state => state.productList.length === 0,

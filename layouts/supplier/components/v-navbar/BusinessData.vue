@@ -44,7 +44,7 @@
       </div>
 
       <div
-        v-if="$auth.user().supplierStatus == 'Liberado' || $auth.user().supplierStatus == 'Manutenção'"
+        v-if="$auth.user.supplierStatus == 'Liberado' || $auth.user.supplierStatus == 'Manutenção'"
         class="alert alert-warning mt-2"
         role="alert"
         style="padding-top: 1.4rem; padding-bottom: 1.6rem;"
@@ -248,7 +248,7 @@ export default {
     };
   },
   mounted() {
-    this.user = JSON.parse(JSON.stringify(this.$auth.user()))
+    this.user = JSON.parse(JSON.stringify(this.$auth.user))
   },
   computed: {
     name: {

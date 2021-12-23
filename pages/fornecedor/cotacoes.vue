@@ -344,7 +344,7 @@ export default {
       })
     })
     this.getSupplier().then(() => {
-      this.shareLink = window.location.origin + '/' + this.supplier.nameForUrl
+      this.shareLink = window.location.origin + '/loja/' + this.supplier.nameForUrl
     })
     this.user = JSON.parse(JSON.stringify(this.$auth.user))
   },

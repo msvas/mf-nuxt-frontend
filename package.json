@@ -28,6 +28,7 @@
     "vue-browser-detect-plugin": "^0.1.18",
     "vue-clamp": "^0.4.0",
     "vue-clickaway": "^2.2.2",
+    "vue-clipboard2": "^0.3.3",
     "vue-context": "^6.0.0",
     "vue-currency-input": "^1.22.3",
     "vue-custom-scrollbar": "^1.4.3",

@@ -61,6 +61,7 @@ module.exports = {
     { src: '~plugins/vue-loading-overlay.js' },
     { src: '~plugins/vue-browser-detect-plugin.js', mode: "client" },
     { src: '~plugins/vue-context.js', mode: "client" },
+    { src: '~plugins/vue-clipboard2.js', mode: "client" },
   ],
 
   /*

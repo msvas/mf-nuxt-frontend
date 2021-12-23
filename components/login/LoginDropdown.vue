@@ -161,6 +161,8 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
+              if(this.$auth.user.isSupplier)
+                this.$router.push({ path: '/fornecedor/cotacoes' })
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;
@@ -180,6 +182,8 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
+              if(this.$auth.user.isSupplier)
+                this.$router.push({ path: '/fornecedor/cotacoes' })
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;

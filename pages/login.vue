@@ -306,7 +306,10 @@ export default {
                 this.setUser(this.$auth.user)
                 this.isLoading = false
                 this.clearFilterParams()
-                this.$router.push(redirectUrl)
+                if(this.$auth.user.isSupplier)
+                  this.$router.push({ path: '/fornecedor/cotacoes' })
+                else
+                  this.$router.push(redirectUrl)
               }).catch((error) => {
                 this.isLoading = false;
                 const { errors } = error.response.data;

@@ -64,7 +64,7 @@
       <div class="col-md-3 col-5 m-0 p-0">
         <fieldset class="form-label-group float-left" style="margin-bottom: 10px;">
           <p class="font-small-1 m-0" style="white-space: nowrap;">A prt de</p>
-          <vs-tooltip-custom text="A quantidade precisa ser maior que 1" :active="errors.has('discountRange1')" position="top">
+          <span v-tooltip.top="{ content: 'A quantidade precisa ser maior que 1', visible: errors.has('discountRange1') }">
             <input
               @change="addSupplierProductExpedition(expeditionObject)"
               @input="checkDiscountInput()"
@@ -80,8 +80,7 @@
               id=""
               placeholder="A prt de"
             />
-            <span>&nbsp;</span>
-          </vs-tooltip-custom>
+          </span>
         </fieldset>
       </div>
       <div class="col-md-4 col-6 m-0 p-0">
@@ -114,7 +113,7 @@
       <div class="col-md-3 col-5 m-0 p-0">
         <fieldset class="form-label-group float-left" style="margin-bottom: 10px;">
           <p class="font-small-1 m-0" style="white-space: nowrap;">A prt de</p>
-          <vs-tooltip-custom :text="rangeTooltipText" :active="errors.has('discountRange2')" position="top">
+          <span v-tooltip.top="{ content: rangeTooltipText, visible: errors.has('discountRange2') }">
             <input
               @change="addSupplierProductExpedition(expeditionObject)"
               @input="checkDiscountInput()"
@@ -130,8 +129,7 @@
               id=""
               placeholder="A prt de"
             />
-            <span>&nbsp;</span>
-          </vs-tooltip-custom>
+          </span>
         </fieldset>
       </div>
       <div class="col-md-4 col-6 m-0 p-0">
@@ -209,7 +207,6 @@
 <script>
 import Vue from 'vue';
 import { mapState, mapActions } from "vuex";
-import VsTooltipCustom from "@/components/tooltip/VSTooltipCustom";
 
 export default {
   name: "PricingProductExpedition",
@@ -470,7 +467,7 @@ export default {
     },
   },
   components: {
-    VsTooltipCustom
+
   },
 };
 </script>

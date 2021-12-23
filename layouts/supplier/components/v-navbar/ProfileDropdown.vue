@@ -19,19 +19,21 @@
         />
       </span>
     </a>
-    <div class="dropdown-menu dropdown-menu-right" :class="{show}">
+    <div class="dropdown-menu dropdown-menu-right" :class="{ show }">
       <a
         class="dropdown-item disabled bg-mf-laranja text-white"
         href="#"
         tabindex="-1"
         aria-disabled="true"
-      >{{ user.name }}</a>
+        v-if="$auth.user && $auth.user.name"
+      >{{ $auth.user.name }}</a>
       <a
         class="dropdown-item disabled"
         href="#"
         tabindex="-1"
         aria-disabled="true"
-      >{{ user.contactName }}</a>
+        v-if="$auth.user && $auth.user.contactName"
+      >{{ $auth.user.contactName }}</a>
 
       <div class="dropdown-divider"></div>
       <nuxt-link :to="{ path: '/' }" class="dropdown-item color-mf-verde">
@@ -90,7 +92,7 @@ export default {
     return {
       accountKey: 0,
       show: false,
-      user: this.$auth.user(),
+      user: this.userPlaceholder,
       openNoPrices: false,
       noPriceCount: 0,
     };
@@ -104,6 +106,12 @@ export default {
     isCanceled() {
       return this.$route.meta.canceled
     },
+    userPlaceholder() {
+      if(this.$auth.loggedIn && this.$auth.user)
+        return this.$auth.user
+      else
+        return { name: '', contactName: '' }
+    }
   },
   methods: {
     ...mapActions("products/supplierProductExpeditions", [

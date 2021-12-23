@@ -321,6 +321,7 @@ export default {
       allIncoming: [],
     };
   },
+  layout: "supplier/Supplier",
   mounted() {
     if(this.$auth.user.supplierStatus == 'Precificação')
       this.$router.push({ path: "/fornecedor/precificar" })

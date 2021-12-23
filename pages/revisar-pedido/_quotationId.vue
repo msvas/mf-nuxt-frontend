@@ -228,6 +228,8 @@ export default {
     };
   },
 
+  layout: 'noFooter/NoFooter',
+
   mounted() {
     this.isLoading = true
     this.clearPagination()

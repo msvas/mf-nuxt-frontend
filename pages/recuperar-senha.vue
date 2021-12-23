@@ -77,6 +77,7 @@ export default {
       activeAlert: false,
     };
   },
+  layout: 'fullPage/FullPage',
   computed: {
     validatedAccount() {
       return this.$route.query.account_confirmation_success;

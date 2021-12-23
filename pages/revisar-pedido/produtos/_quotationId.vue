@@ -87,6 +87,8 @@ export default {
     };
   },
 
+  layout: 'noFooter/NoFooter',
+
   created() {
 
 

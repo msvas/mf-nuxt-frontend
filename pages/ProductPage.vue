@@ -30,7 +30,7 @@
       v-if="allowAccess && regionCanAccess && supplier && supplier.user.isAutomatic && supplier.user.supplierStatus == 'Liberado'"
     >
       <span id="hidden-element"></span>
-      <!-- <loading-overlay
+      <loading-overlay
       :active.sync="isLoading"
       :is-full-page="fullPage"
       :loader="loader"
@@ -39,7 +39,7 @@
       :opacity="opacity"
       :width="width"
       :height="height"
-      />-->
+      />
       <div
         v-if="mobileBrowser"
         class="content-wrapper pb-0 pt-0"
@@ -772,6 +772,8 @@ export default {
       samples: null,
     };
   },
+
+  layout: 'noFooter/NoFooter',
 
   created() {
 

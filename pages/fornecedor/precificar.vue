@@ -114,6 +114,7 @@ export default {
       checked: false,
     };
   },
+  layout: "supplier/Supplier",
   beforeRouteLeave(to, from, next) {
     if(!this.showedSavePopup && to.name != 'cover' && to.name != 'home') {
       this.routeName = to.name

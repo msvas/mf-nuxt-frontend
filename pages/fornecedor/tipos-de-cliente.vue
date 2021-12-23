@@ -66,6 +66,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: "supplier/Supplier",
   async mounted() {
     let response = await SupplierConfigurationService.getClientTypes();
 

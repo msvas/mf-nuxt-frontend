@@ -68,6 +68,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: "supplier/Supplier",
   async mounted() {
     let response = await SupplierConfigurationService.getMinimumOrderValue();
     this.minimumOrderValue = parseFloat(response.data.minimumOrderValue);

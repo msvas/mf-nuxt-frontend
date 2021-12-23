@@ -1136,6 +1136,7 @@ export default {
       home: null,
     };
   },
+  layout: 'noFooter/NoFooter',
   mounted() {
     this.isMobileBrowser();
     this.tab = this.$route.params.tab;

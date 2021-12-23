@@ -95,7 +95,7 @@ module.exports = {
         },
         user: {
           property: 'data',
-          autoFetch: true,
+          autoFetch: false,
         },
         endpoints: {
           login: {

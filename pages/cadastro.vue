@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <loading-overlay
+    <loading-overlay
       :active.sync="isLoading"
       :is-full-page="fullPage"
       :loader="loader"
@@ -9,7 +9,7 @@
       :opacity="opacity"
       :width="width"
       :height="height"
-    /> -->
+    />
     <div class="card rounded-0 mb-0 px-0">
       <div class="card-header pb-1">
         <div class="card-title">
@@ -190,7 +190,7 @@ export default {
       setTimeout(() => {
         this.sendUserAsPartner(this.user)
         this.buttonLoading = false
-        
+
         this.$axios.post('user_auth', {
           user: this.user
         }).then(() => {

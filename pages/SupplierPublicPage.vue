@@ -48,6 +48,7 @@ export default {
       routeName: '',
     };
   },
+  layout: 'noFooter/NoFooter',
   mounted() {
     this.isLoading = true
     this.slug = this.$route.params.supplierSlug

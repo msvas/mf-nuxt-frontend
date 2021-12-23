@@ -67,6 +67,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: "supplier/Supplier",
   mounted() {
     this.getSupplierStates();
     this.addStylesToListGroup();

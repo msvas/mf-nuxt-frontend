@@ -321,6 +321,8 @@ export default {
     };
   },
 
+  layout: 'noFooter/NoFooter',
+
   mounted() {
     this.isMobile()
     this.isLoading = true

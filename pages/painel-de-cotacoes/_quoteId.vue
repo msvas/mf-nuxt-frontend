@@ -396,6 +396,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: 'noFooter/NoFooter',
 
   mounted() {
     this.quoteId = this.$route.params.quoteId

@@ -102,6 +102,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: "supplier/Supplier",
   mounted() {
     //this.$vs.loading()
     this.quotationId = this.$route.params.quotationId

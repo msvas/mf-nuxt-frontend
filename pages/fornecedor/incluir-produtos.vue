@@ -60,6 +60,7 @@ export default {
     };
   },
   middleware: 'auth',
+  layout: "supplier/Supplier",
   updated() {
     window.location.reload()
   },

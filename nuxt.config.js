@@ -54,6 +54,7 @@ module.exports = {
     { src: '~plugins/animate.js' },
     { src: '~plugins/vue-directive-tooltip.js' },
     { src: '~plugins/vue-dragscroll.js', mode: "client" },
+    { src: '~plugins/vue-toast.js', mode: "client" },
     { src: '~plugins/veevalidate.js' },
     { src: '~plugins/vue-form-wizard.js' },
     { src: '~plugins/vue-currency-input.js' },
@@ -94,7 +95,7 @@ module.exports = {
         },
         user: {
           property: 'data',
-          autoFetch: false,
+          autoFetch: true,
         },
         endpoints: {
           login: {
@@ -110,8 +111,14 @@ module.exports = {
             url: `${RESOURCE_URL}/sign_out`,
             method: 'delete',
           }
-        }
-      }
+        },
+      },
+    },
+    redirect: {
+      login: '/',
+      logout: '/',
+      home: '/',
+      callback: false,
     },
   },
 

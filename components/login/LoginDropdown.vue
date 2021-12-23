@@ -156,12 +156,11 @@ export default {
         if (result) {
           if(this.redirectObject) {
             this.$auth.loginWith('local', { data: this.user }).then((response) => {
-              this.$auth.fetchUser().then(() => {
-                this.$auth.$storage.setUniversal('user', this.$auth.user, true)
-                this.setUser(this.$auth.user)
-                this.isLoading = false
-                this.clearFilterParams()
-              })
+              this.$auth.setUser(response.data.data)
+              this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+              this.setUser(this.$auth.user)
+              this.isLoading = false
+              this.clearFilterParams()
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;
@@ -176,9 +175,11 @@ export default {
             });
           } else {
             this.$auth.loginWith('local', { data: this.user }).then((response) => {
-              this.$auth.fetchUser().then(() => {
-                this.$auth.$storage.setUniversal('user', this.$auth.user, true)
-              })
+              this.$auth.setUser(response.data.data)
+              this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+              this.setUser(this.$auth.user)
+              this.isLoading = false
+              this.clearFilterParams()
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;

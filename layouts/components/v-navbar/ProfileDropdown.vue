@@ -15,15 +15,17 @@
           tabindex="-1"
           aria-disabled="true"
           style="background-color: #5ce9c6 !important; color: black !important;"
-        >{{ user.name }}</a>
+          v-if="$auth.user && $auth.user.name"
+        >{{ $auth.user.name }}</a>
         <a
           class="dropdown-item disabled"
           href="#"
           tabindex="-1"
           aria-disabled="true"
           style="color: black;"
-        >{{ user.contactName }}</a>
-        <template v-if="user.isSupplier">
+          v-if="$auth.user && $auth.user.contactName"
+        >{{ $auth.user.contactName }}</a>
+        <template v-if="$auth.user && $auth.user.isSupplier">
           <div class="dropdown-divider"></div>
           <nuxt-link :to="{ path: '/fornecedor/condicoes-de-atendimento' }" class="dropdown-item text-warning" style="color: black;">
             <i class="fa fa-exchange"></i> Modo fornecedor
@@ -55,8 +57,12 @@ export default {
     return {
       accountKey: 0,
       show: false,
-      user: this.$auth.user,
+      user: this.userPlaceholder,
     };
+  },
+  mounted() {
+    if(this.$auth.loggedIn)
+      this.user = this.$auth.user
   },
   computed: {
     infoMessage() {
@@ -64,6 +70,12 @@ export default {
     },
     isSuspended() {
       return this.$route.meta.suspended
+    },
+    userPlaceholder() {
+      if(this.$auth.loggedIn && this.$auth.user)
+        return this.$auth.user
+      else
+        return { name: '', contactName: '' }
     }
   },
   methods: {
@@ -90,6 +102,11 @@ export default {
           localStorage.removeItem('uid')
           localStorage.removeItem('client')
           localStorage.removeItem('allowed')
+          this.$auth.$storage.removeCookie('uid', false)
+          this.$auth.$storage.removeCookie('token-type', false)
+          this.$auth.$storage.removeCookie('client', false)
+          this.$auth.$storage.removeCookie('access-token', false)
+          this.$auth.$storage.removeCookie('expiry', false)
           this.notifyInfo(this.infoMessage, "feather icon-log-out")
           if(this.$router.path == '/'){
             this.$router.go()

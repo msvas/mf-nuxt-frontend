@@ -9,7 +9,7 @@
       spacer
       v-model="active"
       hidden-background
-
+      style="overflow-y: hidden;"
     >
       <div style="padding-top: 10px" v-on-clickaway="away">
         <div
@@ -257,7 +257,7 @@
     background: #04bf8a;
 }
 .vs-sidebar--items {
-    padding:0;
+    padding: 0 !important;
     background: inherit;
     overflow-y: auto;
 }
@@ -294,6 +294,14 @@ export default {
     //     this.checkUnseenPrices();
     //   });
     // }
+  },
+  mounted() {
+
+  },
+  watch: {
+    '$route': function (value) {
+      this.reduce = true
+    }
   },
   computed: {
     ...mapState("users/products", ["productQuoteCart"]),

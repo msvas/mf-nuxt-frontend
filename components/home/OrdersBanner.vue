@@ -178,7 +178,7 @@ export default {
       setTimeout(() => {
         this.quoteLoading = false;
       }, 300);
-      this.$router.push({ name: "users.orderPanel" });
+      this.$router.push({ path: "/pedidos-de-compra" });
     },
     formatDate(date) {
       var m = new Date(date);

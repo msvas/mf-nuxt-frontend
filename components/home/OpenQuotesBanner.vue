@@ -107,7 +107,7 @@ export default {
       this.buttonLoading = true;
       setTimeout(() => {
         this.buttonLoading = false;
-        this.$router.push({ name: "users.allQuotes" });
+        this.$router.push({ path: "/minhas-cotacoes" });
       }, 300);
     },
     isFHD() {

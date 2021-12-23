@@ -301,13 +301,12 @@ export default {
               redirectUrl = `/loja/${this.$route.query.supplierSlug}/revisar-compra/${this.hasOrder}?autoOpen=true`
 
               this.$auth.loginWith('local', { data: this.user }).then((response) => {
-                this.$auth.fetchUser().then(() => {
-                  this.$auth.$storage.setUniversal('user', this.$auth.user, true)
-                  this.setUser(this.$auth.user)
-                  this.isLoading = false
-                  this.clearFilterParams()
-                  this.$router.push(redirectUrl)
-                })
+                this.$auth.setUser(response.data.data)
+                this.$auth.$storage.setUniversal('user', this.$auth.user, true)
+                this.setUser(this.$auth.user)
+                this.isLoading = false
+                this.clearFilterParams()
+                this.$router.push(redirectUrl)
               }).catch((error) => {
                 this.isLoading = false;
                 const { errors } = error.response.data;

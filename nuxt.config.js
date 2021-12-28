@@ -116,9 +116,9 @@ module.exports = {
       },
     },
     redirect: {
-      login: '/',
-      logout: '/',
-      home: '/',
+      login: false,
+      logout: false,
+      home: false,
       callback: false,
     },
   },

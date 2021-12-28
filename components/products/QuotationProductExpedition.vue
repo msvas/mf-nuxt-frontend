@@ -64,7 +64,7 @@
       <div class="col-md-3 col-5 m-0 p-0">
         <fieldset class="form-label-group float-left" style="margin-bottom: 10px;">
           <p class="font-small-2 m-0">A prt de</p>
-          <vs-tooltip-custom text="A quantidade precisa ser maior que 1" :active="errors.has('discountRange1')" position="top">
+          <span v-tooltip.top.hover="{ content: 'A quantidade precisa ser maior que 1', visible: errors.has('discountRange1') }">
             <input
               @change="addSupplierProductExpedition(expeditionObject)"
               @input="checkDiscountInput()"
@@ -80,8 +80,7 @@
               id=""
               placeholder="A prt de"
             />
-            <span>&nbsp;</span>
-          </vs-tooltip-custom>
+          </span>
         </fieldset>
       </div>
       <div class="col-md-4 col-6 m-0 p-0">
@@ -113,7 +112,7 @@
       <div class="col-md-3 col-5 m-0 p-0">
         <fieldset class="form-label-group float-left" style="margin-bottom: 10px;">
           <p class="font-small-2 m-0">A prt de</p>
-          <vs-tooltip-custom :text="rangeTooltipText" :active="errors.has('discountRange2')" position="top">
+          <span v-tooltip.top.hover="{ content: rangeTooltipText, visible: errors.has('discountRange2') }">
             <input
               @change="addSupplierProductExpedition(expeditionObject)"
               @input="checkDiscountInput()"
@@ -129,8 +128,7 @@
               id=""
               placeholder="A prt de"
             />
-            <span>&nbsp;</span>
-          </vs-tooltip-custom>
+          </span>
         </fieldset>
       </div>
       <div class="col-md-4 col-6 m-0 p-0">
@@ -194,7 +192,6 @@
 <script>
 import Vue from 'vue';
 import { mapState, mapActions } from "vuex";
-import VsTooltipCustom from "@/components/tooltip/VSTooltipCustom";
 
 export default {
   name: "QuotationProductExpedition",
@@ -246,7 +243,7 @@ export default {
         this.expeditions = (parseFloat(this.prices[last].price).toFixed(2)).toString().replace('.', ',')
       }
     }
-    
+
     if(this.expedition.sale)
       this.switch1 = this.expedition.sale
     if(filled)
@@ -361,7 +358,7 @@ export default {
     ...mapActions("products/supplierProductExpeditions", ["addSupplierProductExpedition"]),
     discountedPrice(percentage) {
       if(this.expeditions && percentage) {
-        
+
         var result = parseFloat(this.expeditions.replace('.', '').replace(',', '.')) * (100 - parseFloat(percentage.replace('.', '').replace(',', '.'))) * 0.01
         if(result)
           return 'R$ ' + result.toFixed(2).toString().replace('.', ',')
@@ -387,7 +384,7 @@ export default {
       }, 500)
     },
     nextInput(event) {
-      
+
       var inputs = document.getElementsByClassName('price-input')
       var nextOne = 0
       for(var i = 0; i < inputs.length; i++) {
@@ -462,7 +459,7 @@ export default {
     },
   },
   components: {
-    VsTooltipCustom
+
   },
 };
 </script>

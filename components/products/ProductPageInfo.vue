@@ -347,7 +347,7 @@
                   </div>
                   <div class="col-8 pl-1 pr-0 pb-0" vs-type="flex" vs-justify="center" vs-align="center" style="padding-top: 7px;">
                     <div class="input-group input-group-sm float-none" style="width: auto; margin-left: 12px;">
-                      <vs-tooltip ref="minTooltip" :text="tooltipText(expedition)" :active="isDisabled(expedition, expedition.id)" position="top">
+                      <span ref="minTooltip" v-tooltip.top.hover="{ content: tooltipText(expedition), visible: isDisabled(expedition, expedition.id) }">
                         <div class="controls">
                           <NumberInputSpinner
                             :min="0"
@@ -368,8 +368,7 @@
                                               expedition.minimumOrder)"
                           />
                         </div>
-                        <span>&nbsp;</span>
-                      </vs-tooltip>
+                      </span>
                     </div>
                   </div>
                   <div class="col-4 pl-0 pr-0 pb-0" vs-type="flex" vs-justify="center" vs-align="center" style="padding-top: 7px;">

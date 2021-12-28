@@ -362,7 +362,7 @@
           </div>
           <div class="form-group">
             <label>&nbsp;</label>
-            <vs-tooltip ref="minTooltip" text="É preciso preencher os campos ao lado." :active="isDisabled" position="bottom">
+            <span ref="minTooltip" v-tooltip.bottom.hover="{ content: 'É preciso preencher os campos ao lado.', visible: isDisabled }">
               <span>
                 <button
                   id="btnEntrar"
@@ -383,8 +383,7 @@
                   Entrar
                 </button>
               </span>
-              <span>&nbsp;</span>
-            </vs-tooltip>
+            </span>
           </div>
         </div>
         <div

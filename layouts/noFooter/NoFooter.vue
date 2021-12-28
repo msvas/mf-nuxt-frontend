@@ -81,7 +81,11 @@ export default {
   },
   computed: {
     hideSidebar() {
-      return this.$route.meta.hideSidebar;
+      if(this.$route.meta.hideSidebar ||
+         this.$route.name == 'painel-de-cotacoes-quoteId')
+        return true
+      else
+        return false
     },
     hasMargin() {
       if(this.$route.name == 'users.reviewOrder' || this.hideSidebar)

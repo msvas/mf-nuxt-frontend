@@ -300,6 +300,8 @@ export default {
             else if(this.completedSignUp && this.hasOrder)
               redirectUrl = `/loja/${this.$route.query.supplierSlug}/revisar-compra/${this.hasOrder}?autoOpen=true`
 
+              console.log(redirectUrl)
+
               this.$auth.loginWith('local', { data: this.user }).then((response) => {
                 this.$auth.setUser(response.data.data)
                 this.$auth.$storage.setUniversal('user', this.$auth.user, true)
@@ -309,7 +311,7 @@ export default {
                 if(this.$auth.user.isSupplier)
                   this.$router.push({ path: '/fornecedor/cotacoes' })
                 else
-                  this.$router.push(redirectUrl)
+                  this.$router.push({ path: redirectUrl })
               }).catch((error) => {
                 this.isLoading = false;
                 const { errors } = error.response.data;
@@ -334,7 +336,7 @@ export default {
       this.registerLoading = true
       setTimeout(() => {
         this.registerLoading = false
-        this.$router.push({name: 'sign-up' })
+        this.$router.push({ path: '/cadastro' })
       }, 300);
     },
     ...mapActions("users", ["setUser"]),

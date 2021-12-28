@@ -248,16 +248,24 @@ export default {
     ...mapState("quotations", ["orders"]),
     ...mapState("suppliers", ["supplier", "manualStore"]),
     showLeaveQuotationButton() {
-      return this.$route.meta.leaveQuotationButton
+      if(this.$route.meta.leaveQuotationButton ||
+         this.$route.name == 'painel-de-cotacoes-quoteId' ||
+         this.$route.name == 'revisar-pedido-quotationId')
+        return true
+      else
+        return false
     },
     showOnlyLeaveButton() {
       return this.$route.meta.reviewingOrder
     },
-    allowSearch() {
-      return this.$route.meta.blockSearch
-    },
+    // allowSearch() {
+    //   return this.$route.meta.blockSearch
+    // },
     backUrl() {
-      return this.$route.meta.backUrl
+      if(this.$route.name == 'painel-de-cotacoes-quoteId')
+        return '/pedidos'
+      else
+        return false
     },
     publicPage() {
       return this.$route.meta.publicPage
@@ -269,7 +277,12 @@ export default {
       return this.$route.meta.forceLogo
     },
     hideNavbar() {
-      return this.$route.meta.hideNavbar
+      if(this.$route.meta.hideNavbar ||
+         this.$route.name == 'painel-de-cotacoes-quoteId' ||
+         this.$route.path == '/revisar-cotacao')
+        return true
+      else
+        return false
     },
     supplierStore() {
       return this.$route.meta.supplierStore

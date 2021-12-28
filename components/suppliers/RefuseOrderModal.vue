@@ -18,16 +18,11 @@
       <div class="row p-1 d-flex justify-content-between" style="background: #0391D1; margin-bottom: -0.93rem; margin-left: -0.9rem; margin-right: -0.95rem; overflow: hidden; border-radius: 0 0 6px 6px;">
         <vs-button @click="open = false" type="line" color="#FFFFFF" style="padding-bottom: 2px;">Voltar</vs-button>
 
-        <vs-tooltip-custom text="Justifique ao cliente porque você recusou o pedido de compra." :active="isDisabled">
-          <button @click="refuse(quotationId)"
-          type="button"
-          class="btn text-bold-600 mr-1"
-          style="background-color: #d11b6d; color: white;"
-          :disabled="isDisabled"
-        >
-          Recusar o pedido
-        </button>
-        </vs-tooltip-custom>
+        <span v-tooltip.top.hover="{ content: 'Justifique ao cliente porque você recusou o pedido de compra.', visible: isDisabled }">
+          <button @click="refuse(quotationId)" type="button" class="btn text-bold-600 mr-1" style="background-color: #d11b6d; color: white;" :disabled="isDisabled">
+            Recusar o pedido
+          </button>
+        </span>
       </div>
     </vs-popup>
   </span>
@@ -35,7 +30,6 @@
 
 <script>
 import { mapActions } from "vuex";
-import VsTooltipCustom from "@/components/tooltip/VSTooltipCustom";
 
 export default {
   name: "RefuseQuotationModal",
@@ -97,7 +91,7 @@ export default {
     },
   },
   components: {
-    VsTooltipCustom,
+
   },
 };
 </script>

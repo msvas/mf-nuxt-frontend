@@ -87,10 +87,19 @@ export default {
   },
   computed: {
     hideFooter() {
-      return this.$route.meta.hideFooter;
+      if(this.$route.meta.hideFooter ||
+         this.$route.path == '/fornecedores' ||
+         this.$route.path == '/produtos-em-oferta')
+        return true
+      else
+        return false
     },
     hideSidebar() {
-      return this.$route.meta.hideSidebar;
+      if(this.$route.meta.hideSidebar ||
+         this.$route.name == 'painel-de-cotacoes-quoteId')
+        return true
+      else
+        return false
     },
 
     hasMargin() {

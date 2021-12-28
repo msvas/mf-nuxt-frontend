@@ -29,20 +29,20 @@
                 </span>
 
               </li>
-              <li v-if="this.$route.name != 'quotation-panel'" class="nav-item d-sm-none d-block" style="align-self: center; padding-left: 15px;">
+              <li v-if="this.$route.path != '/fornecedor/cotacoes'" class="nav-item d-sm-none d-block" style="align-self: center; padding-left: 15px;">
                 <a title="Início" href="/">
                   <i class="ficon feather icon-home" />
                 </a>
               </li>
 
-              <li v-if="this.$route.name == 'quotation-panel'" class="nav-item d-sm-none d-block" style="align-self: center; padding-left: 15px;">
-                <a title="Atualizar demandas" href="/cotacoes">
+              <li v-if="this.$route.path == '/fornecedor/cotacoes'" class="nav-item d-sm-none d-block" style="align-self: center; padding-left: 15px;">
+                <a title="Atualizar demandas" href="/fornecedor/cotacoes">
                   <i class="ficon feather icon-refresh-cw"/>
                 </a>
               </li>
 
-              <li v-if="this.$route.name == 'quotation-panel'" class="nav-item d-sm-block d-none" style="align-self: center; padding-left: 15px;">
-                <a title="Atualizar demandas" href="/cotacoes" class="nav-link-search-wrapper d-md-block" style="padding:8px; font-size: small;">
+              <li v-if="this.$route.path == '/fornecedor/cotacoes'" class="nav-item d-sm-block d-none" style="align-self: center; padding-left: 15px;">
+                <a title="Atualizar demandas" href="/fornecedor/cotacoes" class="nav-link-search-wrapper d-md-block" style="padding:8px; font-size: small;">
                   <a>
                     <i class="ficon feather icon-refresh-cw" style="color: #0391D1 !important; color: rgb(3, 145, 209) !important;"/>
                   </a>
@@ -59,12 +59,12 @@
           <div class=" float-right bookmark-wrapper d-flex align-intems-center">
             <ul class="nav navbar-nav">
               <li v-if="$auth.loggedIn && !isCanceled" class="nav-item mobile-menu mr-auto">
-                <b-tooltip v-if="show && this.$route.meta.pricing" :show.sync="show" target="savePricesButton" :placement="tooltipPlacement()">
+                <b-tooltip v-if="show && this.$route.path == '/fornecedor/precificar'" :show.sync="show" target="savePricesButton" :placement="tooltipPlacement()">
                   Lembre-se de salvar quando concluir
                 </b-tooltip>
                 <button
                   id="savePricesButton"
-                  v-if="this.$route.meta.pricing"
+                  v-if="this.$route.path == '/fornecedor/precificar'"
                   class="btn btn-primary waves-effect waves-light font-small-3 mr-1"
                   @click="savePrices()"
                 >
@@ -74,7 +74,7 @@
 
                     <nuxt-link
                       :to="{ path: '/fornecedor/precificar' }"
-                      v-if="($auth.user.supplierStatus == 'Liberado' || $auth.user.supplierStatus == 'Precificação') && $auth.user.supplierQuotationType == 'Automático' && !this.$route.meta.pricing"
+                      v-if="($auth.user.supplierStatus == 'Liberado' || $auth.user.supplierStatus == 'Precificação') && $auth.user.supplierQuotationType == 'Automático' && this.$route.path != '/fornecedor/precificar'"
                       class="btn btn-primary waves-effect waves-light font-small-3 mr-1"
                       href="javascript:void(0);"
                       @click="buttonSpinner()"
@@ -89,7 +89,7 @@
                       :routeName="'quotation-panel'"
                       :justOneButton="true"
                       @update-popup="updatePopup"
-                      v-if="this.$route.meta.pricing" />
+                      v-if="this.$route.path == '/fornecedor/precificar'" />
 
                     <ul class="nav navbar-nav float-right">
                       <profile-dropdown />
@@ -132,13 +132,13 @@ export default {
     ...mapState("quotations", ["deliveryInfo"]),
     ...mapState("products/supplierProductExpeditions", ["supplierProductExpeditions"]),
     isCanceled() {
-      return this.$route.meta.canceled
+      return this.$route.name == 'fornecedor-cancelado'
     },
     isInMaintenance() {
-      return this.$route.meta.maintenance
+      return this.$route.name == 'fornecedor-em-manutencao'
     },
     logoRefresh() {
-      return this.$route.meta.logoRefresh
+      return this.$route.path =='/fornecedor/cotacoes'
     },
     pricesSavedMessage() {
       return `Preços salvos.`;

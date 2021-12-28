@@ -132,7 +132,7 @@ export default {
         this.setUserEmail(this.$route.query.uid);
         this.isLoading = false
         this.activeAlert = true
-        this.$router.push({ name: 'home', query: { completedRecovery: true } })
+        this.$router.push({ path: '/', query: { completedRecovery: true } })
       })
       .catch((error) => {
         this.isLoading = false;

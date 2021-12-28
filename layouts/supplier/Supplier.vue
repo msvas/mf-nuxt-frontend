@@ -42,7 +42,17 @@ export default {
   },
   computed: {
     hideFooter() {
-      return this.$route.meta.hideFooter
+      if(this.$route.meta.hideFooter ||
+         this.$route.path == '/fornecedor/cotacoes' ||
+         this.$route.path == '/fornecedor/fornecedor-em-manutencao' ||
+         this.$route.path == '/fornecedor/fornecedor-cancelado' ||
+         this.$route.name == 'fornecedor-pedido-quotationId' ||
+         this.$route.name == 'fornecedor-compra-orderId' ||
+         this.$route.name == 'fornecedor-responder-cotacao-quotationId' ||
+         this.$route.path == '/fornecedor/precificar')
+        return true
+      else
+        return false
     },
   },
   created() {

@@ -1,5 +1,5 @@
 <template>
-  <vs-popup :title="product.productTypeName" :active.sync="open">
+  <vs-popup ref="suppliersModal" :title="product.productTypeName" :active.sync="open">
     <div style="position: -webkit-sticky; position: sticky; top: 0px; background-color: white; z-index: 1000; padding-top: 7px;">
       <h6>
         <span v-if="product.categoryCollection"><i>{{ product.categoryCollection }}</i> | </span>
@@ -44,13 +44,9 @@
           <td
            style="border: 1px solid #b5b9bd; border-radius: 10px;"
           >
-            <nuxt-link
-              :to="{ name: 'public-store-product-page',
-                     params: { supplierSlug: supplier.nameForUrl,
-                               familyName: formatString(product.familyName),
-                               categoryName: formatString(product.categoryName),
-                               productTypeName: formatString(product.productTypeName),
-                               identifier: productIdentifier(product) } }"
+            <a
+              href="javascript:void(0)"
+              @click="goToStoreAutomatic(product, supplier)"
               style="width: 100%; display: block; color: inherit;"
             >
               <div class="row m-0 p-0">
@@ -74,14 +70,7 @@
                     color="primary"
                     type="flat"
                     style="padding: 0;"
-                    @click="$router.push({ name: 'public-store-product',
-                                           params: {
-                                             supplierSlug: supplier.nameForUrl,
-                                             familyName: formatString(product.familyName),
-                                             categoryName: formatString(product.categoryName),
-                                             productTypeName: formatString(product.productTypeName)
-                                            }
-                                          })"
+                    @click="goToStoreAutomatic(product, supplier)"
                   >
                     {{ supplier.name }}
                   </vs-button>
@@ -89,7 +78,7 @@
                   Mín. {{ formatPrice(supplier.minimumOrderValue) }}
                 </div>
               </div>
-            </nuxt-link>
+            </a>
           </td>
         </tr>
       </thead>
@@ -118,15 +107,9 @@
            style="border: 1px solid #b5b9bd; border-radius: 10px;"
            colspan="2"
           >
-            <nuxt-link
-              :to="{ name: 'public-store-product',
-                     params: {
-                       supplierSlug: supplier2.nameForUrl,
-                       familyName: formatString(product.familyName),
-                       categoryName: formatString(product.categoryName),
-                       productTypeName: formatString(product.productTypeName)
-                      }
-                    }"
+            <a
+              href="javascript:void(0)"
+              @click="goToStoreManual(product, supplier2)"
               style="width: 100%; display: block;  color: inherit;"
             >
               <div class="row m-0 p-0">
@@ -142,14 +125,7 @@
                     color="primary"
                     type="flat"
                     style="padding: 0;"
-                    @click="$router.push({ name: 'public-store-product',
-                                           params: {
-                                             supplierSlug: supplier2.nameForUrl,
-                                             familyName: formatString(product.familyName),
-                                             categoryName: formatString(product.categoryName),
-                                             productTypeName: formatString(product.productTypeName)
-                                            }
-                                          })"
+                    @click="goToStoreManual(product, supplier2)"
                   >
                     {{ supplier2.name }}
                   </vs-button>
@@ -157,7 +133,7 @@
                   Mín. {{ formatPrice(supplier2.minimumOrderValue) }}
                 </div>
               </div>
-            </nuxt-link>
+            </a>
           </td>
         </tr>
       </thead>
@@ -317,6 +293,25 @@ export default {
     formatString(string) {
       return this.normalizeString(string).replace(/\s+/g, '-')
     },
+    goToStoreManual(product, supplier) {
+      setTimeout(() => {
+        this.$router.push({ name: 'public-store-product',
+                             params: { supplierSlug: supplier.nameForUrl,
+                                       familyName: this.formatString(product.familyName),
+                                       categoryName: this.formatString(product.categoryName),
+                                       productTypeName: this.formatString(product.productTypeName) } })
+      }, 300)
+    },
+    goToStoreAutomatic(product, supplier) {
+      setTimeout(() => {
+        this.$router.push({ name: 'public-store-product-page',
+                             params: { supplierSlug: supplier.nameForUrl,
+                                       familyName: this.formatString(product.familyName),
+                                       categoryName: this.formatString(product.categoryName),
+                                       productTypeName: this.formatString(product.productTypeName),
+                                       identifier: this.productIdentifier(product) } })
+      }, 300)
+    }
   },
   props: {
     product: {

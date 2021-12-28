@@ -34,8 +34,7 @@
           style="color: black; position: relative; left: 75%; top: 40px; font-size: 2rem; z-index:9999"
         />
       </form>
-        <!-- <div v-if="!$auth.check()"> -->
-        <div>
+        <div v-if="!$auth.loggedIn">
           <HomeBanner
             :style="this.mobileBrowser ? 'margin-bottom: 100px;':'margin-bottom: -25px;' "
           />
@@ -170,15 +169,14 @@
                 class="card"
                 style="min-width: 120px; max-width: 120px; height: 200px; align-self: center; justify-content: center; text-align-last: center;"
               >
-                <div class="row" style="padding: 3px;">
-                  <div class="col-12 text-center">Tem muito mais produtos em oferta.</div>
-                  <div class="col-12 mt-1 text-center">
-                    <button @click="goToSalesPage()" type="button" class="btn btn-primary">
-                      <a
-                        style="color: white; white-space: nowrap;"
-                        class="font-medium-1 align-middle"
-                      >Ver tudo</a>
-                    </button>
+                <div class="card-body p-1">
+                  <div class="row" style="padding: 3px;">
+                    <div class="col-12 text-center">Tem muito mais produtos em oferta.</div>
+                  </div>
+                  <div class="row" style="padding: 10px;">
+                    <a href="javascript:void(0);" @click="goToSalesPage()" class="btn btn-primary w-100 font-medium-1 pl-0 pr-0" style="text-align: center;">
+                      Ver tudo
+                    </a>
                   </div>
                 </div>
               </div>

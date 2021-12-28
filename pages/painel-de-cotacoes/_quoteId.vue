@@ -7,10 +7,9 @@
             <span class="text-danger font-weight-bold float-right" data-toggle="tooltip" data-placement="bottom" title="Expira em">
               <i class="feather icon-clock"></i>
               <span v-if="quotes.quotations && quotes.quotations.length && !quotes.quotations[0].hasExpired">
-                <vs-tooltip :text="remainingTimeTooltip(remainingTime(quotes.quotations[0].remainingTime))" class="float-right" position="bottom">
+                <span class="float-right" v-tooltip.bottom.hover="{ content: remainingTimeTooltip(remainingTime(quotes.quotations[0].remainingTime)), visible: true }">
                   <span>{{ remainingTime(quotes.quotations[0].remainingTime) }}</span>
-                  <span>&nbsp;</span>
-                </vs-tooltip>
+                </span>
               </span>
               <span v-else>
                 Expirada
@@ -397,6 +396,13 @@ export default {
   },
   middleware: 'auth',
   layout: 'noFooter/NoFooter',
+  meta: {
+    leaveQuotationButton: true,
+    blockSearch: true,
+    hideNavbar: true,
+    hideSidebar: true,
+    backUrl: '/pedidos'
+  },
 
   mounted() {
     this.quoteId = this.$route.params.quoteId
@@ -533,7 +539,7 @@ export default {
       this.buttonLoading = true
       setTimeout(() => {
         this.buttonLoading = false
-        this.$router.push({ name: 'orders' })
+        this.$router.push({ path: '/pedidos' })
       }, 300);
     },
     clearCategories() {

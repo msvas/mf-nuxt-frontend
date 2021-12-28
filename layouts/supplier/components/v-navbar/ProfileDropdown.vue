@@ -129,7 +129,7 @@ export default {
       this.show = false;
     },
     logout() {
-      if(this.$route.name == 'pricing') {
+      if(this.$route.path == '/fornecedor/precificar') {
         this.updateDeliveryRate(this.deliveryInfo)
         this.savePricing(this.supplierProductExpeditions).then((response) => {
           this.noPriceCount = response

@@ -38,9 +38,9 @@ export default {
     localStorage.region_id = region.id
     localStorage.uf = region.uf
 
-    //dispatch("products/getProducts", null, { root: true });
-    dispatch("setProductTypes");
-    dispatch("setFamilyProducts");
+    // dispatch("products/getProducts", null, { root: true });
+    // dispatch("setProductTypes");
+    // dispatch("setFamilyProducts");
   },
 
   setAllowed({ commit }, value) {

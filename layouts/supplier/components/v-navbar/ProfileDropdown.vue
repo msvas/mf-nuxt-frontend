@@ -118,6 +118,7 @@ export default {
       "savePricing",
       "clearExpeditions",
     ]),
+    ...mapActions("users", ["setUser"]),
     ...mapActions("navigationFilters", ["clearFilterParams"]),
     ...mapActions("suppliers", [
       "updateDeliveryRate"
@@ -146,13 +147,23 @@ export default {
     runLogout() {
       this.clearFilterParams()
       this.$auth.logout().then(() => {
-        this.clearFilterParams()
+        localStorage.removeItem('access-token')
+        localStorage.removeItem('uid')
+        localStorage.removeItem('client')
+        localStorage.removeItem('allowed')
+        this.$auth.$storage.removeCookie('uid', false)
+        this.$auth.$storage.removeCookie('token-type', false)
+        this.$auth.$storage.removeCookie('client', false)
+        this.$auth.$storage.removeCookie('access-token', false)
+        this.$auth.$storage.removeCookie('expiry', false)
+        this.$auth.setUser(null)
+        this.$auth.$storage.setUniversal('user', null, true)
+        this.setUser(null)
         this.notifyInfo(this.infoMessage, "feather icon-log-out")
-        if(this.$router.path == '/'){
-          this.$router.go()
-        }else{
+
+        setTimeout(() => {
           this.$router.push({ path: '/' })
-        }
+        }, 200)
       })
     },
     forceRerender() {

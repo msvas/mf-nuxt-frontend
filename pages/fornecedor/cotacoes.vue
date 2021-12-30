@@ -193,10 +193,10 @@
                   <p class="float-left m-0">
                     <button
                       type="button"
-                      class="btn btn-outline-danger waves-effect waves-light bg-white text-bold-600"
+                      class="btn btn-outline-danger waves-effect waves-light bg-white text-bold-600 pl-0 pr-0"
                       id="recusar-alert"
                       @click="refuse(selectedQuotation.id)"
-                      style="width: 150px; margin-right: 10px;"
+                      style="width: 130px; margin-right: 10px;"
                     >
                       <b-spinner v-if="refuseLoading" small/>
                       <span v-else>
@@ -299,6 +299,7 @@ import VQuotationPanelOC from "@/components/quotations/VQuotationPanelOC";
 import VQuotationPanelDirectOrder from "@/components/quotations/VQuotationPanelDirectOrder";
 import RefuseQuotationModal from "@/components/suppliers/RefuseQuotationModal";
 import timeFormatter from "@/mixins/timeFormatter";
+import statusChecker from "@/mixins/statusChecker";
 
 export default {
   data() {
@@ -566,6 +567,6 @@ export default {
     VQuotationPanelDirectOrder,
     RefuseQuotationModal,
   },
-  mixins: [timeFormatter]
+  mixins: [timeFormatter, statusChecker]
 };
 </script>

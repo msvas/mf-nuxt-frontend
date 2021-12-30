@@ -101,7 +101,7 @@ export default {
       setTimeout(() => {
           this.buttonLoading = false
           if (response.data) {
-            this.$router.push({ name: "service-conditions" });
+            this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" });
         }
       }, 300);
     },

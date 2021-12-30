@@ -3284,6 +3284,7 @@ export default {
         filters: {},
         items: this.maxPerScreenProductType * this.maxLines
       }).then(() => {
+        console.log(this.supplierProducts)
         var first = this.productsFromType(this.selectedProductType)[0];
         this.selectedCategory = first.categoryName;
         if (first.categoryCollection)
@@ -3587,17 +3588,19 @@ export default {
       else if(this.$route.meta.productTypeView) {
         this.checkHome()
         var foundFamily2 = this.findKeyEncoded(this.catalog, this.$route.params.familyName)
-        for(var collection2 in this.catalog[foundFamily2.original]) {
-          for(var category2 in this.catalog[foundFamily2.original][collection2]) {
-            for(var i = 0; i < this.catalog[foundFamily2.original][collection2][category2].length; i++) {
-              if (this.formatString(this.catalog[foundFamily2.original][collection2][category2][i].productType) == this.$route.params.productTypeName &&
-                  this.formatString(category2) == this.$route.params.categoryName) {
-                if(this.$route.query.page) {
-                  var page = parseInt(this.$route.query.page)
-                  this.userSelectedPage(page)
-                  this.setCurrentPage(page)
+        if(foundFamily2) {
+          for(var collection2 in this.catalog[foundFamily2.original]) {
+            for(var category2 in this.catalog[foundFamily2.original][collection2]) {
+              for(var i = 0; i < this.catalog[foundFamily2.original][collection2][category2].length; i++) {
+                if (this.formatString(this.catalog[foundFamily2.original][collection2][category2][i].productType) == this.$route.params.productTypeName &&
+                    this.formatString(category2) == this.$route.params.categoryName) {
+                  if(this.$route.query.page) {
+                    var page = parseInt(this.$route.query.page)
+                    this.userSelectedPage(page)
+                    this.setCurrentPage(page)
+                  }
+                  this.selectProductType(this.catalog[foundFamily2.original][collection2][category2][i].productTypeId)
                 }
-                this.selectProductType(this.catalog[foundFamily2.original][collection2][category2][i].productTypeId)
               }
             }
           }

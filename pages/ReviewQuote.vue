@@ -18,7 +18,7 @@
           <div class="brand-logo-mf-color mt-0"></div>
         </a>
       </div>
-      <div class="row" style="max-height: calc(100vh - 7.5em); overflow-y: scroll; overflow-x: hidden; padding-bottom: 10em;">
+      <div class="row" style="max-height: calc(100vh - 8.5em); overflow-y: scroll; overflow-x: hidden; padding-bottom: 10em;">
           <div class="col-md-9 pb-5 pb-md-0" :style="this.mobileBrowser ? '' : 'padding-right: 20px;' ">
             <div class="card shadow-sm mt-0" :style="mobileBrowser ? '' : 'position: sticky; top: 0px; z-index: 800;'">
               <div class="card-body p-1">
@@ -395,7 +395,7 @@ export default {
         }, 300);
       } else {
         setTimeout(() => {
-          this.$router.push({ name: 'sign-up' })
+          this.$router.push({ path: '/cadastro' })
         }, 300);
       }
     },

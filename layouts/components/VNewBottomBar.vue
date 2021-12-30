@@ -1,8 +1,6 @@
 <template>
   <div
-    style="position: fixed; background: white;
-    bottom: 0; width:100%; display:flex; flex-direction: row; z-index: 999; justify-content: space-around;"
-  >
+    style="position: fixed; background: white; bottom: 0px; width:100%; display:flex; flex-direction: row; z-index: 999; justify-content: space-around;">
     <nuxt-link :to="{ path: '/' }" style="color: black;" :class="this.$route.path == '/' ||
                                                                    this.$route.name == 'cotar-familia' ||
                                                                    this.$route.name == 'cotar-categoria' ||
@@ -38,7 +36,7 @@
       </div>
     </nuxt-link>
 
-     <nuxt-link style="color: black;" :to="{ path: '/fornecedores' }" :class="this.$route.path == 'fornecedores' ||
+     <nuxt-link style="color: black;" :to="{ path: '/fornecedores' }" :class="this.$route.path == '/fornecedores' ||
                             this.$route.name == 'suppliers-family' ||
                             this.$route.name == 'suppliers-category' ||
                             this.$route.name == 'suppliers-product' ? 'options-container-selected' : 'options-container'">
@@ -46,7 +44,7 @@
         <div style="display: flex; flex-direction: column; place-items: center;">
           <img
             src="@/assets/images/shop-selected.png"
-            :class="this.$route.path == 'fornecedores' ||
+            :class="this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product' ? 'd-inherit' : 'd-none'"
@@ -55,14 +53,14 @@
           />
           <img
             src="@/assets/images/shop.png"
-            :class="this.$route.path == 'fornecedores' ||
+            :class="this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product' ? 'd-none' : 'd-inherit'"
             width="20px"
             alt="menu"
           />
-          <span :style="this.$route.path == 'fornecedores' ||
+          <span :style="this.$route.path == '/fornecedores' ||
                         this.$route.name == 'suppliers-family' ||
                         this.$route.name == 'suppliers-category' ||
                         this.$route.name == 'suppliers-product'

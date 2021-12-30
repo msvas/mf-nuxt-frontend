@@ -1,5 +1,5 @@
 <template>
-  <nav :class="navClass" v-if="!hideNavbar && !(showPhotoNavBar && $device.isMobile)" style="justify-content: space-between; background-color: white !important;">
+  <nav :class="navClass" v-if="!hideNavbar && !(showPhotoNavBar && ($device.isMobile || mobileBrowser))" style="justify-content: space-between; background-color: white !important;">
     <ul v-if="showLeaveQuotationButton || showOnlyLeaveButton" class="nav navbar-nav ">
       <li v-if="showLeaveQuotationButton && !supplierStore" class="nav-item position-relative">
         <a :href="backUrl" id="back-button" class="btn btn-relief-dark waves-effect waves-light font-small-3 mr-1 px-2">
@@ -69,7 +69,7 @@
           <div class="brand-logo-mf-color"></div>
         </a>
       </li>
-      <li v-if="!this.$auth.loggedIn && !$device.isMobile && this.$route.name != 'about'" style=" margin-left: 20px; list-style: none;">
+      <li v-if="!this.$auth.loggedIn && !$device.isMobile && !mobileBrowser && this.$route.path != '/quem-somos'" style=" margin-left: 20px; list-style: none;">
         <a style="color: black; padding-right: 25px;" href="javascript:void(0);" @click="openPartner = true"> Cadastre grátis sua distribuidora</a>
         <nuxt-link style="color: black; padding-right: 25px;" :to="{ path: '/contato' }">Entre em contato</nuxt-link>
         <nuxt-link style="color: black; padding-right: 25px;" :to="{ path: '/como-funciona' }">Como funciona</nuxt-link>
@@ -108,12 +108,12 @@
                                     border-radius: 10px;
                                     background: yellow;" :linkText="this.loginText"></login-dropdown>
       </span> -->
-      <li class="nav-item d-sm-block" v-if="forceLogo && $device.isMobile">
+      <li class="nav-item d-sm-block" v-if="forceLogo && ($device.isMobile || mobileBrowser)">
         <a href="/" style="position: absolute; left: 10px;">
           <div class="brand-logo-mf-color"></div>
         </a>
       </li>
-      <li class="nav-item d-sm-block" v-else-if="forceLogo && !$device.isMobile">
+      <li class="nav-item d-sm-block" v-else-if="forceLogo && !($device.isMobile || mobileBrowser)">
         <a href="/" style="position: absolute; left: 70px;">
           <div class="brand-logo-mf-color" style="margin-top: -15px;"></div>
         </a>
@@ -123,19 +123,19 @@
       <div v-if="$route.name != 'users.reviewOrder' && $route.name != 'users.reviewOrderProducts'">
         <v-quotation-button style="margin-right: 3px;" />
       </div>
-      <div class="" v-if="$route.name != 'users.reviewOrder' && $route.name != 'users.reviewOrderProducts'" :style="$device.isMobile ? 'margin-top: -5px;' : ''">
+      <div class="" v-if="$route.name != 'users.reviewOrder' && $route.name != 'users.reviewOrderProducts'" :style="($device.isMobile || mobileBrowser) ? 'margin-top: -5px;' : ''">
         <v-store-button />
       </div>
       <span v-if="!$auth.loggedIn" style="margin-left: 15px;" >
       <!-- <span style="margin-left: 15px;" > -->
         <span style=""></span>
         <b-spinner variant="success" v-if="registerLoading" small  />
-        <login-dropdown v-if="!$device.isMobile && this.$route.name != 'about'" style=" color:blue;
+        <login-dropdown v-if="!($device.isMobile || mobileBrowser) && this.$route.path != '/quem-somos'" style=" color:blue;
                                 padding: 10px;
                                 margin-right: 0px;
                                 border-radius: 10px;
                                 border-left: 1px solid LightGrey; border-radius: 0;" :linkText="this.loginText"></login-dropdown>
-        <login-dropdown v-if="!(storeTotal > 0 && productsInQuoteCart > 0) && $device.isMobile && this.$route.name != 'about'" style=" color:blue;
+        <login-dropdown v-if="!(storeTotal > 0 && productsInQuoteCart > 0) && ($device.isMobile || mobileBrowser) && this.$route.path != '/quem-somos'" style=" color:blue;
                                 padding: 10px 2px 10px 5px;
                                 margin-right: 0px;
                                 border-radius: 10px;
@@ -202,6 +202,7 @@ export default {
       loginText: '',
       registerLoading: false,
       openPartner: false,
+      mobileBrowser: false,
     };
   },
   created() {
@@ -213,6 +214,7 @@ export default {
     //     this.showOrdersButton = response
     //   })
     // }
+    this.isMobile()
     this.changeLoginText()
   },
   computed: {
@@ -301,14 +303,6 @@ export default {
     photoNavbar() {
       return this.$route.meta.photoNavbar
     },
-    isMobile() {
-      if (screen.width <= 760 || window.innerWidth <= 760) {
-        return true
-      } else {
-        return false
-      }
-    },
-
   },
   methods: {
     ...mapActions("quotations", ["getOrders", "getQuotationProducts", "hasOrders"]),
@@ -326,6 +320,14 @@ export default {
         document.body.style.overflow = "auto";
         document.querySelector(".sidenav-overlay").classList.remove("d-block");
         document.querySelector(".sidenav-overlay").classList.add("d-none");
+      }
+    },
+
+    isMobile() {
+      if (screen.width <= 760 || window.innerWidth <= 760) {
+        this.mobileBrowser = true
+      } else {
+        this.mobileBrowser = false
       }
     },
 

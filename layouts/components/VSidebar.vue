@@ -97,7 +97,7 @@
                 />
                 <img
                   src="@/assets/images/shop.png"
-                  :class="this.$route.name == 'suppliers' ||
+                  :class="this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product' ? 'd-none' : 'd-inherit'"
@@ -110,7 +110,7 @@
               <span
                 :class="reduce ? 'text-reduced' : 'text-expanded'"
                 :style="
-                    this.$route.name == 'suppliers' ||
+                    this.$route.path == '/fornecedores' ||
                     this.$route.name == 'suppliers-family' ||
                     this.$route.name == 'suppliers-category' ||
                     this.$route.name == 'suppliers-product'
@@ -128,14 +128,14 @@
             <div>
               <img
                 src="@/assets/images/invoice-selected.png"
-                :class="this.$route.name == 'orders' ? 'd-inherit' : 'd-none'"
+                :class="this.$route.path == '/pedidos' ? 'd-inherit' : 'd-none'"
                 height="22px"
                 width="22px"
                 alt="menu"
               />
               <img
                 src="@/assets/images/invoice.png"
-                :class="this.$route.name == 'orders' ? 'd-none' : 'd-inherit'"
+                :class="this.$route.path == '/pedidos' ? 'd-none' : 'd-inherit'"
                 height="25px"
                 width="22px"
                 alt="menu"
@@ -146,7 +146,7 @@
             <span
               :class="reduce ? 'text-reduced' : 'text-expanded'"
               :style="
-                this.$route.name == 'orders'
+                this.$route.path == '/pedidos'
                   ? 'color: #008567;'
                   : 'color: black;'
               "
@@ -219,6 +219,11 @@ export default {
   },
   mounted() {
 
+  },
+  watch: {
+    '$route': function (value) {
+      this.closeSideBar()
+    }
   },
   methods: {
     ...mapActions("families", ["getUsedFamilies"]),

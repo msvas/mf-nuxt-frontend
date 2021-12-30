@@ -19,7 +19,7 @@
                   class="font-weight-bold mt-2 delivery"
                 >Apenas os clientes localizados nas regiões definidas abaixo encontrarão você.</p>
 
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" style="max-height: 400px; overflow-y: auto;">
                   <region-item-list :state="state" v-for="state in supplierStates" :key="state.id" />
                 </ul>
               </div>
@@ -36,17 +36,14 @@
             </div>
           </div>
 
-          <vs-prompt not-close
-            :button-cancel="false"
-            :title="stateName"
-            :active.sync="modalStatus"
-            @accept="disableStateSupplierModal"
-            accept-text=" Salvar "
-            color="#0391D1"
-            type="flat"
-          >
-            <region-modal-content :region="region" v-for="region in regions" :key="region.id" />
-          </vs-prompt>
+          <vs-popup :title="stateName" :active.sync="modalStatus" :button-close-hidden="true">
+            <div style="max-height: 400px; overflow-y: auto;">
+              <region-modal-content :region="region" v-for="region in regions" :key="region.id" />
+            </div>
+            <a href="javascript:void(0);" @click="disableStateSupplierModal" class="btn btn-primary font-medium-1 pl-0 pr-0 float-right mr-2" style="text-align: center; width: 100px;">
+              Salvar
+            </a>
+          </vs-popup>
         </div>
       </div>
     </div>
@@ -70,11 +67,11 @@ export default {
   layout: "supplier/Supplier",
   mounted() {
     this.getSupplierStates();
-    this.addStylesToListGroup();
+    //this.addStylesToListGroup();
   },
   updated() {
     this.modalStatus = this.supplierStatesModal;
-    this.addStylesToModal();
+    //this.addStylesToModal();
   },
   computed: {
     ...mapState("suppliers", ["supplierStates", "supplierStatesModal"]),
@@ -85,27 +82,27 @@ export default {
       "getSupplierStates",
       "disableStateSupplierModal",
     ]),
-    addStylesToModal() {
-      let div = document.querySelector(".vs-dialog-text");
-
-      if (div !== null) {
-        div.style.maxHeight = "400px";
-        div.style.overflowY = "auto";
-      }
-    },
-    addStylesToListGroup() {
-      let div = document.querySelector(".list-group");
-
-      if (div !== null) {
-        div.style.maxHeight = "400px";
-        div.style.overflowY = "auto";
-      }
-    },
+    // addStylesToModal() {
+    //   let div = document.querySelector(".vs-dialog-text");
+    //
+    //   if (div !== null) {
+    //     div.style.maxHeight = "400px";
+    //     div.style.overflowY = "auto";
+    //   }
+    // },
+    // addStylesToListGroup() {
+    //   let div = document.querySelector(".list-group");
+    //
+    //   if (div !== null) {
+    //     div.style.maxHeight = "400px";
+    //     div.style.overflowY = "auto";
+    //   }
+    // },
     redirectToServicesConditions() {
       this.buttonLoading = true
       setTimeout(() => {
         this.buttonLoading = false
-        this.$router.push({ name: "service-conditions" });
+        this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" });
       }, 300);
     },
   },

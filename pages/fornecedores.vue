@@ -622,7 +622,7 @@ export default {
   mounted() {
     this.isLoading = true
     this.firstTime = true
-    //this.isMobile()
+    this.isMobile()
     var page = 1
     if(this.$route.query.page)
       page = this.$route.query.page

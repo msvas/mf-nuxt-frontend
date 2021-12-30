@@ -2,7 +2,7 @@
   <div>
     <div v-on-clickaway="away">
       <v-navbar />
-      <!-- <v-sidebar /> -->
+      <v-sidebar />
       <v-new-sidebar v-if="!this.mobileBrowser && $route.name != 'users.reviewQuote' && !this.hideSidebar" />
     </div>
     <div class="app-content content" :class="hasMargin">

@@ -77,8 +77,11 @@ export default {
     goToReview() {
       if(this.automatic)
         this.goToReviewOrder()
-      else
-        this.$router.push({ name: 'users.reviewQuote'})
+      else {
+        setTimeout(() => {
+          this.$router.push({ name: 'users.reviewQuote'})
+        }, 300);
+      }
     },
     goToReviewOrder() {
       this.isLoading = true

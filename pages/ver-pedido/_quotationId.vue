@@ -259,7 +259,7 @@
 
           </div>
         </div>
-        <div v-else class="position-fixed" style="bottom: 0px;">
+        <div v-else class="position-fixed" style="bottom: 35px;">
           <div class="card shadow-sm mb-0" style="">
             <div class="card-body pb-1 pl-1 pr-1 pt-0 font-small-3 row">
               <div style="border: solid 2px #f5f5f5; width: 100%; margin-bottom: 3px;"></div>

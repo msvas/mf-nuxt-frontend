@@ -8,27 +8,37 @@ module.exports = {
     port: 8080 // default: 3000
   },
 
+  loading: '@/components/general/Loading.vue',
+
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Meu Fornecedor | Compre online para seu restaurante',
     meta: [
       { charset: 'utf-8' },
+      { property: "og:locale", content: "pt_BR" },
+      { property: "og:title", content: "Meu Fornecedor | Compre online para seu restaurante" },
+      { property: "og:description", content: "Simplifique as compras do seu restaurante, padaria, minimercado. Veja os preços de várias distribuidoras. Alimentos, bebidas, embalagens, limpeza, utensílios." },
+      { property: "og:url", content: "https://meufornecedor.com.br/" },
+      { property: "og:site_name", content: "Meu Fornecedor | Compre online para seu restaurante", },
+      { property: "og:image", itemprop: "image", content:  "https://meufornecedor.com.br/logo.png", },
+      { property: "og:image:secure_url", itemprop: "image", content:  "https://meufornecedor.com.br/logo.png", },
+      { property: "og:image:width", content: "868" },
+      { property: "og:image:height", content: "332" },
+      { property: "og:image:alt", content: "MeuFornecedor" },
+      { property: "og:image:type", content: "image/jpg" },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      { name: 'name', content: 'Meu Fornecedor' },
+      { hid: 'description', name: 'description', content: 'Simplifique as compras do seu restaurante, padaria, minimercado. Veja os preços de várias distribuidoras. Alimentos, bebidas, embalagens, limpeza, utensílios.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: 'https://meufornecedor.com.br/favicon-180x180.png' },
+      { rel: 'apple-touch-icon', href: 'https://meufornecedor.com.br/favicon-32x32.png' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://meufornecedor.com.br/loader.css' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600' },
     ]
   },
-
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
 
   /*
   ** Global CSS
@@ -55,6 +65,7 @@ module.exports = {
     { src: '~plugins/vue-directive-tooltip.js' },
     { src: '~plugins/vue-dragscroll.js', mode: "client" },
     { src: '~plugins/vue-toast.js', mode: "client" },
+    { src: '~plugins/vue-meta.js', mode: "client" },
     { src: '~plugins/veevalidate.js' },
     { src: '~plugins/vue-form-wizard.js' },
     { src: '~plugins/vue-currency-input.js' },
@@ -116,7 +127,7 @@ module.exports = {
       },
     },
     redirect: {
-      login: false,
+      login: '/login',
       logout: false,
       home: false,
       callback: false,

@@ -312,10 +312,12 @@ export default {
       return null
       },
       selectCategory(familyName, categoryName) {
-        if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
-          this.$router.push({name: 'public-store-category', params: { familyName: this.formatString(familyName), categoryName: this.formatString(categoryName) }})
-        else
-          this.$router.push({name: 'cotar-categoria', params: { familyName: this.formatString(familyName), categoryName: this.formatString(categoryName) }})
+        setTimeout(() => {
+          if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
+            this.$router.push({name: 'public-store-category', params: { familyName: this.formatString(familyName), categoryName: this.formatString(categoryName) }})
+          else
+            this.$router.push({name: 'cotar-categoria', params: { familyName: this.formatString(familyName), categoryName: this.formatString(categoryName) }})
+        }, 200)
         this.open = false
       },
       selectCollection(familyName, collectionName) {
@@ -326,19 +328,21 @@ export default {
       },
       selectProductType(familyName, categoryName, productTypeName) {
         this.selectedProductTypeOnModal = productTypeName
-        if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
-          this.$router.push({name: 'public-store-product', params: {familyName: this.formatString(familyName), categoryName: this.formatString(categoryName), productTypeName: this.formatString(productTypeName)}})
-        else
-          this.$router.push({name: 'cotar-produto', params: {familyName: this.formatString(familyName), categoryName: this.formatString(categoryName), productTypeName: this.formatString(productTypeName)}})
+        setTimeout(() => {
+          if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
+            this.$router.push({name: 'public-store-product', params: {familyName: this.formatString(familyName), categoryName: this.formatString(categoryName), productTypeName: this.formatString(productTypeName)}})
+          else
+            this.$router.push({name: 'cotar-produto', params: {familyName: this.formatString(familyName), categoryName: this.formatString(categoryName), productTypeName: this.formatString(productTypeName)}})
+        }, 200)
       },
       selectFamily(familyName){
-        if((this.$route.name == 'cotar-familia' && familyName == this.selectedFamily) || (this.$route.name == 'public-store-family' && familyName == this.selectedFamily))
-          this.$router.go()
-        else if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
-          this.$router.push({ name: 'public-store-family', params: { familyName: this.formatString(familyName) }});
-        else this.$router.push({ name: 'cotar-familia', params: { familyName: this.formatString(familyName) }});
-
-
+        setTimeout(() => {
+          if((this.$route.name == 'cotar-familia' && familyName == this.selectedFamily) || (this.$route.name == 'public-store-family' && familyName == this.selectedFamily))
+            this.$router.go()
+          else if (this.$route.name == 'public-store' || this.$route.name ==  'public-store-family' || this.$route.name ==  'public-store-category' || this.$route.name ==  'public-store-product' || this.$route.name == 'public-store-product-page')
+            this.$router.push({ name: 'public-store-family', params: { familyName: this.formatString(familyName) }});
+          else this.$router.push({ name: 'cotar-familia', params: { familyName: this.formatString(familyName) }});
+        }, 200)
       },
       normalizeString(s) {
         var r = s.toLowerCase();

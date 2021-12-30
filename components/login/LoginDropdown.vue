@@ -130,7 +130,18 @@ export default {
     }
   },
 
+  mounted() {
+    this.isMobile()
+  },
+
   methods: {
+    isMobile() {
+      if (screen.width <= 760 || window.innerWidth <= 760) {
+        this.mobileBrowser = true
+      } else {
+        this.mobileBrowser = false
+      }
+    },
     openForgotPassword() {
       this.openForgot = true
     },
@@ -161,8 +172,17 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
-              if(this.$auth.user.isSupplier)
-                this.$router.push({ path: '/fornecedor/cotacoes' })
+
+              if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
+                this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Liberado")
+                this.$router.push({ path: "/fornecedor/cotacoes" })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == 'Cancelado')
+                this.$router.push({ path: '/fornecedor/cancelado' })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == 'Manutenção')
+                this.$router.push({ path: '/fornecedor/em-manutencao' })
+              else if (!this.$auth.user.isSupplier && (['Suspenso', 'Cancelado'].includes(this.$auth.user.clientStatus)))
+                this.$router.push({ path: '/conta-suspensa' })
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;
@@ -182,8 +202,16 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
-              if(this.$auth.user.isSupplier)
-                this.$router.push({ path: '/fornecedor/cotacoes' })
+              if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
+                this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Liberado")
+                this.$router.push({ path: "/fornecedor/cotacoes" })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == 'Cancelado')
+                this.$router.push({ path: '/fornecedor/cancelado' })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == 'Manutenção')
+                this.$router.push({ path: '/fornecedor/em-manutencao' })
+              else if (!this.$auth.user.isSupplier && (['Suspenso', 'Cancelado'].includes(this.$auth.user.clientStatus)))
+                this.$router.push({ path: '/conta-suspensa' })
             }).catch((error) => {
                setTimeout(() => {
                 this.isLoading = false;

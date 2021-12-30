@@ -292,9 +292,9 @@
                 </span>
 
                 <span style="flex: 0 0 auto; width: auto;">
-                <vs-chip class="chip-mf">
-                  <a  @click="openNavigationsModal('product-type', selectedFamily)" :style="selectedProductType ? 'color: #008567;' : ''">
-                    {{selectedProductType[0].productType}}
+                <vs-chip class="chip-mf" v-if="selectedProductType && selectedProductType.length">
+                  <a @click="openNavigationsModal('product-type', selectedFamily)" :style="selectedProductType ? 'color: #008567;' : ''">
+                    {{ selectedProductType[0].productType }}
                     <i class="feather icon-chevron-down"></i>
                   </a>
                 </vs-chip>
@@ -538,7 +538,7 @@
                 </vs-chip>
               </span>
               <span style="flex: 0 0 auto; width: auto;">
-                <vs-chip class="chip-mf" alt="type.text">
+                <vs-chip class="chip-mf" alt="type.text" v-if="selectedProductType && selectedProductType.length">
                   <a @click="openNavigationsModal('product-type', selectedFamily)"  style="color: #008567;">
                     {{selectedProductType[0].productType}}
                     <i class="feather icon-chevron-down"></i>
@@ -769,7 +769,7 @@ export default {
       tab: 0,
       productId: null,
       product: null,
-      samples: null,
+      samples: [],
     };
   },
 
@@ -801,17 +801,16 @@ export default {
           this.getSampleCatalogByProductTypeAndSupplier({ supplierId: this.supplier.id, productTypeId: this.product.productTypeId }).then((samples) => {
             this.samples = samples.filter(obj => (obj.id != this.product.id))
           })
+          this.getCatalogById(this.supplier.id).then(() => {
+            this.uniqueUsedFamilies()
+            this.isLoading = false;
+            this.openLocation = false;
+            this.allowAccess = true;
+            //this.startStore();
+            this.getRouterParamsToOptions()
+          });
         }
       })
-
-      this.getCatalogById(this.supplier.id).then(() => {
-        this.uniqueUsedFamilies()
-        this.isLoading = false;
-        this.openLocation = false;
-        this.allowAccess = true;
-        //this.startStore();
-        this.getRouterParamsToOptions()
-      });
     })
     setTimeout(() => {
       if (this.supplier.user.supplierStatus != "Liberado") {
@@ -821,9 +820,10 @@ export default {
       this.selectedProductType = this.createProductTypeStructure(this.product)
       this.selectedProduct = this.product
     }, 2000);
+    
     setTimeout(() => {
       this.scrollNavigationsContainer();
-    }, 3000);
+    }, 4000);
   },
 
   computed: {
@@ -1760,6 +1760,7 @@ export default {
       }, 800);
     },
     hasScroll(scroll) {
+      console.log(scroll)
       if (scroll && scroll.scrollWidth > scroll.clientWidth) {
         return true;
       } else return false;

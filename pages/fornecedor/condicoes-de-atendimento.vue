@@ -19,28 +19,28 @@
           :configurationName="'Tipo de Cliente'"
           :configuration="clientTypeCompleted"
           :iconName="'icon-users'"
-          :routeName="'client-types'"
+          :routeName="'/fornecedor/tipos-de-cliente'"
         />
 
         <v-card-service-condition
           :configurationName="'Área de entrega ou atendimento'"
           :configuration="deliveryAreasCompleted"
           :iconName="'icon-map'"
-          :routeName="'delivery-areas'"
+          :routeName="'/fornecedor/area-de-atendimento'"
         />
 
         <v-card-service-condition
           :configurationName="'Prazo e rota de entrega'"
           :configuration="deliveriesCompleted"
           :iconName="'icon-truck'"
-          :routeName="'delivery-conditions'"
+          :routeName="'/fornecedor/prazo-de-entrega'"
         />
 
         <v-card-service-condition
           :configurationName="'Valor mínimo de pedido'"
           :configuration="minimumOrderValueCompleted"
           :iconName="'icon-truck'"
-          :routeName="'minimum-order-value'"
+          :routeName="'/fornecedor/valor-minimo-de-pedido'"
         />
 
         <!-- <v-card-service-condition
@@ -62,16 +62,18 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   name: "ServiceConditions",
   updated() {
+    console.log(this.allCompleted)
+    console.log(this.allCompletedAutomatic)
     if(this.$auth.user.supplierStatus == 'Precificação')
-      this.$router.push({ name: "pricing" })
+      this.$router.push({ path: "/fornecedor/precificar" })
     else if ((this.$auth.user.supplierQuotationType != 'Automático' && this.allCompleted) ||
              (this.$auth.user.supplierQuotationType == 'Automático' && this.allCompletedAutomatic)) {
       switch(this.$auth.user.supplierStatus) {
         case "Não liberado":
-          this.$router.push({ name: "products-empty" })
+          this.$router.push({ path: "/fornecedor/incluir-produtos" })
           break
         case "Liberado":
-          this.$router.push({ name: "quotation-panel" })
+          this.$router.push({ path: "/fornecedor/cotacoes" })
           break
         }
     }

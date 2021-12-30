@@ -28,6 +28,7 @@ export default {
 
   },
   mounted() {
+    this.isMobile()
     if(this.$route.query.directId && this.mobileBrowser) {
       setTimeout(() =>{
         var top = document.getElementById('orders').offsetTop - 60
@@ -36,7 +37,13 @@ export default {
     }
   },
   methods:{
-
+    isMobile() {
+      if (screen.width <= 760 || window.innerWidth <= 760) {
+        this.mobileBrowser = true;
+      } else {
+        this.mobileBrowser = false;
+      }
+    },
   },
   components:{
     OpenQuotesBanner,

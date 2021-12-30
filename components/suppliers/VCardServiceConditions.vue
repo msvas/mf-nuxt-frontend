@@ -9,7 +9,7 @@
           <p class="font-weight-bold font-medium-2 my-2">{{configurationName}}</p>
           <p class="mb-0 mt-1">
             <nuxt-link
-              :to="{ name: routeName }"
+              :to="{ path: routeName }"
               class="btn btn-primary waves-effect waves-light"
             >Definir</nuxt-link>
           </p>

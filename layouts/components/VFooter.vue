@@ -61,9 +61,19 @@ export default {
       mobileBrowser: false
     };
   },
+  mounted() {
+    this.isMobile()
+  },
   methods:{
     closePopup(value) {
       this.openPartner = value
+    },
+    isMobile() {
+      if (screen.width <= 760 || window.innerWidth <= 760) {
+        this.mobileBrowser = true;
+      } else {
+        this.mobileBrowser = false;
+      }
     },
   },
   components: {

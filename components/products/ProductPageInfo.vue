@@ -461,7 +461,7 @@
                 :samplePage="false"
                 @quantity-input="checkTotalsExternal"
                 @remove-item="removeFromCartExternal"
-                @fill-location="openFillRegion"
+                @fill-location="openLocationPopup"
                 @clear-cart="clearCartExternal"
               />
             </div>
@@ -629,9 +629,13 @@ export default {
       slug: null,
       openFillRegion: false,
       shareLink: null,
+      targetClick: null,
     }
   },
   created() {
+
+  },
+  mounted() {
     this.totals = JSON.parse(JSON.stringify(this.storeProducts))
     this.slug = this.$route.params.supplierSlug
     this.shareLink = window.location.origin + this.$route.fullPath
@@ -643,8 +647,6 @@ export default {
         this.checkDiscounts(this.expeditions[i], found.quantity, this.expeditions[i].price, true)
       }
     }
-  },
-  mounted() {
     this.$nextTick(function () {
       this.$emit('all-mounted')
     })
@@ -1171,12 +1173,21 @@ export default {
       // this.allowAccess = value
       if (value == true) {
         setTimeout(() => {
+          if(this.targetClick)
+            this.targetClick.click()
           this.checkTotals(this.lastTotals)
         }, 300)
       }
     },
     updateLocationModal(val) {
       this.openFillRegion = val;
+    },
+    openLocationPopup(target) {
+      this.targetClick = target;
+      this.openFillRegion = true;
+      setTimeout(() => {
+        document.getElementById("cepInput").focus();
+      }, 500);
     },
     shareOnWhatsapp() {
       var url = "https://api.whatsapp.com/send?text=" +

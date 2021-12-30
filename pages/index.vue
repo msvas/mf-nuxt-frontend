@@ -420,6 +420,7 @@ import PartnerModal from "@/components/home/PartnerModal";
 import ProductInSaleCard from "@/components/products/ProductInSaleCard";
 import { mapGetters, mapActions, mapState } from "vuex";
 import NavigationModal from "@/components/users/NavigationModal"
+import statusChecker from "@/mixins/statusChecker";
 
 export default {
   data() {
@@ -484,15 +485,9 @@ export default {
 
     this.isMobile();
     if(this.$auth.loggedIn) {
-      if (
-        this.$auth.user.isSupplier &&
-        this.$auth.user.supplierStatus == "Não liberado"
-      )
-        this.$router.push({ path: "/fornecedor/incluir-produtos" });
-      else if (
-        this.$auth.user.isSupplier &&
-        this.$auth.user.supplierStatus == "Liberado"
-      )
+      if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
+        this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" });
+      else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Liberado")
         this.$router.push({ path: "/fornecedor/cotacoes" });
     }
   },
@@ -725,5 +720,6 @@ export default {
     ProductInSaleCard,
     NavigationModal,
   },
+  mixins: [statusChecker]
 };
 </script>

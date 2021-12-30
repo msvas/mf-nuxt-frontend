@@ -1088,6 +1088,7 @@ export default {
           this.openAdd = true
         else {
           this.openAdd = false
+          console.log(ev.target)
           this.$emit('fill-location', ev.target)
         }
       } else if(this.storeTotal > 0) {

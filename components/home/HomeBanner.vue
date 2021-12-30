@@ -8,7 +8,7 @@
 </template>
 <style>
     .mf-home-banner-desktop{
-        background: url('../../assets//images/mf-home-banner.png');
+        background: url('../../assets/images/mf-home-banner.png');
         background-size: cover;
         background-position: 0 40%;
         background-repeat: no-repeat;
@@ -19,7 +19,7 @@
 
     }
     .mf-home-banner-mobile{
-        background: url(/img/mf-home-banner.b6938550.png);
+        background: url('../../assets/images/mf-home-banner.png');
         background-size: cover;
         background-position: 80% 40%;
         background-repeat: no-repeat;

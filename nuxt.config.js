@@ -101,7 +101,13 @@ module.exports = {
     '/api': {
       target: process.env.VUE_APP_REST_API_URL,
       pathRewrite: {
-        '^/api': '/api'
+        '^/api': '/api',
+      }
+    },
+    '/user_auth': {
+      target: process.env.VUE_APP_REST_API_URL,
+      pathRewrite: {
+        '^/user_auth': '/user_auth',
       }
     },
   },

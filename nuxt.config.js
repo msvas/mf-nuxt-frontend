@@ -5,7 +5,7 @@ module.exports = {
   mode: 'universal',
 
   server: {
-    port: 8080 // default: 3000
+    port: process.env.PORT ? process.env.PORT : '8080' // default: 3000
   },
 
   loading: '@/components/general/Loading.vue',

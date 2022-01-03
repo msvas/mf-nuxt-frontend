@@ -122,7 +122,7 @@ module.exports = {
           type: 'Bearer',
         },
         user: {
-          property: 'data',
+          property: false,
           autoFetch: true,
         },
         endpoints: {

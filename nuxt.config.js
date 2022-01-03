@@ -123,7 +123,7 @@ module.exports = {
         },
         user: {
           property: 'data',
-          autoFetch: false,
+          autoFetch: true,
         },
         endpoints: {
           login: {

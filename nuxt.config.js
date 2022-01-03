@@ -116,13 +116,13 @@ module.exports = {
     strategies: {
       local: {
         token: {
-          property: 'token',
+          property: false,
           global: true,
           required: true,
           type: 'Bearer',
         },
         user: {
-          property: false,
+          property: 'data',
           autoFetch: true,
         },
         endpoints: {

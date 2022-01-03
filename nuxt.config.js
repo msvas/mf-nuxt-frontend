@@ -92,10 +92,18 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.VUE_APP_REST_API_URL,
-    proxyHeaders: false,
-    credentials: false,
+    // baseURL: process.env.VUE_APP_REST_API_URL,
+    proxy: true,
     debug: process.env.NODE_ENV && process.env.NODE_ENV === 'development',
+  },
+
+  proxy: {
+    '/api': {
+      target: process.env.VUE_APP_REST_API_URL,
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    },
   },
 
   auth: {

@@ -202,6 +202,7 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
+              console.log(this.$auth)
               if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
                 this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" })
               else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Liberado")

@@ -1,5 +1,5 @@
 const pkg = require('./package')
-const RESOURCE_URL = `${process.env.VUE_APP_REST_API_URL}/user_auth`
+const RESOURCE_URL = '/user_auth'
 
 module.exports = {
   mode: 'universal',
@@ -104,12 +104,12 @@ module.exports = {
         '^/api': '/api',
       }
     },
-    // '/user_auth': {
-    //   target: process.env.VUE_APP_REST_API_URL,
-    //   pathRewrite: {
-    //     '^/user_auth': '/user_auth',
-    //   }
-    // },
+    '/user_auth': {
+      target: process.env.VUE_APP_REST_API_URL,
+      pathRewrite: {
+        '^/user_auth': '/user_auth',
+      }
+    },
   },
 
   auth: {

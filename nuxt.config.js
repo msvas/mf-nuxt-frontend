@@ -129,7 +129,7 @@ module.exports = {
           login: {
             url: `${RESOURCE_URL}/sign_in`,
             method: 'post',
-            propertyName: 'token'
+            propertyName: false
           },
           user: {
             url: `${RESOURCE_URL}/validate_token`,

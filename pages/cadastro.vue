@@ -77,7 +77,7 @@
                     Já tem cadastro?
                     </p>
                     <div :class="$device.isMobile ? 'pl-3' : ''" :style="$device.isMobile ? '' : 'padding-left: 70px'">
-                      <login-dropdown linkText="Entrar" />
+                      <login-dropdown linkText="Entrar" :redirect="true" />
                     </div>
                   </div>
                 </div>

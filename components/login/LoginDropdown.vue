@@ -202,8 +202,9 @@ export default {
               this.setUser(this.$auth.user)
               this.isLoading = false
               this.clearFilterParams()
-              console.log(this.$auth)
-              if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
+              if(this.redirect)
+                this.$router.push({ path: "/" })
+              else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Não liberado")
                 this.$router.push({ path: "/fornecedor/condicoes-de-atendimento" })
               else if (this.$auth.user.isSupplier && this.$auth.user.supplierStatus == "Liberado")
                 this.$router.push({ path: "/fornecedor/cotacoes" })
@@ -244,6 +245,9 @@ export default {
     },
     btnStyle: {
       type: String
+    },
+    redirect: {
+      type: Boolean
     }
   },
   components: {

@@ -236,6 +236,80 @@
                     </div>
                   </div>
                 </span>
+                <div v-if="!productsFromFamily(index).length" style="display: flex; flex-wrap: nowrap;">
+                  <b-skeleton-wrapper :loading="true">
+                    <template #loading>
+                      <b-card style="width: 170px; margin-right: 20px;">
+                        <b-skeleton-img></b-skeleton-img>
+                        <br>
+                        <b-skeleton width="85%"></b-skeleton>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                          <b-skeleton type="button" width="90%"></b-skeleton>
+                        </div>
+                      </b-card>
+                    </template>
+                  </b-skeleton-wrapper>
+                  <b-skeleton-wrapper :loading="true">
+                    <template #loading>
+                      <b-card style="width: 170px; margin-right: 20px;">
+                        <b-skeleton-img></b-skeleton-img>
+                        <br>
+                        <b-skeleton width="85%"></b-skeleton>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                          <b-skeleton type="button" width="90%"></b-skeleton>
+                        </div>
+                      </b-card>
+                    </template>
+                  </b-skeleton-wrapper>
+                  <b-skeleton-wrapper :loading="true">
+                    <template #loading>
+                      <b-card style="width: 170px; margin-right: 20px;">
+                        <b-skeleton-img></b-skeleton-img>
+                        <br>
+                        <b-skeleton width="85%"></b-skeleton>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                          <b-skeleton type="button" width="90%"></b-skeleton>
+                        </div>
+                      </b-card>
+                    </template>
+                  </b-skeleton-wrapper>
+                  <b-skeleton-wrapper :loading="true">
+                    <template #loading>
+                      <b-card style="width: 170px;">
+                        <b-skeleton-img></b-skeleton-img>
+                        <br>
+                        <b-skeleton width="85%"></b-skeleton>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <b-skeleton width="55%"></b-skeleton>
+                        <b-skeleton width="70%"></b-skeleton>
+                        <br>
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                          <b-skeleton type="button" width="90%"></b-skeleton>
+                        </div>
+                      </b-card>
+                    </template>
+                  </b-skeleton-wrapper>
+                </div>
                 <div
                   class="card font-small-3"
                   v-if="productsFromFamily(index).length >= 6"

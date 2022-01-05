@@ -1617,6 +1617,13 @@
                     </a>
                   </vs-chip>
                 </span>
+                <div v-if="supplierOfferProducts && supplierOfferProducts.length" class="float-right">
+                  <vs-chip style="color: #D11B6D !important; border-color: #D11B6D !important;" class="chip-mf">
+                    <a  @click="goToOffers()">
+                      Ofertas
+                    </a>
+                  </vs-chip>
+                </div>
               </div>
               <div v-else>
               <vs-chip  class="chip-mf">
@@ -1708,6 +1715,13 @@
                   </a>
                 </vs-chip>
               </span>
+              <div v-if="supplierOfferProducts && supplierOfferProducts.length" class="float-right">
+                <vs-chip style="color: #D11B6D !important; border-color: #D11B6D !important;" class="chip-mf">
+                  <a  @click="goToOffers()">
+                    Ofertas
+                  </a>
+                </vs-chip>
+              </div>
               </div>
               <div style="max-width: 50%">
                 <form @submit.prevent="runSupplierSearch()" style="margin-right: -20px;">

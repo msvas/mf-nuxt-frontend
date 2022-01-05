@@ -260,6 +260,7 @@
                       <input
                         id="search2"
                         type="text"
+                        v-model="keyword"
                         placeholder="Buscar..."
                         style=" font-size: 1rem;
                                 border: 2px solid rgb(12, 182, 149);
@@ -1713,6 +1714,7 @@
                   <input
                     id="search2"
                     type="text"
+                    v-model="keyword"
                     placeholder="Buscar..."
                     style=" font-size: 1rem;
                             border: 2px solid rgb(12, 182, 149);

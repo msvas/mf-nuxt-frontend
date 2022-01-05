@@ -156,7 +156,7 @@ export default {
     goToReviewOrder() {
       this.isLoading = true
       setTimeout(() => {
-        if(!this.supplier) {
+        // if(!this.supplier) {
           this.getSupplierByIdNoStore(this.storeCartSupplierId()).then((response1) => {
             this.supplier = response1
             this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response2) => {
@@ -164,12 +164,12 @@ export default {
               this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response2.id } })
             })
           })
-        } else {
-          this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response) => {
-            this.isLoading = false
-            this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response.id } })
-          })
-        }
+        // } else {
+        //   this.createOrder({ supplierId: this.supplier.id, products: this.storeProducts }).then((response) => {
+        //     this.isLoading = false
+        //     this.$router.push({ name: 'users.reviewOrder', params: { supplierSlug: this.supplier.nameForUrl, orderId: response.id } })
+        //   })
+        // }
       }, 300);
     }
   },

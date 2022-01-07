@@ -156,6 +156,7 @@ export default {
         addressDetails: "",
         email: "",
         asSupplier: false,
+        phone_type: "",
       },
       error: null,
       activeAlert: false,

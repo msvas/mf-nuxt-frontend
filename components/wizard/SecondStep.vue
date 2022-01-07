@@ -20,25 +20,42 @@
           </div>
         </div>
 
-        <div class="col-12">
-          <div class="form-group">
-            <label>Qual seu Whatsapp / Telefone?</label>
-            <input
-              v-model="user.phone"
-              v-validate="{ required: true, min: 14, max: 15 }"
-              data-vv-name="phone"
-              v-mask="['(##) ####-####', '(##) #####-####']"
-              name="phone"
-              placeholder="De preferência do comprador"
-              type="text"
-              class="form-control required"
-            />
-            <label
-              v-show="errors.has('step-2.phone')"
-              class="danger"
-            >{{ errors.first('step-2.phone') }}</label>
-          </div>
-        </div>
+        <b-container class="col-12">
+          <b-row>
+            <b-col cols="4">
+              <label>Qual seu telefone?</label>
+              <input
+                v-model="user.phone"
+                v-validate="{ required: true, min: 14, max: 15 }"
+                data-vv-name="phone"
+                v-mask="['(##) ####-####', '(##) #####-####']"
+                name="phone"
+                placeholder="De preferência do comprador"
+                type="text"
+                class="form-control required"
+              />
+              <label
+                v-show="errors.has('step-2.phone')"
+                class="danger"
+              >{{ errors.first('step-2.phone') }}</label>
+            </b-col>
+            <b-col cols="8" align-self="center">
+              <b-row>
+                <b-col cols="4">
+                  <label>É Whatsapp?</label>
+                </b-col>
+                <b-col cols="3">
+                  <input type="radio" v-model="user.phoneType" id="one" data-vv-name="phone_type" value='Telefone e Whatsapp'>
+                  <label for="one">Sim</label>
+                </b-col>
+                <b-col cols="3">
+                  <input type="radio" v-model="user.phoneType" id="two" data-vv-name="phone_type" value='Telefone'>
+                  <label for="two">Não</label>
+                </b-col>
+              </b-row>
+            </b-col>
+          </b-row>
+        </b-container>
       </div>
     </fieldset>
   </form>
@@ -50,6 +67,16 @@ import { mask } from "vue-the-mask";
 import stepValidation from "@/mixins/stepValidation";
 
 export default {
+  data() {
+    return {
+      isWhatsappRadio: 'true'
+    };
+  },
+  methods: {
+  isWhatsapp(){
+      this.user.phoneType = this.isWhatsapp ? '2' : '1'
+    }
+  },
   props: {
     user: {
       type: Object,

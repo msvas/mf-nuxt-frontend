@@ -235,4 +235,8 @@ export default {
       }
     })
   },
+
+  uploadSitemap(data) {
+    return $nuxt.$axios.put('/sitemaps/sitemap',{ blob: data.content, name: data.name })
+  },
 }

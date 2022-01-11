@@ -85,6 +85,7 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/device',
     '@nuxtjs/auth-next',
+    '@nuxtjs/robots',
     'vue-currency-input/nuxt',
   ],
   /*
@@ -110,6 +111,18 @@ module.exports = {
         '^/user_auth': '/user_auth',
       }
     },
+    '/sitemaps': {
+      target: process.env.VUE_APP_REST_API_URL,
+      pathRewrite: {
+        '^/sitemaps': '/sitemaps',
+      }
+    },
+  },
+
+  robots: {
+    UserAgent: '*',
+    Disallow: '',
+    Sitemap: 'https://mf-assets-develop.s3.us-east-2.amazonaws.com/uploads/sitemaps/sitemap-index.xml',
   },
 
   auth: {

@@ -39,4 +39,12 @@ export default {
           phone: data.phone }
       })
   },
+
+  adminErrorSitemapNotification(data) {
+    return $nuxt.$axios.post(`${RESOURCE_URL}/admin_error_sitemap_notification`, {
+      contact: {
+        message: data.message
+      }
+    })
+  },
 }
